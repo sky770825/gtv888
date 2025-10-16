@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="全球商聯會慈善店家計畫 - 一手做生意一手做公益，結合商業與慈善的創新平台">
-    <meta name="keywords" content="全球商聯會,慈善店家,公益平台,商業慈善,社會責任">
+    <meta name="description" content="全球商聯會慈善店家計畫 - 一手做生意一手做公益，結合公益×經濟×產業三大核心的創新平台">
+    <meta name="keywords" content="全球商聯會,慈善店家,公益平台,商業慈善,社會責任,節稅,公益點數">
     <title>全球商聯會 - 慈善店家計畫 | 一手做生意一手做公益</title>
     
     <!-- Google Fonts -->
@@ -12,7 +12,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
+        :root {
+            --primary: #667eea;
+            --primary-dark: #5568d3;
+            --secondary: #ffd700;
+            --accent: #ff6b6b;
+            --success: #27ae60;
+            --dark: #1a202c;
+            --gray: #4a5568;
+            --light-gray: #718096;
+            --bg-light: #f7fafc;
+            --white: #ffffff;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -21,375 +37,2249 @@
 
         body {
             font-family: 'Noto Sans TC', sans-serif;
-            background: linear-gradient(180deg, #4a90e2 0%, #2c5aa0 100%);
-            min-height: 100vh;
-            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--dark);
+            line-height: 1.5;
             overflow-x: hidden;
         }
 
-        /* 背景幾何圖案 */
-        body::before {
+        /* 響應式字體系統 - 優化比例 */
+        h1 { font-size: clamp(1.75rem, 4.5vw, 2.8rem); font-weight: 900; line-height: 1.15; }
+        h2 { font-size: clamp(1.35rem, 3.5vw, 2rem); font-weight: 800; line-height: 1.25; }
+        h3 { font-size: clamp(1.15rem, 2.8vw, 1.5rem); font-weight: 700; line-height: 1.3; }
+        h4 { font-size: clamp(1rem, 2.2vw, 1.2rem); font-weight: 600; }
+        p, li { font-size: clamp(0.9rem, 1.8vw, 1rem); }
+        .small-text { font-size: clamp(0.8rem, 1.6vw, 0.9rem); }
+
+        /* Hero Section - 优化视觉冲击力 */
+        .hero {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%);
+            padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 1.5rem);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
             content: '';
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(255,255,255,0.05) 0%, transparent 50%);
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
             pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
             z-index: 1;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* 標題區域 */
-        .header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .logo {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 2rem;
-            background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
+        .logo-badge {
+            width: clamp(70px, 12vw, 100px);
+            height: clamp(70px, 12vw, 100px);
+            margin: 0 auto clamp(0.75rem, 1.5vw, 1rem);
+            background: linear-gradient(135deg, var(--white) 0%, #f0f8ff 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            font-size: clamp(2rem, 5vw, 3rem);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            animation: float 3s ease-in-out infinite;
         }
 
-        .logo::before {
-            content: '🌍';
-            font-size: 3rem;
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero h1 {
+            color: var(--white);
+            margin-bottom: clamp(0.6rem, 1.8vw, 1rem);
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+            letter-spacing: 0.5px;
+        }
+
+        .hero-subtitle {
+            color: var(--secondary);
+            font-size: clamp(1.2rem, 2.8vw, 1.65rem);
+            font-weight: 800;
+            margin-bottom: clamp(1.2rem, 2.5vw, 1.75rem);
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+        }
+
+        .hero-slogan {
+            background: var(--secondary);
+            color: var(--primary-dark);
+            padding: clamp(0.75rem, 1.8vw, 1.1rem) clamp(1.5rem, 3vw, 2.5rem);
+            border-radius: 50px;
+            font-size: clamp(1rem, 2.2vw, 1.3rem);
+            font-weight: 800;
+            display: inline-block;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+            animation: pulse 2s ease-in-out infinite;
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: clamp(0.5rem, 2vw, 1.5rem);
+        }
+
+        /* Section */
+        .section {
+            background: var(--white);
+            margin: clamp(0.5rem, 1.5vw, 1.25rem) clamp(0.35rem, 1vw, 0);
+            padding: clamp(1rem, 3vw, 2.25rem) clamp(0.75rem, 2.5vw, 2rem);
+            border-radius: clamp(8px, 2.5vw, 20px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+        }
+
+        .section-icon {
+            font-size: clamp(2rem, 4.5vw, 3rem);
+            margin-bottom: clamp(0.5rem, 1vw, 0.85rem);
+            display: block;
+        }
+
+        .section-title {
+            color: var(--primary);
+            margin-bottom: clamp(0.5rem, 1.2vw, 0.85rem);
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .section-subtitle {
+            color: var(--light-gray);
+            font-weight: 500;
+            padding: 0 clamp(0.5rem, 2vw, 1rem);
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            line-height: 1.6;
+        }
+
+        /* 計畫宗旨區塊 */
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: clamp(0.6rem, 1.75vw, 1.25rem);
+            margin-top: clamp(0.75rem, 1.75vw, 1.25rem);
+        }
+
+        .mission-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: clamp(1rem, 2.5vw, 1.75rem);
+            border-radius: clamp(8px, 2vw, 15px);
+            color: var(--white);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .mission-card i {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            margin-bottom: clamp(0.5rem, 1vw, 0.85rem);
+            display: block;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        .mission-card h4 {
+            margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+            font-size: clamp(1.05rem, 2.3vw, 1.25rem);
+            letter-spacing: 0.3px;
+        }
+
+        .mission-card p {
+            font-size: clamp(0.9rem, 1.9vw, 1.05rem);
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        /* 加入方式 - 雙欄布局 */
+        .join-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: clamp(0.85rem, 2.5vw, 1.75rem);
+            margin-top: clamp(1rem, 2.5vw, 1.75rem);
+        }
+
+        .join-card {
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--white) 100%);
+            border: 2.5px solid var(--primary);
+            border-radius: clamp(10px, 2.5vw, 18px);
+            padding: clamp(1.1rem, 2.5vw, 1.75rem);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .join-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .join-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .join-badge {
+            background: var(--primary);
+            color: var(--white);
+            padding: clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem);
+            border-radius: 50px;
+            font-weight: 800;
+            display: inline-block;
+            margin-bottom: clamp(1rem, 2vw, 1.5rem);
+            font-size: clamp(0.9rem, 2vw, 1.05rem);
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .join-price {
+            font-size: clamp(2rem, 4.5vw, 2.8rem);
+            font-weight: 900;
+            color: var(--primary);
+            margin: clamp(0.5rem, 1vw, 0.85rem) 0;
+            letter-spacing: 1px;
+        }
+
+        .join-price span {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--light-gray);
+            font-weight: 600;
+        }
+
+        .join-card h3 {
+            font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+            margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
+            color: var(--dark);
+            letter-spacing: 0.3px;
+        }
+
+        .join-options {
+            margin-top: clamp(0.85rem, 1.75vw, 1.25rem);
+            padding-top: clamp(0.85rem, 1.75vw, 1.25rem);
+            border-top: 2px dashed #e2e8f0;
+        }
+
+        .join-option {
+            padding: clamp(0.65rem, 1.3vw, 0.9rem) clamp(0.85rem, 1.75vw, 1.15rem);
+            margin: clamp(0.6rem, 1.2vw, 0.85rem) 0;
+            background: linear-gradient(135deg, #fffbf0 0%, #ffffff 100%);
+            border-radius: 10px;
+            border: 2px solid #ffd700;
+            border-left: 5px solid #ff9800;
+            box-shadow: 0 3px 12px rgba(255, 215, 0, 0.25);
+            transition: all 0.3s ease;
+            font-size: clamp(1rem, 2.1vw, 1.15rem);
+        }
+
+        .join-option:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.35);
+            background: linear-gradient(135deg, #fff4cc 0%, #fffef5 100%);
+        }
+
+        .join-option strong {
+            color: var(--primary);
+            font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+
+        /* 權益網格 - 4欄響應式 */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: clamp(0.65rem, 1.75vw, 1.25rem);
+            margin-top: clamp(1rem, 2.5vw, 1.75rem);
+        }
+
+        .benefit-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(255, 255, 255, 0.95) 100%);
+            border-radius: clamp(8px, 2vw, 15px);
+            padding: clamp(0.95rem, 2.2vw, 1.65rem);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+        }
+
+        .benefit-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .benefit-number {
+            width: clamp(45px, 8vw, 55px);
+            height: clamp(45px, 8vw, 55px);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+            font-weight: 900;
+            margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .benefit-title {
+            color: var(--primary);
+            font-weight: 800;
+            margin-bottom: clamp(0.5rem, 1vw, 0.7rem);
+            font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+            line-height: 1.4;
+            letter-spacing: 0.3px;
+        }
+
+        .benefit-desc {
+            color: var(--gray);
+            line-height: 1.7;
+            font-size: clamp(0.9rem, 1.9vw, 1.05rem);
+        }
+
+        /* 價值主張 */
+        .value-props {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: clamp(0.55rem, 1.5vw, 1rem);
+            margin-top: clamp(1rem, 2.5vw, 1.75rem);
+        }
+
+        .value-item {
+            background: linear-gradient(135deg, #d5f4e6 0%, #80e6b5 100%);
+            padding: clamp(0.8rem, 2vw, 1.35rem);
+            border-radius: clamp(8px, 2vw, 14px);
+            text-align: center;
+            font-weight: 700;
+            color: var(--dark);
+            box-shadow: 0 5px 18px rgba(39, 174, 96, 0.25);
+            transition: all 0.3s ease;
+            font-size: clamp(0.9rem, 2vw, 1.05rem);
+            line-height: 1.5;
+        }
+
+        .value-item:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(39, 174, 96, 0.35);
+        }
+
+        .value-item i {
+            color: var(--success);
+            margin-right: clamp(0.3rem, 1vw, 0.5rem);
+            font-size: clamp(1rem, 2vw, 1.15rem);
+        }
+
+        /* 图片展示区 */
+        .image-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: clamp(1rem, 2vw, 1.5rem);
+            margin: clamp(1.5rem, 3vw, 2rem) 0;
+        }
+
+        .showcase-item {
+            position: relative;
+            border-radius: clamp(10px, 2vw, 15px);
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: var(--white);
+        }
+
+        .showcase-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.25);
+        }
+
+        .showcase-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .showcase-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .showcase-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            padding: clamp(1rem, 2vw, 1.5rem);
+            color: var(--white);
+            font-size: clamp(0.9rem, 1.8vw, 1.05rem);
+            font-weight: 600;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .showcase-item:hover .showcase-overlay {
+                opacity: 1;
+        }
+
+        /* 灯箱效果 */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox-content {
+            position: relative;
+            margin: auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 1200px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #ffffff;
+            font-size: 45px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10001;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .lightbox-title {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            font-weight: 700;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem);
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* 表单样式 */
+        .form-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            padding: clamp(1.5rem, 3.5vw, 2.5rem) clamp(1rem, 2.5vw, 2rem) !important;
+        }
+
+        .form-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: clamp(10px, 3vw, 25px);
+            padding: clamp(1.1rem, 3vw, 2.5rem) clamp(0.85rem, 2.5vw, 2.5rem);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             position: relative;
             z-index: 1;
         }
 
-        .logo::after {
+        .form-header {
+            text-align: center;
+            margin-bottom: clamp(1.2rem, 3vw, 2rem);
+            padding-bottom: clamp(0.85rem, 2vw, 1.5rem);
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .form-header h2 {
+            color: var(--primary);
+            margin-bottom: clamp(0.6rem, 1.2vw, 0.85rem);
+            font-size: clamp(1.4rem, 3.8vw, 2.2rem);
+            letter-spacing: 0.5px;
+        }
+
+        .form-header h2 i {
+            font-size: clamp(1.3rem, 3.5vw, 2rem);
+        }
+
+        .form-header p {
+            color: var(--gray);
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            line-height: 1.6;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: clamp(0.8rem, 2vw, 1.5rem);
+            margin-bottom: clamp(0.85rem, 2vw, 1.5rem);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: clamp(0.4rem, 0.9vw, 0.65rem);
+            letter-spacing: 0.2px;
+        }
+
+        .form-group label .required {
+            color: #e74c3c;
+            margin-left: 0.3rem;
+            font-size: clamp(1rem, 2.1vw, 1.15rem);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: clamp(0.8rem, 1.6vw, 1.1rem);
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+            font-family: 'Noto Sans TC', sans-serif;
+            transition: all 0.3s ease;
+            background: var(--bg-light);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: clamp(1rem, 2vw, 1.5rem);
+            flex-wrap: wrap;
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            cursor: pointer;
+            margin-bottom: 0;
+        }
+
+        .radio-group input[type="radio"] {
+            width: auto;
+            margin-right: 0.5rem;
+            cursor: pointer;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: clamp(0.5rem, 1vw, 0.75rem);
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            cursor: pointer;
+            margin-bottom: 0;
+            font-size: clamp(0.9rem, 1.8vw, 0.95rem);
+        }
+
+        .checkbox-group input[type="radio"] {
+            width: auto;
+            margin-right: 0.5rem;
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            border: none;
+            padding: clamp(1.1rem, 2.3vw, 1.5rem);
+            border-radius: 12px;
+            font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Noto Sans TC', sans-serif;
+            margin-top: clamp(1.2rem, 2.5vw, 1.75rem);
+            letter-spacing: 0.5px;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+        }
+
+        .submit-btn i {
+            margin-right: 0.6rem;
+            font-size: clamp(1.1rem, 2.3vw, 1.3rem);
+        }
+
+        .form-note {
+            background: linear-gradient(135deg, #fff9e6 0%, #ffffff 100%);
+            border: 2px solid var(--secondary);
+            border-radius: 10px;
+            padding: clamp(1rem, 2vw, 1.25rem);
+            margin-top: clamp(1rem, 2vw, 1.5rem);
+            text-align: center;
+        }
+
+        .form-note p {
+            color: var(--dark);
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            margin: 0.3rem 0;
+            line-height: 1.6;
+        }
+
+        .form-note strong {
+            color: var(--primary);
+            font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+            font-weight: 800;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: clamp(1.5rem, 3.5vw, 2.5rem) clamp(1rem, 2.5vw, 2rem) !important;
+        }
+
+        .cta-section::before {
             content: '';
             position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
-            border: 3px solid #ff6b6b;
-            border-radius: 50%;
-            border-top-color: transparent;
-            border-right-color: transparent;
-            animation: rotate 3s linear infinite;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
         }
 
         @keyframes rotate {
             to { transform: rotate(360deg); }
         }
 
-        .main-title {
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .title-part1 {
-            color: #ffffff;
-            display: block;
-        }
-
-        .title-part2 {
-            color: #ffd700;
-            display: block;
-            margin-top: 0.5rem;
-        }
-
-        .slogan {
-            background: linear-gradient(90deg, #ffd700 0%, #ffed4e 100%);
-            color: #2c5aa0;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            display: inline-block;
-            margin-top: 1rem;
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        .cta-content {
             position: relative;
+            z-index: 1;
         }
 
-        .slogan::before {
-            content: '→';
-            margin-right: 0.5rem;
+        .cta-title {
+            color: var(--white);
+            margin-bottom: clamp(0.75rem, 1.75vw, 1.25rem);
         }
 
-        .slogan::after {
-            content: '←';
-            margin-left: 0.5rem;
-        }
-
-        /* 參與詳情區域 */
-        .participation-details {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 3rem 0;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .participation-details p {
-            color: #ffffff;
-            font-size: 1.2rem;
-            margin: 0.5rem 0;
-            font-weight: 500;
-        }
-
-        /* 功能特色區域 */
-        .features-section {
-            margin-top: 3rem;
-        }
-
-        .features-grid {
+        .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: clamp(0.65rem, 1.75vw, 1.25rem);
+            margin-top: clamp(1rem, 2.5vw, 1.75rem);
         }
 
-        .feature-item {
+        .contact-card {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
+            padding: clamp(0.95rem, 2.2vw, 1.5rem);
+            border-radius: clamp(8px, 2vw, 15px);
             border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 15px;
-            padding: 1.5rem;
-            display: flex;
-            align-items: center;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
 
-        .feature-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .feature-item:hover::before {
-            left: 100%;
-        }
-
-        .feature-item:hover {
+        .contact-card:hover {
+            background: rgba(255, 255, 255, 0.25);
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            border-color: rgba(255, 215, 0, 0.5);
         }
 
-        .feature-number {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #4a90e2 0%, #2c5aa0 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ffffff;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-right: 1rem;
-            flex-shrink: 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        .contact-card i {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+            display: block;
+            color: var(--secondary);
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
         }
 
-        .feature-text {
-            color: #ffffff;
-            font-size: 1rem;
-            font-weight: 500;
+        .contact-card h4 {
+            color: var(--white);
+            margin-bottom: clamp(0.5rem, 1vw, 0.7rem);
+            font-size: clamp(1.05rem, 2.3vw, 1.25rem);
+            font-weight: 800;
+            letter-spacing: 0.3px;
+        }
+
+        .contact-card p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: clamp(0.9rem, 2vw, 1.05rem);
             line-height: 1.5;
         }
 
-        /* 響應式設計 */
+        .btn {
+            display: inline-block;
+            padding: clamp(0.85rem, 2vw, 1.15rem) clamp(1.75rem, 3.5vw, 2.5rem);
+            background: var(--secondary);
+            color: var(--primary-dark);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: clamp(1.05rem, 2.3vw, 1.25rem);
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+            margin-top: clamp(1rem, 2vw, 1.5rem);
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 215, 0, 0.7);
+        }
+
+        .btn i {
+            margin-right: clamp(0.4rem, 1vw, 0.6rem);
+            font-size: clamp(1rem, 2.1vw, 1.2rem);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(26, 32, 44, 0.95);
+            color: rgba(255, 255, 255, 0.85);
+            padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 2.5vw, 1.5rem);
+            text-align: center;
+            font-size: clamp(0.85rem, 1.8vw, 1rem);
+            line-height: 1.6;
+        }
+
+        .footer a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #ffed4e;
+        }
+
+        /* 計算器樣式優化 */
+        .calculator-trigger {
+            cursor: pointer;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 255, 255, 0.95) 100%);
+            border: 2px solid var(--secondary);
+        }
+
+        .calculator-trigger:hover {
+            border-color: var(--secondary);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.25) 0%, rgba(255, 255, 255, 1) 100%);
+        }
+
+        .calculator-trigger .benefit-number {
+            background: linear-gradient(135deg, var(--secondary), #ffaa00);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: var(--white);
+            margin: clamp(2%, 5vw, 5%) auto;
+            padding: 0;
+            border-radius: clamp(15px, 3vw, 25px);
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close {
+            position: absolute;
+            right: clamp(15px, 3vw, 25px);
+            top: clamp(15px, 3vw, 25px);
+            color: var(--gray);
+            font-size: clamp(28px, 5vw, 36px);
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10;
+            width: clamp(35px, 6vw, 45px);
+            height: clamp(35px, 6vw, 45px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .close:hover {
+            background: rgba(231, 76, 60, 0.1);
+            color: #e74c3c;
+            transform: rotate(90deg);
+        }
+
+        .calc-container {
+            padding: clamp(2rem, 4vw, 3rem);
+        }
+
+        .calc-header {
+            text-align: center;
+            margin-bottom: clamp(1.75rem, 3.5vw, 2.75rem);
+            padding-bottom: clamp(1.2rem, 2.5vw, 1.75rem);
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .calc-header h2 {
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            line-height: 1.3;
+        }
+
+        .calc-header p {
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
+            line-height: 1.5;
+        }
+
+        .calc-input-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: clamp(1rem, 2vw, 1.5rem);
+            margin-bottom: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        .calc-input-group label {
+            display: block;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: clamp(0.5rem, 1vw, 0.7rem);
+            font-size: clamp(1rem, 2.2vw, 1.15rem);
+            letter-spacing: 0.2px;
+        }
+
+        .calc-input-group input {
+            width: 100%;
+            padding: clamp(0.85rem, 1.7vw, 1.15rem);
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: clamp(1rem, 2.1vw, 1.1rem);
+            transition: all 0.3s ease;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        .calc-input-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: var(--white);
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
+        }
+
+        .calc-button {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            border: none;
+            padding: clamp(1rem, 2.2vw, 1.35rem);
+            border-radius: 12px;
+            font-size: clamp(1.1rem, 2.4vw, 1.35rem);
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Noto Sans TC', sans-serif;
+            letter-spacing: 0.5px;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .calc-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5);
+        }
+
+        .calc-results {
+            margin-top: clamp(1.5rem, 3vw, 2rem);
+            padding: clamp(1.5rem, 3vw, 2rem);
+            background: var(--bg-light);
+            border-radius: 15px;
+        }
+
+        .calc-results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: clamp(0.75rem, 1.5vw, 1rem);
+        }
+
+        .calc-result-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: clamp(1.2rem, 2.5vw, 1.8rem);
+            border-left: clamp(4px, 1vw, 5px) solid var(--primary);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .calc-result-card.total {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #d5f4e6 0%, var(--white) 100%);
+            border-left-color: var(--success);
+            text-align: center;
+        }
+
+        .calc-result-title {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: clamp(0.5rem, 1vw, 0.7rem);
+            line-height: 1.4;
+        }
+
+        .calc-result-value {
+            font-size: clamp(1.8rem, 3.5vw, 2.2rem);
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: clamp(0.4rem, 1vw, 0.6rem);
+            line-height: 1.2;
+        }
+
+        .calc-result-card.total .calc-result-value {
+            font-size: clamp(2.2rem, 4.5vw, 2.8rem);
+            color: var(--success);
+            line-height: 1.2;
+        }
+
+        .calc-result-desc {
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            color: var(--light-gray);
+            line-height: 1.5;
+        }
+
+        /* 響應式調整 */
         @media (max-width: 768px) {
             .container {
-                padding: 1rem;
+                padding: 0.4rem;
             }
-
-            .main-title {
-                font-size: 2.5rem;
+            
+            .section {
+                margin: 0.4rem 0.25rem;
+                padding: 0.95rem 0.7rem;
+                border-radius: 8px;
             }
-
-            .slogan {
-                font-size: 1.2rem;
-                padding: 0.8rem 1.5rem;
+            
+            .benefits-grid {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 0.55rem;
             }
-
-            .features-grid {
+            
+            .calc-results-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
             }
-
-            .feature-item {
-                padding: 1rem;
+            
+            .calc-result-card {
+                padding: 1.3rem 1.1rem;
             }
-
-            .feature-number {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
+            
+            .calc-result-title {
+                font-size: 1.05rem;
+                margin-bottom: 0.6rem;
             }
-
-            .feature-text {
-                font-size: 0.9rem;
+            
+            .calc-result-value {
+                font-size: 2rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .calc-result-card.total .calc-result-value {
+                font-size: 2.4rem;
+            }
+            
+            .calc-result-desc {
+                font-size: 0.95rem;
+            }
+            
+            .mission-grid,
+            .join-grid,
+            .contact-grid,
+            .value-props {
+                gap: 0.6rem;
+            }
+            
+            .benefit-card {
+                padding: 0.85rem;
+            }
+            
+            .form-container {
+                padding: 1rem 0.75rem;
+                border-radius: 8px;
+            }
+            
+            .form-grid {
+                gap: 0.7rem;
+            }
+            
+            .image-showcase {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 0.7rem;
+                margin: 1.2rem 0;
+            }
+            
+            .lightbox-close {
+                top: 15px;
+                right: 15px;
+                font-size: 36px;
+                width: 45px;
+                height: 45px;
+            }
+            
+            .lightbox-title {
+                bottom: 20px;
+                font-size: 1rem;
+                padding: 0.7rem 1.2rem;
             }
         }
 
         @media (max-width: 480px) {
-            .main-title {
+            body {
+                line-height: 1.5;
+            }
+            
+            .container {
+                padding: 0.3rem;
+            }
+            
+            .section {
+                margin: 0.35rem 0.2rem;
+                padding: 0.85rem 0.6rem;
+                border-radius: 6px;
+            }
+            
+            .section-header {
+                margin-bottom: 0.85rem;
+            }
+            
+            .benefits-grid,
+            .mission-grid,
+            .join-grid,
+            .contact-grid,
+            .value-props {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            
+            .benefit-card,
+            .mission-card,
+            .join-card,
+            .value-item,
+            .contact-card {
+                padding: 0.75rem;
+            }
+            
+            .form-container {
+                padding: 0.9rem 0.65rem;
+                border-radius: 6px;
+            }
+            
+            /* 計算器優化 - 小屏幕 */
+            .modal-content {
+                margin: 3% auto;
+                border-radius: 12px;
+            }
+            
+            .calc-container {
+                padding: 1.5rem 1rem;
+            }
+            
+            .calc-header {
+                margin-bottom: 1.2rem;
+                padding-bottom: 1rem;
+            }
+            
+            .calc-header h2 {
+                font-size: 1.4rem;
+                line-height: 1.3;
+            }
+            
+            .calc-results {
+                padding: 1.3rem 1rem;
+            }
+            
+            .calc-results h3 {
+                font-size: 1.3rem;
+                margin-bottom: 1rem;
+            }
+
+            .calc-results-grid {
+                gap: 0.9rem;
+            }
+            
+            .calc-result-card {
+                padding: 1.2rem 1rem;
+                border-radius: 10px;
+            }
+            
+            .calc-result-title {
+                font-size: 1rem;
+                font-weight: 700;
+                margin-bottom: 0.6rem;
+            }
+            
+            .calc-result-value {
+                font-size: 1.9rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .calc-result-card.total .calc-result-value {
+                font-size: 2.3rem;
+            }
+            
+            .calc-result-desc {
+                font-size: 0.92rem;
+                line-height: 1.4;
+            }
+            
+            .calc-input-group label {
+                font-size: 1rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .calc-button {
+                font-size: 1.05rem;
+                padding: 1rem;
+            }
+            
+            .form-grid {
+                gap: 0.65rem;
+                grid-template-columns: 1fr;
+            }
+
+            .image-showcase {
+                grid-template-columns: 1fr;
+                gap: 0.6rem;
+                margin: 1rem 0;
+            }
+            
+            .lightbox-content {
+                padding: 10px;
+                width: 95%;
+            }
+            
+            .lightbox-content img {
+                max-height: 85vh;
+                border-radius: 10px;
+            }
+            
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+                font-size: 32px;
+                width: 40px;
+                height: 40px;
+            }
+            
+            .lightbox-title {
+                bottom: 15px;
+                font-size: 0.9rem;
+                padding: 0.6rem 1rem;
+                max-width: 90%;
+            }
+            
+            h1 { font-size: 1.65rem; }
+            h2 { font-size: 1.3rem; }
+            h3 { font-size: 1.1rem; }
+        }
+
+        /* 超小屏幕優化 (360px以下) */
+        @media (max-width: 360px) {
+            .modal-content {
+                margin: 2% auto;
+                width: 96%;
+                border-radius: 10px;
+            }
+
+            .calc-container {
+                padding: 1.2rem 0.8rem;
+            }
+
+            .calc-header h2 {
+                font-size: 1.25rem;
+            }
+
+            .calc-header p {
+                font-size: 0.9rem;
+            }
+            
+            .calc-results {
+                padding: 1.1rem 0.8rem;
+                margin-top: 1.2rem;
+            }
+            
+            .calc-results h3 {
+                font-size: 1.2rem;
+                margin-bottom: 0.9rem;
+            }
+            
+            .calc-results-grid {
+                gap: 0.8rem;
+            }
+            
+            .calc-result-card {
+                padding: 1.1rem 0.9rem;
+                border-radius: 8px;
+            }
+            
+            .calc-result-title {
+                font-size: 0.95rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .calc-result-value {
+                font-size: 1.7rem;
+            }
+            
+            .calc-result-card.total .calc-result-value {
                 font-size: 2rem;
             }
+            
+            .calc-result-desc {
+                font-size: 0.88rem;
+            }
+            
+            .calc-input-group label {
+                font-size: 0.95rem;
+            }
 
-            .slogan {
+            .calc-button {
                 font-size: 1rem;
-                padding: 0.6rem 1rem;
+                padding: 0.9rem;
             }
 
-            .participation-details p {
-                font-size: 1rem;
-            }
-        }
-
-        /* 動畫效果 */
-        .feature-item {
-            animation: fadeInUp 0.6s ease forwards;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .feature-item:nth-child(1) { animation-delay: 0.1s; }
-        .feature-item:nth-child(2) { animation-delay: 0.2s; }
-        .feature-item:nth-child(3) { animation-delay: 0.3s; }
-        .feature-item:nth-child(4) { animation-delay: 0.4s; }
-        .feature-item:nth-child(5) { animation-delay: 0.5s; }
-        .feature-item:nth-child(6) { animation-delay: 0.6s; }
-        .feature-item:nth-child(7) { animation-delay: 0.7s; }
-        .feature-item:nth-child(8) { animation-delay: 0.8s; }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            .close {
+                width: 32px;
+                height: 32px;
+                font-size: 24px;
+                right: 12px;
+                top: 12px;
             }
         }
 
-        /* 滾動動畫 */
-        .header {
-            animation: slideInDown 0.8s ease;
+        /* 動畫 */
+        .fade-in {
+            animation: fadeIn 0.8s ease;
         }
 
-        @keyframes slideInDown {
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 提交成功弹窗样式 */
+        .success-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .success-modal-content {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            margin: 10% auto;
+            padding: 3rem 2.5rem;
+            max-width: 500px;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            position: relative;
+            animation: slideDown 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes slideDown {
             from {
                 opacity: 0;
-                transform: translateY(-50px);
+                transform: translateY(-100px) scale(0.8);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
             }
         }
 
-        .participation-details {
-            animation: slideInUp 0.8s ease 0.3s both;
+        .success-animation {
+            margin-bottom: 2rem;
         }
 
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
+        .success-checkmark {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .check-icon {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            border-radius: 50%;
+            box-sizing: content-box;
+            border: 4px solid #4CAF50;
+        }
+
+        .icon-line {
+            height: 5px;
+            background-color: #4CAF50;
+            display: block;
+            border-radius: 2px;
+            position: absolute;
+            z-index: 10;
+        }
+
+        .line-tip {
+            top: 46px;
+            left: 14px;
+            width: 25px;
+            transform: rotate(45deg);
+            animation: icon-line-tip 0.75s;
+        }
+
+        .line-long {
+            top: 38px;
+            right: 8px;
+            width: 47px;
+            transform: rotate(-45deg);
+            animation: icon-line-long 0.75s;
+        }
+
+        @keyframes icon-line-tip {
+            0% {
+                width: 0;
+                left: 1px;
+                top: 19px;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            54% {
+                width: 0;
+                left: 1px;
+                top: 19px;
+            }
+            70% {
+                width: 50px;
+                left: -8px;
+                top: 37px;
+            }
+            84% {
+                width: 17px;
+                left: 21px;
+                top: 48px;
+            }
+            100% {
+                width: 25px;
+                left: 14px;
+                top: 46px;
+            }
+        }
+
+        @keyframes icon-line-long {
+            0% {
+                width: 0;
+                right: 46px;
+                top: 54px;
+            }
+            65% {
+                width: 0;
+                right: 46px;
+                top: 54px;
+            }
+            84% {
+                width: 55px;
+                right: 0px;
+                top: 35px;
+            }
+            100% {
+                width: 47px;
+                right: 8px;
+                top: 38px;
+            }
+        }
+
+        .icon-circle {
+            top: -4px;
+            left: -4px;
+            z-index: 10;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            position: absolute;
+            box-sizing: content-box;
+            border: 4px solid rgba(76, 175, 80, 0.3);
+        }
+
+        .icon-fix {
+            top: 8px;
+            width: 5px;
+            left: 26px;
+            z-index: 1;
+            height: 85px;
+            position: absolute;
+            transform: rotate(-45deg);
+            background-color: #ffffff;
+        }
+
+        .success-title {
+            color: var(--primary);
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .success-message {
+            color: var(--gray);
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .success-contact {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .success-contact i {
+            font-size: 2rem;
+        }
+
+        .success-contact div {
+            text-align: left;
+        }
+
+        .success-contact strong {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+            opacity: 0.9;
+        }
+
+        .success-contact p {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .success-button {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            border: none;
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.4);
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        .success-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(76, 175, 80, 0.5);
+        }
+
+        .success-button:active {
+            transform: translateY(0);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .success-modal-content {
+                margin: 20% auto;
+                padding: 2rem 1.5rem;
+                max-width: 90%;
+            }
+
+            .success-checkmark {
+                width: 60px;
+                height: 60px;
+            }
+
+            .check-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .line-tip {
+                top: 34px;
+                left: 10px;
+                width: 19px;
+            }
+
+            .line-long {
+                top: 28px;
+                right: 6px;
+                width: 35px;
+            }
+
+            .icon-circle {
+                width: 60px;
+                height: 60px;
+            }
+
+            .icon-fix {
+                top: 6px;
+                left: 20px;
+                height: 63px;
+            }
+
+            .success-contact {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .success-contact div {
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- 標題區域 -->
-        <header class="header">
-            <div class="logo"></div>
-            <h1 class="main-title">
-                <span class="title-part1">全球商聯會</span>
-                <span class="title-part2">慈善店家計畫</span>
-            </h1>
-            <div class="slogan">一手做生意一手做公益</div>
-        </header>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="logo-badge">🌍</div>
+            <h1>全球商聯會<br>慈善店家計畫</h1>
+            <div class="hero-subtitle">公益 × 經濟 × 產業</div>
+            <div class="hero-slogan">→ 一手做生意一手做公益 ←</div>
+        </div>
+    </section>
 
-        <!-- 參與詳情 -->
-        <section class="participation-details">
-            <p>參加全球商聯會全球總會：會員 2000/年費</p>
-            <p>捐贈社團法人全球公益慈善聯合總會：一般1200/次 企業 3600/次</p>
+    <div class="container">
+        <!-- 計畫宗旨 -->
+        <section class="section fade-in">
+            <div class="section-header">
+                <span class="section-icon">💡</span>
+                <h2 class="section-title">計畫宗旨</h2>
+                <p class="section-subtitle">打造永續的公益商業力量</p>
+            </div>
+            
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <i class="fas fa-hands-helping"></i>
+                    <h4>做公益又創造商機</h4>
+                    <p>結合商業與慈善的創新平台</p>
+                </div>
+                <div class="mission-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h4>做善事也能賺錢</h4>
+                    <p>建立永續的公益生態系統</p>
+                </div>
+                <div class="mission-card">
+                    <i class="fas fa-users"></i>
+                    <h4>幫別人也能幫自己</h4>
+                    <p>共創雙贏的社會價值</p>
+                </div>
+            </div>
         </section>
 
-        <!-- 功能特色 -->
-        <section class="features-section">
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="feature-number">1</div>
-                    <div class="feature-text">捐贈公益單位 收據可抵稅</div>
+        <!-- 加入方式 -->
+        <section class="section fade-in">
+            <div class="section-header">
+                <span class="section-icon">📌</span>
+                <h2 class="section-title">加入方式</h2>
+                <p class="section-subtitle">簡單兩步驟，開啟公益商機</p>
                 </div>
                 
-                <div class="feature-item">
-                    <div class="feature-number">2</div>
-                    <div class="feature-text">獲得公益點數 可換商品或服務</div>
+            <div class="join-grid">
+                <div class="join-card">
+                    <div class="join-badge">步驟 1</div>
+                    <h3>加入全球商聯會全球總會</h3>
+                    <div class="join-price">2,000元<span>/年</span></div>
+                    <p class="small-text">成為會員，享有平台完整權益</p>
                 </div>
                 
-                <div class="feature-item">
-                    <div class="feature-number">3</div>
-                    <div class="feature-text">全球公益慈善平臺系統 可收點數 (1:0.7)</div>
+                <div class="join-card">
+                    <div class="join-badge">步驟 2</div>
+                    <h3>捐贈公益慈善聯合總會</h3>
+                    <div class="join-options">
+                        <div class="join-option">
+                            <strong>一般會員：</strong>1,200元/次
+                </div>
+                        <div class="join-option">
+                            <strong>企業會員：</strong>3,600元/次
+                        </div>
+                    </div>
+                    <p class="small-text">可開立抵稅收據，獲得公益點數</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 八大權益 -->
+        <section class="section fade-in">
+            <div class="section-header">
+                <span class="section-icon">✅</span>
+                <h2 class="section-title">八大權益</h2>
+                <p class="section-subtitle">全方位的公益商業支持</p>
                 </div>
                 
-                <div class="feature-item">
-                    <div class="feature-number">4</div>
-                    <div class="feature-text">企業品牌上架 公益慈善店家網站</div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-number">1</div>
+                    <h4 class="benefit-title">捐贈可抵稅</h4>
+                    <p class="benefit-desc">由公益單位開立正式收據，依法抵稅，合法節稅效益</p>
                 </div>
                 
-                <div class="feature-item">
-                    <div class="feature-number">5</div>
-                    <div class="feature-text">全台線下活動 免費曝光交流</div>
+                <div class="benefit-card">
+                    <div class="benefit-number">2</div>
+                    <h4 class="benefit-title">獲得公益點數</h4>
+                    <p class="benefit-desc">等值回饋公益點數，可在全台合作商家兌換商品或服務</p>
                 </div>
                 
-                <div class="feature-item">
-                    <div class="feature-number">6</div>
-                    <div class="feature-text">當活動主辦場地方 (引流 短講 設攤)</div>
+                <div class="benefit-card">
+                    <div class="benefit-number">3</div>
+                    <h4 class="benefit-title">可收取公益點數</h4>
+                    <p class="benefit-desc">透過平台系統接受點數消費，並兌回現金（1：0.7）</p>
                 </div>
                 
-                <div class="feature-item">
-                    <div class="feature-number">7</div>
-                    <div class="feature-text">分享推廣 得公益點數20%+20%</div>
+                <div class="benefit-card">
+                    <div class="benefit-number">4</div>
+                    <h4 class="benefit-title">企業品牌曝光</h4>
+                    <p class="benefit-desc">上架公益慈善店家網站，提升品牌形象與曝光度</p>
                 </div>
                 
-                <div class="feature-item">
-                    <div class="feature-number">8</div>
-                    <div class="feature-text">協會資源 自助助人 (金流、人脈、司法、勞資)</div>
+                <div class="benefit-card">
+                    <div class="benefit-number">5</div>
+                    <h4 class="benefit-title">全台活動免費曝光</h4>
+                    <p class="benefit-desc">參與異業交流、公益座談、記者會等活動，拓展人脈</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-number">6</div>
+                    <h4 class="benefit-title">成為活動主辦地點</h4>
+                    <p class="benefit-desc">協助舉辦短講、論壇、推廣活動，吸引人流進店</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-number">7</div>
+                    <h4 class="benefit-title">分享推廣獎勵</h4>
+                    <p class="benefit-desc">介紹他人加入可獲 20%+20% 公益點數回饋</p>
+                </div>
+
+                <div class="benefit-card calculator-trigger" onclick="openCalculator()">
+                    <div class="benefit-number">8</div>
+                    <h4 class="benefit-title">協會資源共享 <i class="fas fa-calculator"></i></h4>
+                    <p class="benefit-desc">金流、人脈、司法、勞資等多面向協助，自助助人<br><small style="color: var(--secondary); font-weight: 700;">📱 點擊計算收益</small></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 加入後獲得 -->
+        <section class="section fade-in" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">
+            <div class="section-header">
+                <span class="section-icon">🌟</span>
+                <h2 class="section-title">加入後您將獲得</h2>
+    </div>
+
+            <!-- 图片展示 -->
+            <div class="image-showcase">
+                <div class="showcase-item" onclick="openLightbox('https://i.postimg.cc/NF53QBHQ/unnamed.jpg', '全球商聯會公益慈善活動紀錄')">
+                    <img src="https://i.postimg.cc/NF53QBHQ/unnamed.jpg" alt="全球商聯會公益慈善活動紀錄" loading="lazy">
+                    <div class="showcase-overlay">
+                        <i class="fas fa-search-plus"></i> 點擊查看大圖
+                    </div>
+                </div>
+                <div class="showcase-item" onclick="openLightbox('https://i.postimg.cc/ZnCGJ4yF/unnamed-1.jpg', '全球商聯會會員權益說明')">
+                    <img src="https://i.postimg.cc/ZnCGJ4yF/unnamed-1.jpg" alt="全球商聯會會員權益說明" loading="lazy">
+                    <div class="showcase-overlay">
+                        <i class="fas fa-search-plus"></i> 點擊查看大圖
+                    </div>
+                </div>
+            </div>
+
+            <div class="value-props">
+                <div class="value-item">
+                    <i class="fas fa-check-circle"></i> 法規合法的節稅效益
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-check-circle"></i> 公益形象與品牌曝光
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-check-circle"></i> 消費者導流與合作機會
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-check-circle"></i> 可使用的公益點數回饋
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-check-circle"></i> 參與異業整合與全台活動
+                </div>
+            </div>
+        </section>
+
+        <!-- 申請表單 Section -->
+        <section class="section form-section">
+            <div class="form-container">
+                <div class="form-header">
+                    <h2><i class="fas fa-file-alt"></i> 特約店家/會員 資料申請</h2>
+                    <p>加入全球商聯會公益慈善店家計畫，開啟商業與公益的雙贏模式</p>
+                </div>
+
+                <form id="merchant-form" onsubmit="handleSubmit(event)">
+                    <div class="form-grid">
+                        <!-- 姓名 -->
+                        <div class="form-group">
+                            <label for="name">姓名 <span class="required">*</span></label>
+                            <input type="text" id="name" name="name" required placeholder="請輸入您的姓名">
+                        </div>
+
+                        <!-- 出生年月日 -->
+                        <div class="form-group">
+                            <label for="birthdate">出生年月日 <span class="required">*</span></label>
+                            <input type="date" id="birthdate" name="birthdate" required>
+                        </div>
+
+                        <!-- 性別 -->
+                        <div class="form-group">
+                            <label>性別 <span class="required">*</span></label>
+                            <div class="radio-group">
+                                <label>
+                                    <input type="radio" name="gender" value="男" required> 男
+                                </label>
+                                <label>
+                                    <input type="radio" name="gender" value="女" required> 女
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- 連絡電話 -->
+                        <div class="form-group">
+                            <label for="phone">連絡電話 <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" required placeholder="09XX-XXX-XXX">
+                        </div>
+
+                        <!-- 店家名稱 -->
+                        <div class="form-group">
+                            <label for="store-name">店家名稱</label>
+                            <input type="text" id="store-name" name="store-name" placeholder="請輸入店家名稱（選填）">
+                        </div>
+
+                        <!-- LINE ID -->
+                        <div class="form-group">
+                            <label for="line-id">LINE ID</label>
+                            <input type="text" id="line-id" name="line-id" placeholder="請輸入 LINE ID（選填）">
+                        </div>
+
+                        <!-- 通訊地址 -->
+                        <div class="form-group full-width">
+                            <label for="address">通訊地址 <span class="required">*</span></label>
+                            <input type="text" id="address" name="address" required placeholder="請輸入完整通訊地址">
+                        </div>
+
+                        <!-- 資訊來源 -->
+                        <div class="form-group full-width">
+                            <label>資訊來源 <span class="required">*</span></label>
+                            <div class="checkbox-group">
+                                <label>
+                                    <input type="radio" name="source" value="臉書貼文" required> 臉書貼文
+                                </label>
+                                <label>
+                                    <input type="radio" name="source" value="LINE群組訊息" required> LINE群組訊息
+                                </label>
+                                <label>
+                                    <input type="radio" name="source" value="新聞報導" required> 新聞報導
+                                </label>
+                                <label>
+                                    <input type="radio" name="source" value="影片介紹" required> 影片介紹
+                                </label>
+                                <label>
+                                    <input type="radio" name="source" value="網站資料" required> 網站資料
+                                </label>
+                                <label>
+                                    <input type="radio" name="source" value="朋友介紹" required> 朋友介紹
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- 介紹人名稱 -->
+                        <div class="form-group">
+                            <label for="referrer">介紹人名稱</label>
+                            <input type="text" id="referrer" name="referrer" placeholder="如有介紹人請填寫">
+                        </div>
+
+                        <!-- 匯款後四碼 -->
+                        <div class="form-group">
+                            <label for="payment-code">匯款後四碼 <span class="required">*</span></label>
+                            <input type="text" id="payment-code" name="payment-code" required placeholder="請輸入匯款帳號後四碼" maxlength="4" pattern="[0-9]{4}">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> 送出申請
+                    </button>
+
+                    <div class="form-note">
+                        <p><strong>感謝您的填寫！</strong></p>
+                        <p>我們將盡快與您聯繫</p>
+                        <p>📞 連絡電話：<strong>0989-422-478</strong>（孫先生）</p>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- 聯絡資訊 Section -->
+        <section class="section cta-section">
+            <div class="cta-content">
+                <h2 class="cta-title">更多聯絡方式</h2>
+                <p style="font-size: clamp(0.95rem, 2vw, 1.1rem); margin-bottom: clamp(0.85rem, 1.75vw, 1.25rem); line-height: 1.5;">
+                    與全球商聯會攜手，讓每一筆交易都成為傳遞溫暖的力量
+                </p>
+
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <i class="fas fa-user-tie"></i>
+                        <h4>北區秘書長</h4>
+                        <p><strong>孫偉騰</strong></p>
+                        <p>📱 0989-422-478</p>
+                    </div>
+
+                    <div class="contact-card">
+                        <i class="fas fa-globe"></i>
+                        <h4>官方網站</h4>
+                        <p><a href="https://gtvv888.pages.dev/" target="_blank" style="color: var(--secondary); font-weight: 600;">gtvv888.pages.dev</a></p>
+                    </div>
+
+                    <div class="contact-card">
+                        <i class="fas fa-store"></i>
+                        <h4>公益店家查詢</h4>
+                        <p><a href="http://www.gtv168.cc/myshop/" target="_blank" style="color: var(--secondary); font-weight: 600;">店家列表</a></p>
+                    </div>
                 </div>
             </div>
         </section>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 全球商聯會 Global Business Alliance. All Rights Reserved.</p>
+        <p style="margin-top: 0.5rem;">納百川、興百業、互為貴人、善行天下</p>
+    </footer>
+
+    <!-- 灯箱容器 -->
+    <div id="imageLightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <img id="lightboxImage" src="" alt="">
+            <div id="lightboxTitle" class="lightbox-title"></div>
+        </div>
+    </div>
+
+    <!-- 提交成功弹窗 -->
+    <div id="success-modal" class="success-modal">
+        <div class="success-modal-content">
+            <div class="success-animation">
+                <div class="success-checkmark">
+                    <div class="check-icon">
+                        <span class="icon-line line-tip"></span>
+                        <span class="icon-line line-long"></span>
+                        <div class="icon-circle"></div>
+                        <div class="icon-fix"></div>
+                    </div>
+                </div>
+            </div>
+            <h2 class="success-title">申請已送出！</h2>
+            <p class="success-message">感謝您的申請，我們將盡快與您聯繫</p>
+            <div class="success-contact">
+                <i class="fas fa-phone-alt"></i>
+                <div>
+                    <strong>聯絡電話</strong>
+                    <p>0989-422-478（孫先生）</p>
+                </div>
+            </div>
+            <button class="success-button" onclick="closeSuccessModal()">
+                <i class="fas fa-check"></i> 確定
+            </button>
+        </div>
+    </div>
+
+    <!-- 計算器模態窗口 -->
+    <div id="calculator-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCalculator()">&times;</span>
+            <div class="calc-container">
+                <div class="calc-header">
+                    <h2><i class="fas fa-calculator"></i> 公益點數兌換計算機</h2>
+                    <p class="section-subtitle">計算推薦人獎勵和點數兌換收益</p>
+                </div>
+
+                    <div class="calc-input-grid">
+                        <div class="calc-input-group">
+                            <label for="referrer-name">推薦人姓名</label>
+                            <input type="text" id="referrer-name" placeholder="請輸入推薦人姓名">
+                        </div>
+
+                        <div class="calc-input-group">
+                            <label for="donor-name">推薦之捐贈人</label>
+                            <input type="text" id="donor-name" placeholder="請輸入被推薦的捐贈人姓名">
+                        </div>
+
+                        <div class="calc-input-group">
+                            <label for="donation-amount">捐贈金額</label>
+                            <input type="number" id="donation-amount" placeholder="請輸入捐贈金額" min="0" step="100">
+                        </div>
+
+                        <div class="calc-input-group">
+                            <label for="withdrawal-amount">提領點數</label>
+                            <input type="number" id="withdrawal-amount" placeholder="請輸入要提領的點數" min="0" step="100">
+                        </div>
+                    </div>
+
+                    <button class="calc-button" onclick="calculatePoints()">
+                        <i class="fas fa-calculator"></i> 計算收益
+                    </button>
+
+                    <div class="calc-results" id="calc-results" style="display: none;">
+                    <h3 style="text-align: center; color: var(--primary); margin-bottom: clamp(1rem, 2vw, 1.5rem);">計算結果</h3>
+                        
+                        <div class="calc-results-grid">
+                            <div class="calc-result-card">
+                                <div class="calc-result-title"><span id="donor-name-result">捐贈人</span> 獲得點數</div>
+                                <div class="calc-result-value" id="donor-points">0</div>
+                                <div class="calc-result-desc">捐贈金額 1:1 獲得公益點數</div>
+                            </div>
+
+                            <div class="calc-result-card">
+                                <div class="calc-result-title"><span id="referrer-name-result">推薦人</span> 首次獎勵</div>
+                                <div class="calc-result-value" id="referrer-first">0</div>
+                                <div class="calc-result-desc">捐贈點數的 20% 獎勵</div>
+                            </div>
+
+                            <div class="calc-result-card">
+                                <div class="calc-result-title"><span id="donor-name-withdrawal">捐贈人</span> 提領兌換</div>
+                                <div class="calc-result-value" id="withdrawal-amount-result">0</div>
+                                <div class="calc-result-desc">點數兌換比例 1:0.7</div>
+                            </div>
+
+                            <div class="calc-result-card">
+                                <div class="calc-result-title"><span id="referrer-name-second">推薦人</span> 提領獎勵</div>
+                                <div class="calc-result-value" id="referrer-second">0</div>
+                                <div class="calc-result-desc">提領點數的 20% 額外獎勵</div>
+                            </div>
+
+                            <div class="calc-result-card total">
+                                <div class="calc-result-title"><span id="referrer-name-total">推薦人</span> 總獎勵</div>
+                                <div class="calc-result-value" id="referrer-total">0</div>
+                                <div class="calc-result-desc">首次獎勵 + 提領獎勵</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openCalculator() {
+            document.getElementById('calculator-modal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCalculator() {
+            document.getElementById('calculator-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // 點擊模態窗口外部關閉
+        window.onclick = function(event) {
+            const calculatorModal = document.getElementById('calculator-modal');
+            const successModal = document.getElementById('success-modal');
+            
+            if (event.target == calculatorModal) {
+                closeCalculator();
+            }
+            if (event.target == successModal) {
+                closeSuccessModal();
+            }
+        }
+
+        // ESC鍵關閉模態窗口
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeCalculator();
+                closeSuccessModal();
+            }
+        });
+
+        function calculatePoints() {
+            const donationAmount = parseFloat(document.getElementById('donation-amount').value) || 0;
+            const withdrawalPoints = parseFloat(document.getElementById('withdrawal-amount').value) || 0;
+            const referrerName = document.getElementById('referrer-name').value || '推薦人';
+            const donorName = document.getElementById('donor-name').value || '捐贈人';
+
+            // 計算結果
+            const donorPoints = donationAmount;
+            const referrerFirstReward = donorPoints * 0.2;
+            const withdrawalAmount = withdrawalPoints * 0.7;
+            const referrerSecondReward = withdrawalPoints * 0.2;
+            const referrerTotalReward = referrerFirstReward + referrerSecondReward;
+
+            // 更新結果顯示中的姓名
+            document.getElementById('donor-name-result').textContent = donorName;
+            document.getElementById('referrer-name-result').textContent = referrerName;
+            document.getElementById('donor-name-withdrawal').textContent = donorName;
+            document.getElementById('referrer-name-second').textContent = referrerName;
+            document.getElementById('referrer-name-total').textContent = referrerName;
+
+            // 更新結果顯示
+            document.getElementById('donor-points').textContent = Math.round(donorPoints).toLocaleString() + ' 點';
+            document.getElementById('referrer-first').textContent = Math.round(referrerFirstReward).toLocaleString() + ' 點';
+            document.getElementById('withdrawal-amount-result').textContent = Math.round(withdrawalAmount).toLocaleString();
+            document.getElementById('referrer-second').textContent = Math.round(referrerSecondReward).toLocaleString() + ' 點';
+            document.getElementById('referrer-total').textContent = Math.round(referrerTotalReward).toLocaleString() + ' 點';
+
+            // 顯示結果區域
+            document.getElementById('calc-results').style.display = 'block';
+        }
+
+        // 輸入框事件監聽
+        document.getElementById('donation-amount').addEventListener('input', function() {
+            const donationAmount = parseFloat(this.value) || 0;
+            document.getElementById('withdrawal-amount').value = donationAmount;
+        });
+
+        // 滾動動畫
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(el);
+        });
+
+        // 表單提交處理
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            // 獲取表單數據
+            const formData = {
+                timestamp: new Date().toISOString(),
+                name: document.getElementById('name').value,
+                birthdate: document.getElementById('birthdate').value,
+                gender: document.querySelector('input[name="gender"]:checked')?.value,
+                phone: document.getElementById('phone').value,
+                storeName: document.getElementById('store-name').value,
+                lineId: document.getElementById('line-id').value,
+                address: document.getElementById('address').value,
+                source: document.querySelector('input[name="source"]:checked')?.value,
+                referrer: document.getElementById('referrer').value,
+                paymentCode: document.getElementById('payment-code').value
+            };
+
+            // 在這裡您可以將數據發送到 Google Sheets
+            // 使用 Google Apps Script Web App 或其他方法
+            console.log('表單數據：', formData);
+
+            // 將數據發送到 Google Sheets
+            sendToGoogleSheets(formData);
+            
+            // 顯示成功弹窗
+            showSuccessModal();
+            
+            // 重置表單
+            document.getElementById('merchant-form').reset();
+        }
+
+        // 顯示成功弹窗
+        function showSuccessModal() {
+            const modal = document.getElementById('success-modal');
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // 關閉成功弹窗
+        function closeSuccessModal() {
+            const modal = document.getElementById('success-modal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // 發送到 Google Sheets 的函數（需要設置 Google Apps Script）
+        function sendToGoogleSheets(data) {
+            // Google Apps Script Web App URL
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzFQL1QgnQ9c0qG3AN51LI10fLqT_uUEg_BO5FvaNdsRy_dckA2BSh8mqZ4uvw0KS0unQ/exec';
+            
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                console.log('數據已成功發送到 Google Sheets');
+            })
+            .catch(error => {
+                console.error('發送失敗:', error);
+            });
+        }
+
+        // 灯箱功能
+        function openLightbox(imageSrc, title) {
+            const lightbox = document.getElementById('imageLightbox');
+            const lightboxImage = document.getElementById('lightboxImage');
+            const lightboxTitle = document.getElementById('lightboxTitle');
+            
+            lightboxImage.src = imageSrc;
+            lightboxImage.alt = title;
+            lightboxTitle.textContent = title;
+            lightbox.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('imageLightbox');
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // ESC键关闭灯箱
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
 </body>
 </html>
