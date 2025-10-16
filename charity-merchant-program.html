@@ -1152,6 +1152,25 @@
         }
 
         @media (max-width: 480px) {
+            .account-modal-content {
+                margin: 5% auto;
+                padding: 1.2rem;
+                border-radius: 15px;
+            }
+
+            .account-modal-header h3 {
+                font-size: 1.3rem;
+            }
+
+            .account-number {
+                font-size: 1.1rem;
+            }
+
+            .account-info-btn {
+                font-size: 0.8rem;
+                padding: 0.35rem 0.6rem;
+            }
+
             body {
                 line-height: 1.5;
             }
@@ -1612,8 +1631,220 @@
             transform: translateY(0);
         }
 
+        /* 帳號資訊按鈕樣式 */
+        .account-info-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-left: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        .account-info-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.5);
+        }
+
+        .account-info-btn i {
+            margin-right: 0.3rem;
+        }
+
+        /* 帳號資訊彈窗 */
+        .account-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .account-modal-content {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            margin: 8% auto;
+            padding: 1.5rem;
+            max-width: 450px;
+            border-radius: 18px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: slideDown 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .account-modal-header {
+            text-align: center;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .account-modal-header h3 {
+            color: var(--primary);
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            margin-bottom: 0.4rem;
+        }
+
+        .account-modal-header p {
+            color: var(--gray);
+            font-size: clamp(0.85rem, 1.8vw, 0.95rem);
+        }
+
+        .account-image {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .account-image:hover {
+            transform: scale(1.02);
+        }
+
+        .account-number-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .account-number-label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .account-number-display {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0.9rem 1.2rem;
+            border-radius: 10px;
+            margin-bottom: 0;
+        }
+
+        .account-number {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 1.5px;
+            flex: 1;
+        }
+
+        .copy-btn {
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+            font-family: 'Noto Sans TC', sans-serif;
+            white-space: nowrap;
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.5);
+        }
+
+        .copy-btn.copied {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+        }
+
+        .copy-btn i {
+            margin-right: 0.4rem;
+        }
+
+        .account-note {
+            background: #fff9e6;
+            border: 2px solid #ffd700;
+            border-radius: 10px;
+            padding: 0.8rem;
+            text-align: center;
+            color: var(--dark);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .account-note p {
+            margin: 0.3rem 0;
+        }
+
+        .account-note strong {
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+
+        .account-modal-close {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            color: var(--gray);
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .account-modal-close:hover {
+            background: rgba(231, 76, 60, 0.1);
+            color: #e74c3c;
+            transform: rotate(90deg);
+        }
+
         /* 响应式设计 */
         @media (max-width: 768px) {
+            .account-modal-content {
+                margin: 10% auto;
+                padding: 1.5rem;
+                max-width: 90%;
+            }
+
+            .account-number {
+                font-size: 1.3rem;
+                letter-spacing: 1px;
+            }
+
+            .account-number-display {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .copy-btn {
+                width: 100%;
+                padding: 0.8rem 1rem;
+            }
+
+            .account-info-btn {
+                display: block;
+                margin: 0.5rem 0 0 0;
+                width: 100%;
+            }
+
             .success-modal-content {
                 margin: 20% auto;
                 padding: 2rem 1.5rem;
@@ -1780,16 +2011,16 @@
                     <p class="benefit-desc">協助舉辦短講、論壇、推廣活動，吸引人流進店</p>
                 </div>
 
-                <div class="benefit-card">
+                <div class="benefit-card calculator-trigger" onclick="openCalculator()">
                     <div class="benefit-number">7</div>
-                    <h4 class="benefit-title">分享推廣獎勵</h4>
-                    <p class="benefit-desc">介紹他人加入可獲 20%+20% 公益點數回饋</p>
+                    <h4 class="benefit-title">分享推廣獎勵 <i class="fas fa-calculator"></i></h4>
+                    <p class="benefit-desc">介紹他人加入可獲 20%+20% 公益點數回饋<br><small style="color: var(--secondary); font-weight: 700;">📱 點擊計算收益</small></p>
                 </div>
 
-                <div class="benefit-card calculator-trigger" onclick="openCalculator()">
+                <div class="benefit-card">
                     <div class="benefit-number">8</div>
-                    <h4 class="benefit-title">協會資源共享 <i class="fas fa-calculator"></i></h4>
-                    <p class="benefit-desc">金流、人脈、司法、勞資等多面向協助，自助助人<br><small style="color: var(--secondary); font-weight: 700;">📱 點擊計算收益</small></p>
+                    <h4 class="benefit-title">協會資源共享</h4>
+                    <p class="benefit-desc">金流、人脈、司法、勞資等多面向協助，自助助人</p>
                 </div>
             </div>
         </section>
@@ -1928,7 +2159,12 @@
 
                         <!-- 匯款後四碼 -->
                         <div class="form-group">
-                            <label for="payment-code">匯款後四碼 <span class="required">*</span></label>
+                            <label for="payment-code">
+                                匯款後四碼 <span class="required">*</span>
+                                <button type="button" class="account-info-btn" onclick="openAccountInfo()" title="查看匯款帳號">
+                                    <i class="fas fa-info-circle"></i> 查看帳號
+                                </button>
+                            </label>
                             <input type="text" id="payment-code" name="payment-code" required placeholder="請輸入匯款帳號後四碼" maxlength="4" pattern="[0-9]{4}">
                         </div>
                     </div>
@@ -1990,6 +2226,41 @@
         <div class="lightbox-content" onclick="event.stopPropagation()">
             <img id="lightboxImage" src="" alt="">
             <div id="lightboxTitle" class="lightbox-title"></div>
+        </div>
+    </div>
+
+    <!-- 帳號資訊彈窗 -->
+    <div id="account-modal" class="account-modal" onclick="closeAccountInfo()">
+        <div class="account-modal-content" onclick="event.stopPropagation()">
+            <span class="account-modal-close" onclick="closeAccountInfo()">&times;</span>
+            
+            <div class="account-modal-header">
+                <h3><i class="fas fa-university"></i> 匯款帳號資訊</h3>
+                <p>請匯款至以下帳號，並填寫後四碼</p>
+            </div>
+
+            <img src="https://i.postimg.cc/YCFdKvZt/unnamed-2.jpg" 
+                 alt="匯款帳號資訊" 
+                 class="account-image"
+                 onclick="openLightbox('https://i.postimg.cc/YCFdKvZt/unnamed-2.jpg', '匯款帳號資訊')">
+
+            <div class="account-number-section">
+                <div class="account-number-label">
+                    <i class="fas fa-piggy-bank"></i> 匯款帳號
+                </div>
+                <div class="account-number-display">
+                    <span class="account-number" id="account-number-text">1900717127051</span>
+                    <button class="copy-btn" onclick="copyAccountNumber()">
+                        <i class="fas fa-copy"></i> 複製
+                    </button>
+                </div>
+            </div>
+
+            <div class="account-note">
+                <p><strong>💡 溫馨提醒</strong></p>
+                <p>匯款後請在表單中填寫<strong>您匯款帳號的後四碼</strong></p>
+                <p>點擊圖片可放大查看完整資訊</p>
+            </div>
         </div>
     </div>
 
@@ -2107,6 +2378,61 @@
             document.body.style.overflow = 'auto';
         }
 
+        // 帳號資訊彈窗功能
+        function openAccountInfo() {
+            document.getElementById('account-modal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAccountInfo() {
+            document.getElementById('account-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // 複製帳號功能
+        function copyAccountNumber() {
+            const accountNumber = document.getElementById('account-number-text').textContent;
+            const copyBtn = event.target.closest('.copy-btn');
+            
+            // 使用 Clipboard API 複製
+            navigator.clipboard.writeText(accountNumber).then(function() {
+                // 複製成功後的視覺反饋
+                const originalHTML = copyBtn.innerHTML;
+                copyBtn.innerHTML = '<i class="fas fa-check"></i> 已複製';
+                copyBtn.classList.add('copied');
+                
+                // 2秒後恢復原狀
+                setTimeout(function() {
+                    copyBtn.innerHTML = originalHTML;
+                    copyBtn.classList.remove('copied');
+                }, 2000);
+            }).catch(function(err) {
+                // 如果 Clipboard API 不支援，使用傳統方法
+                const textArea = document.createElement('textarea');
+                textArea.value = accountNumber;
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-999999px';
+                document.body.appendChild(textArea);
+                textArea.select();
+                
+                try {
+                    document.execCommand('copy');
+                    const originalHTML = copyBtn.innerHTML;
+                    copyBtn.innerHTML = '<i class="fas fa-check"></i> 已複製';
+                    copyBtn.classList.add('copied');
+                    
+                    setTimeout(function() {
+                        copyBtn.innerHTML = originalHTML;
+                        copyBtn.classList.remove('copied');
+                    }, 2000);
+                } catch (err) {
+                    alert('複製失敗，請手動複製：' + accountNumber);
+                }
+                
+                document.body.removeChild(textArea);
+            });
+        }
+
         // 點擊模態窗口外部關閉
         window.onclick = function(event) {
             const calculatorModal = document.getElementById('calculator-modal');
@@ -2125,6 +2451,7 @@
             if (event.key === 'Escape') {
                 closeCalculator();
                 closeSuccessModal();
+                closeAccountInfo();
             }
         });
 

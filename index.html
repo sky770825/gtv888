@@ -953,7 +953,7 @@
             
             .feature-item p,
             .contact-item p {
-                font-size: 0.65rem;
+                font-size: 0.75rem;
             }
         }
         
@@ -1200,43 +1200,43 @@
         /* 手機版聯絡卡片優化 */
         @media (max-width: 768px) {
             .contact-person-card {
-                padding: 0.4rem 0.3rem;
+                padding: var(--spacing-sm) var(--spacing-xs);
             }
             
             .contact-person-header {
                 flex-direction: column;
-                gap: 0.2rem;
+                gap: var(--spacing-xs);
                 text-align: center;
-                border-bottom: 1px solid var(--bg-gray);
-                padding-bottom: 0.3rem;
-                margin-bottom: 0.3rem;
+                border-bottom: 1px solid var(--border-color);
+                padding-bottom: var(--spacing-xs);
+                margin-bottom: var(--spacing-xs);
             }
             
             .contact-person-avatar {
-                width: 32px;
-                height: 32px;
-                font-size: 0.85rem;
+                width: 36px;
+                height: 36px;
+                font-size: 0.875rem;
             }
             
             .contact-person-role {
-                font-size: 0.6rem;
-                line-height: 1;
+                font-size: 0.75rem;
+                line-height: 1.2;
             }
             
             .contact-person-name {
-                font-size: 0.75rem;
-                line-height: 1.1;
+                font-size: 0.875rem;
+                line-height: 1.3;
             }
             
             .contact-person-phone {
-                font-size: 0.65rem;
-                gap: 0.2rem;
+                font-size: 0.75rem;
+                gap: var(--spacing-xs);
                 flex-direction: column;
                 justify-content: center;
             }
             
             .contact-person-phone i {
-                font-size: 0.9rem;
+                font-size: 1rem;
             }
             
             .contact-person-phone span {
@@ -1335,16 +1335,16 @@
         @media (max-width: 768px) {
             /* 全局緊湊 */
             section {
-                padding: var(--spacing-sm) 0.4rem !important;
+                padding: var(--spacing-sm) var(--spacing-sm) !important;
             }
             
             .container {
-                padding: 0 0.3rem;
+                padding: 0 var(--spacing-sm);
             }
             
             /* 所有grid緊湊間距 */
             div[style*="grid"] {
-                gap: 0.3rem !important;
+                gap: var(--spacing-xs) !important;
             }
             
             /* 卡片緊湊padding */
@@ -1352,40 +1352,40 @@
             div[style*="padding: var(--spacing-xl)"],
             a[style*="padding: var(--spacing-lg)"],
             a[style*="padding: var(--spacing-xl)"] {
-                padding: 0.4rem !important;
+                padding: var(--spacing-sm) !important;
             }
             
             div[style*="padding: var(--spacing-md)"],
             a[style*="padding: var(--spacing-md)"] {
-                padding: 0.35rem !important;
+                padding: var(--spacing-xs) !important;
             }
             
             /* 字體微調 */
             h3[style*="font-size"] {
-                font-size: 0.85rem !important;
+                font-size: 0.875rem !important;
             }
             
             /* Footer多欄布局 */
             .footer-content > div {
                 grid-template-columns: repeat(2, 1fr) !important;
-                gap: 0.5rem !important;
+                gap: var(--spacing-sm) !important;
             }
             
             /* 聯絡資訊緊湊5欄以上 */
             .contact-info {
                 grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)) !important;
-                gap: 0.25rem !important;
+                gap: var(--spacing-xs) !important;
             }
             
             /* 服務優勢緊湊4-5欄 */
             .features-grid {
                 grid-template-columns: repeat(auto-fit, minmax(55px, 1fr)) !important;
-                gap: 0.25rem !important;
+                gap: var(--spacing-xs) !important;
             }
             
-            /* 按鈕文字縮小 */
+            /* 按鈕文字優化 */
             a[style*="font-size: var(--font-md)"] {
-                font-size: 0.8rem !important;
+                font-size: 0.875rem !important;
             }
         }
         
@@ -1586,15 +1586,15 @@
         /* 收合按鈕 */
         .sidebar-toggle {
             position: fixed;
-            right: 0;
+            right: 220px;
             top: 50%;
             transform: translateY(-50%);
-            z-index: 999;
+            z-index: 997;
             width: 48px;
             height: 120px;
             background: linear-gradient(135deg, #667eea, #764ba2);
             border: none;
-            border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+            border-radius: var(--radius-lg);
             cursor: pointer;
             display: flex;
             flex-direction: column;
@@ -1602,10 +1602,15 @@
             justify-content: center;
             gap: var(--spacing-xs);
             box-shadow: -4px 0 15px rgba(102, 126, 234, 0.3);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             color: white;
             font-size: var(--font-sm);
             padding: var(--spacing-sm);
+        }
+
+        .sidebar-toggle.collapsed {
+            right: 0;
+            border-radius: var(--radius-lg) 0 0 var(--radius-lg);
         }
 
         .sidebar-toggle:hover {
@@ -1645,6 +1650,14 @@
                 width: 48px;
                 height: 48px;
                 font-size: var(--font-xl);
+            }
+
+            .sidebar-toggle {
+                right: 190px;
+            }
+
+            .sidebar-toggle.collapsed {
+                right: 0;
             }
         }
 
@@ -1690,6 +1703,11 @@
             .sidebar-toggle {
                 width: 40px;
                 height: 100px;
+                right: 168px;
+            }
+
+            .sidebar-toggle.collapsed {
+                right: 0;
             }
             
             .sidebar-toggle i {
@@ -2801,9 +2819,9 @@
     </div>
 
     <!-- 收合按鈕 -->
-    <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()" aria-label="切換工具欄">
+    <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()" aria-label="切換服務欄">
         <i class="fas fa-chevron-right"></i>
-        <span class="sidebar-toggle-text">工具</span>
+        <span class="sidebar-toggle-text">服務</span>
     </button>
 
     <!-- JavaScript -->
