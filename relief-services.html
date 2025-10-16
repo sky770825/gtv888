@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="全球商聯會專業紓困服務 - 提供個人與企業資金週轉解決方案，快速審核、條件寬鬆、值得信賴">
+    <meta name="keywords" content="全球商聯會,紓困服務,個人紓困,企業紓困,資金週轉,商業貸款">
+    <title>專業紓困服務 - 全球商聯會</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS 變數系統 */
+        :root {
+            /* 顏色系統 */
+            --primary-color: #0f4c81;
+            --primary-light: #1e6bb8;
+            --primary-dark: #0a3d6b;
+            --secondary-color: #d4af37;
+            --accent-color: #16a34a;
+            --danger-color: #dc2626;
+            
+            /* 文字顏色 */
+            --text-dark: #1f2937;
+            --text-gray: #6b7280;
+            --text-light: #9ca3af;
+            
+            /* 背景色 */
+            --bg-light: #f9fafb;
+            --bg-gray: #f3f4f6;
+            --bg-gradient: linear-gradient(135deg, #0f4c81, #1e6bb8);
+            
+            /* 間距系統 (緊湊化) */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 12px;
+            --spacing-lg: 16px;
+            --spacing-xl: 24px;
+            --spacing-2xl: 32px;
+            
+            /* 字體大小 */
+            --font-xs: 0.7rem;
+            --font-sm: 0.8rem;
+            --font-base: 0.9rem;
+            --font-md: 1rem;
+            --font-lg: 1.1rem;
+            --font-xl: 1.3rem;
+            --font-2xl: 1.6rem;
+            --font-3xl: 2rem;
+            --font-4xl: 2.5rem;
+            
+            /* 圓角 */
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-full: 9999px;
+            
+            /* 陰影 */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            
+            /* 邊框 */
+            --border-color: #e5e7eb;
+            
+            /* 過渡效果 */
+            --transition-fast: all 0.15s ease;
+            --transition-base: all 0.3s ease;
+        }
+
+        /* 基礎樣式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", "微軟正黑體", sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #ffffff;
+        }
+
+        /* 導航欄 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: var(--shadow-sm);
+            z-index: 1000;
+            transition: var(--transition-base);
+            border-bottom: 1px solid var(--border-color);
+            height: 60px;
+        }
+
+        .navbar.scrolled {
+            box-shadow: var(--shadow-lg);
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .navbar-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: var(--font-md);
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: var(--bg-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: var(--font-sm);
+            transition: var(--transition-base);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+        }
+
+        /* Page Header */
+        .page-header {
+            margin-top: 60px;
+            padding: var(--spacing-2xl) var(--spacing-md);
+            background: var(--bg-gradient);
+            color: white;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: var(--font-3xl);
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .page-subtitle {
+            font-size: var(--font-base);
+            opacity: 0.9;
+        }
+
+        /* Section */
+        section {
+            padding: var(--spacing-xl) var(--spacing-md);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: var(--spacing-xs) var(--spacing-md);
+            background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(212,175,55,0.2));
+            color: var(--secondary-color);
+            border-radius: var(--radius-full);
+            font-size: var(--font-xs);
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            border: 1px solid rgba(212,175,55,0.3);
+        }
+
+        .section-title {
+            font-size: var(--font-2xl);
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .section-description {
+            font-size: var(--font-sm);
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .service-card {
+            background: white;
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-base);
+            border: 1px solid var(--border-color);
+            border-top: 3px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+            border-top-color: var(--primary-color);
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--bg-gradient);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-3xl);
+            color: white;
+            margin: 0 auto var(--spacing-md);
+        }
+
+        .service-card h3 {
+            font-size: var(--font-lg);
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: var(--spacing-sm);
+            text-align: center;
+        }
+
+        .service-card p {
+            font-size: var(--font-sm);
+            color: var(--text-gray);
+            line-height: 1.6;
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* Requirements Grid */
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .requirement-card {
+            background: white;
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .requirement-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 2px solid var(--bg-gray);
+        }
+
+        .requirement-header i {
+            font-size: var(--font-2xl);
+            color: var(--primary-color);
+        }
+
+        .requirement-header h3 {
+            font-size: var(--font-lg);
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .requirement-list {
+            list-style: none;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .requirement-list li {
+            padding: var(--spacing-sm) 0;
+            padding-left: var(--spacing-lg);
+            position: relative;
+            font-size: var(--font-sm);
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        .requirement-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        .requirement-note {
+            background: var(--bg-light);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--secondary-color);
+            font-size: var(--font-xs);
+            color: var(--text-gray);
+            margin-top: var(--spacing-md);
+        }
+
+        /* Contact CTA */
+        .contact-cta {
+            background: var(--bg-gradient);
+            padding: var(--spacing-2xl) var(--spacing-md);
+            text-align: center;
+            color: white;
+        }
+
+        .contact-cta h2 {
+            font-size: var(--font-2xl);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-cta p {
+            font-size: var(--font-base);
+            opacity: 0.9;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: var(--font-base);
+            text-decoration: none;
+            transition: var(--transition-base);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #06c755, #00b900);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: var(--spacing-xl) var(--spacing-md);
+            text-align: center;
+        }
+
+        .footer p {
+            font-size: var(--font-xs);
+            opacity: 0.8;
+        }
+
+        /* 返回頂部按鈕 */
+        .back-to-top {
+            position: fixed;
+            bottom: 80px;
+            right: var(--spacing-lg);
+            width: 48px;
+            height: 48px;
+            background: var(--bg-gradient);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-base);
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: var(--font-2xl);
+            }
+
+            .section-title {
+                font-size: var(--font-xl);
+            }
+
+            .navbar-container {
+                padding: 0 var(--spacing-md);
+            }
+
+            .back-to-top {
+                bottom: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 導航欄 -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="logo">
+                <img src="https://scontent.ftpe8-3.fna.fbcdn.net/v/t39.30808-6/327182691_765691754979994_581615707160418374_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=YmwpN9nab5gQ7kNvwEXMFnm&_nc_oc=AdnippgN86g_C-ievO8eTPHP9q8TdF0FGJoZqB1rhPJNWI6YFX6fviuZEigqXBEwK7U&_nc_zt=23&_nc_ht=scontent.ftpe8-3.fna&_nc_gid=mzhBw0rZKz26zwxKogGGrg&oh=00_AffjHibj5tttpdAocq5Fe2_ZuSIOtHgeGjniowr34Q_6uA&oe=68F6552D" 
+                     alt="全球商聯會" 
+                     style="height: clamp(28px, 4vw, 36px); width: auto; object-fit: contain;">
+                <span>全球商聯會</span>
+            </a>
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                返回首頁
+            </a>
+        </div>
+    </nav>
+
+    <!-- 頁面標題 -->
+    <header class="page-header">
+        <div class="container">
+            <h1 class="page-title">專業紓困服務</h1>
+            <p class="page-subtitle">快速審核 · 條件寬鬆 · 安全保密 · 值得信賴</p>
+        </div>
+    </header>
+
+    <!-- 服務類型 -->
+    <section style="background: white;">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">我們的服務</p>
+                <h2 class="section-title">紓困方案介紹</h2>
+                <p class="section-description">
+                    全球商聯會提供多元化的金融紓困服務，助您輕鬆應對資金挑戰，邁向成功。
+                </p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- 個人紓困 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>個人紓困</h3>
+                    <p>為個人提供快速、彈性的資金週轉方案，解決您的燃眉之急。</p>
+                </div>
+                
+                <!-- 企業紓困 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>企業紓困</h3>
+                    <p>為企業提供專業的資金解決方案，助力企業穩健發展，抓住商機。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 準備資料 -->
+    <section style="background: var(--bg-light);">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">申請須知</p>
+                <h2 class="section-title">準備資料說明</h2>
+                <p class="section-description">
+                    請依據您的申請類型，準備以下相關文件資料
+                </p>
+            </div>
+            
+            <div class="requirements-grid">
+                <!-- 個人紓困 -->
+                <div class="requirement-card">
+                    <div class="requirement-header">
+                        <i class="fas fa-user-circle"></i>
+                        <h3>個人紓困準備資料</h3>
+                    </div>
+                    <ul class="requirement-list">
+                        <li>雙證件</li>
+                        <li>存摺封面</li>
+                        <li>如有使用信用卡（最近一期帳單正反面、信用卡正面）</li>
+                        <li>如有扣繳憑單（拍照回傳）</li>
+                        <li>如有薪轉（請檢附6個月薪轉存摺內容）</li>
+                        <li>如有公司勞保請檢附勞保異動表（在公會勞保無法承辦）</li>
+                        <li>如以上都無法符合條件者（請檢附汽機車行照）</li>
+                        <li>個人資金需求目標金額？</li>
+                    </ul>
+                    <div class="requirement-note">
+                        <strong>📌 溫馨提醒：</strong>請確保所有文件清晰可讀，以加快審核速度
+                    </div>
+                </div>
+                
+                <!-- 企業紓困 -->
+                <div class="requirement-card">
+                    <div class="requirement-header">
+                        <i class="fas fa-building"></i>
+                        <h3>企業紓困準備資料</h3>
+                    </div>
+                    <ul class="requirement-list">
+                        <li>公司營登、章程、事項卡</li>
+                        <li>年度401表報</li>
+                        <li>三年內資產負債損益表</li>
+                        <li>公司或個人存摺封面近六個月往來明細</li>
+                        <li>公司實際營業項目</li>
+                        <li>如有不動產請檢附近期謄本（公司營運狀況不佳及信用不良或公司成立未滿一年以上必備以上資料）</li>
+                        <li>企業資金需求目標金額？</li>
+                    </ul>
+                    <div class="requirement-note">
+                        <strong>📌 溫馨提醒：</strong>企業資料越完整，核准機率越高
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 申請流程 -->
+    <section style="background: white;">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">簡單四步驟</p>
+                <h2 class="section-title">紓困申請流程</h2>
+                <p class="section-description">
+                    專業團隊全程協助，讓您輕鬆完成申請
+                </p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: var(--spacing-md); max-width: 900px; margin: 0 auto;">
+                <div style="text-align: center; padding: var(--spacing-lg);">
+                    <div style="width: 64px; height: 64px; background: var(--bg-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: var(--font-2xl); color: white; margin: 0 auto var(--spacing-md); font-weight: 700;">1</div>
+                    <h3 style="font-size: var(--font-md); font-weight: 700; margin-bottom: var(--spacing-xs); color: var(--text-dark);">聯絡諮詢</h3>
+                    <p style="font-size: var(--font-sm); color: var(--text-gray);">LINE 或電話諮詢</p>
+                </div>
+                <div style="text-align: center; padding: var(--spacing-lg);">
+                    <div style="width: 64px; height: 64px; background: var(--bg-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: var(--font-2xl); color: white; margin: 0 auto var(--spacing-md); font-weight: 700;">2</div>
+                    <h3 style="font-size: var(--font-md); font-weight: 700; margin-bottom: var(--spacing-xs); color: var(--text-dark);">準備資料</h3>
+                    <p style="font-size: var(--font-sm); color: var(--text-gray);">備齊申請文件</p>
+                </div>
+                <div style="text-align: center; padding: var(--spacing-lg);">
+                    <div style="width: 64px; height: 64px; background: var(--bg-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: var(--font-2xl); color: white; margin: 0 auto var(--spacing-md); font-weight: 700;">3</div>
+                    <h3 style="font-size: var(--font-md); font-weight: 700; margin-bottom: var(--spacing-xs); color: var(--text-dark);">送件審核</h3>
+                    <p style="font-size: var(--font-sm); color: var(--text-gray);">快速審核評估</p>
+                </div>
+                <div style="text-align: center; padding: var(--spacing-lg);">
+                    <div style="width: 64px; height: 64px; background: var(--bg-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: var(--font-2xl); color: white; margin: 0 auto var(--spacing-md); font-weight: 700;">4</div>
+                    <h3 style="font-size: var(--font-md); font-weight: 700; margin-bottom: var(--spacing-xs); color: var(--text-dark);">核准撥款</h3>
+                    <p style="font-size: var(--font-sm); color: var(--text-gray);">快速撥款到帳</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 聯絡CTA -->
+    <section class="contact-cta">
+        <div class="container">
+            <h2>立即開始您的紓困申請</h2>
+            <p>專業團隊隨時為您服務，歡迎透過以下方式與我們聯繫</p>
+            <div class="cta-buttons">
+                <a href="https://lin.ee/vnKndFa" target="_blank" class="btn btn-primary">
+                    <i class="fab fa-line"></i>
+                    LINE 線上諮詢
+                </a>
+                <a href="index.html#contact" class="btn btn-secondary">
+                    <i class="fas fa-phone"></i>
+                    電話諮詢
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer class="footer">
+        <p>&copy; 2025 全球商聯會 Global Television Station. All Rights Reserved.</p>
+    </footer>
+
+    <!-- 返回頂部 -->
+    <button class="back-to-top" id="backToTop" aria-label="返回頂部">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // 導航欄滾動效果
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        
+        // 返回頂部
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 平滑滾動
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 60;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

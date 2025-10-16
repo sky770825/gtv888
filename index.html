@@ -1,0 +1,2583 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="全球商聯會總會舉辦公益慈善春酒宴，凝聚愛心、傳遞溫暖、促進社會和諧，推動全民公益翻轉經濟">
+    <meta name="keywords" content="全球商聯會,公益慈善,春酒宴,善行天下,慈善團體,社會公益,愛心募款">
+    <title>全球商聯會 - 公益慈善春酒宴 | 善行天下 春滿人間</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ==================== CSS 變數系統 ==================== */
+        :root {
+            /* 專業金融配色 */
+            --primary-color: #0f4c81;
+            --primary-light: #1e6bb8;
+            --primary-dark: #082f52;
+            --secondary-color: #d4af37;
+            --accent-color: #16a34a;
+            --danger-color: #dc2626;
+            
+            /* 文字顏色 */
+            --text-dark: #1a202c;
+            --text-gray: #4a5568;
+            --text-light: #718096;
+            
+            /* 背景顏色 */
+            --bg-white: #ffffff;
+            --bg-light: #f7fafc;
+            --bg-gray: #edf2f7;
+            --bg-gradient: linear-gradient(135deg, #0f4c81 0%, #1e6bb8 100%);
+            
+            /* 邊框 */
+            --border-color: #e2e8f0;
+            --border-light: #cbd5e0;
+            
+            /* 極致緊湊間距系統 */
+            --spacing-xs: 0.25rem;   /* 4px */
+            --spacing-sm: 0.5rem;    /* 8px */
+            --spacing-md: 0.75rem;   /* 12px */
+            --spacing-lg: 1rem;      /* 16px */
+            --spacing-xl: 1.5rem;    /* 24px */
+            --spacing-2xl: 2rem;     /* 32px */
+            
+            /* 優化字體大小 - 稍微放大 */
+            --font-xs: clamp(0.75rem, 1.8vw, 0.813rem);
+            --font-sm: clamp(0.875rem, 2.2vw, 0.938rem);
+            --font-base: clamp(0.938rem, 2.5vw, 1rem);
+            --font-md: clamp(1rem, 2.8vw, 1.125rem);
+            --font-lg: clamp(1.125rem, 3.2vw, 1.25rem);
+            --font-xl: clamp(1.25rem, 3.5vw, 1.5rem);
+            --font-2xl: clamp(1.5rem, 4vw, 1.875rem);
+            --font-3xl: clamp(1.875rem, 5vw, 2.5rem);
+            --font-4xl: clamp(2.25rem, 6vw, 3.5rem);
+            
+            /* 精緻圓角 */
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            
+            /* 專業陰影 */
+            --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            
+            /* 過渡效果 */
+            --transition-fast: 0.15s ease;
+            --transition-base: 0.25s ease;
+            --transition-slow: 0.4s ease;
+        }
+        
+        /* ==================== 重置與基礎樣式 ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--bg-white);
+            overflow-x: hidden;
+        }
+        
+        /* ==================== 導覽欄 ==================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(12px);
+            box-shadow: var(--shadow-sm);
+            z-index: 1000;
+            transition: var(--transition-base);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .navbar.scrolled {
+            box-shadow: var(--shadow-md);
+            background-color: white;
+        }
+        
+        .navbar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--spacing-sm) var(--spacing-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: var(--font-md);
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            letter-spacing: -0.02em;
+            transition: var(--transition-fast);
+        }
+        
+        .logo:hover {
+            opacity: 0.85;
+            transform: translateY(-1px);
+        }
+        
+        .logo img {
+            transition: var(--transition-fast);
+        }
+        
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+        
+        .logo span {
+            font-weight: 700;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-gray);
+            font-weight: 500;
+            font-size: var(--font-sm);
+            transition: var(--transition-fast);
+            position: relative;
+            padding: var(--spacing-xs) var(--spacing-sm);
+        }
+        
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+        
+        .cta-button {
+            background: var(--bg-gradient);
+            color: white !important;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            transition: var(--transition-fast);
+            font-size: var(--font-sm);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+        }
+        
+        .cta-button::after {
+            display: none;
+        }
+        
+        /* 手機選單按鈕 */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: var(--font-2xl);
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        /* ==================== 英雄區 ==================== */
+        .hero {
+            min-height: 45vh;
+            display: flex;
+            align-items: center;
+            background: var(--bg-gradient);
+            position: relative;
+            overflow: hidden;
+            padding-top: 50px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: bottom;
+        }
+        
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--spacing-md) var(--spacing-md);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            max-width: 680px;
+            color: white;
+            text-align: center;
+            margin: 0 auto;
+        }
+        
+        .hero-title {
+            font-size: var(--font-3xl);
+            font-weight: 800;
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.2;
+            animation: fadeInUp 0.8s ease;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero-subtitle {
+            font-size: var(--font-md);
+            margin-bottom: var(--spacing-sm);
+            opacity: 0.95;
+            font-weight: 400;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+        
+        .hero-description {
+            font-size: var(--font-sm);
+            margin-bottom: var(--spacing-md);
+            opacity: 0.9;
+            line-height: 1.6;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: var(--spacing-sm);
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.6s backwards;
+        }
+        
+        .btn {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: var(--font-xs);
+            transition: var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            border: none;
+            cursor: pointer;
+            min-height: 42px;
+            letter-spacing: 0.01em;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: var(--primary-dark);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-primary:hover {
+            background-color: #e8a42e;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary-color);
+            border-color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* ==================== 服務類型區 ==================== */
+        .services {
+            padding: var(--spacing-lg) var(--spacing-md);
+            background-color: var(--bg-light);
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .section-tag {
+            color: var(--primary-light);
+            font-weight: 700;
+            font-size: var(--font-xs);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: var(--spacing-xs);
+            display: inline-block;
+        }
+        
+        .section-title {
+            font-size: var(--font-2xl);
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: var(--spacing-xs);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+        
+        .section-description {
+            font-size: var(--font-sm);
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+            gap: var(--spacing-md);
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: var(--radius-sm);
+            padding: var(--spacing-md);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-base);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--bg-gradient);
+            transform: scaleX(0);
+            transition: var(--transition-base);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-light);
+        }
+        
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-gradient);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-md);
+            color: white;
+            margin-bottom: var(--spacing-sm);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .service-card h3 {
+            font-size: var(--font-lg);
+            font-weight: 700;
+            margin-bottom: var(--spacing-xs);
+            color: var(--text-dark);
+        }
+        
+        .service-card p {
+            font-size: var(--font-sm);
+            color: var(--text-gray);
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.5;
+        }
+        
+        .service-card .btn {
+            width: 100%;
+            justify-content: center;
+            background-color: var(--bg-light);
+            color: var(--primary-color);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            font-size: var(--font-xs);
+            border: 1px solid var(--border-color);
+            min-height: 38px;
+        }
+        
+        .service-card .btn:hover {
+            background: var(--bg-gradient);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        /* ==================== 準備資料區 ==================== */
+        .requirements {
+            padding: var(--spacing-lg) var(--spacing-md);
+            background-color: white;
+        }
+        
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+        
+        .requirement-card {
+            background: white;
+            border-radius: var(--radius-sm);
+            padding: var(--spacing-md);
+            border: 1px solid var(--border-color);
+            transition: var(--transition-base);
+            box-shadow: var(--shadow-xs);
+        }
+        
+        .requirement-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+        
+        .requirement-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            margin-bottom: var(--spacing-sm);
+            padding-bottom: var(--spacing-xs);
+            border-bottom: 2px solid var(--bg-gray);
+        }
+        
+        .requirement-header i {
+            font-size: var(--font-md);
+            color: var(--primary-color);
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-light);
+            border-radius: var(--radius-sm);
+        }
+        
+        .requirement-header h3 {
+            font-size: var(--font-lg);
+            font-weight: 700;
+            color: var(--text-dark);
+            flex: 1;
+        }
+        
+        .requirement-list {
+            list-style: none;
+        }
+        
+        .requirement-list li {
+            padding: var(--spacing-sm) var(--spacing-md);
+            margin-bottom: var(--spacing-xs);
+            background-color: var(--bg-light);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-sm);
+            color: var(--text-gray);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+            transition: var(--transition-fast);
+            border-left: 2px solid transparent;
+        }
+        
+        .requirement-list li:hover {
+            border-left-color: var(--accent-color);
+            background-color: white;
+            transform: translateX(3px);
+            box-shadow: var(--shadow-xs);
+        }
+        
+        .requirement-list li::before {
+            content: '✓';
+            color: var(--accent-color);
+            font-weight: 700;
+            font-size: var(--font-base);
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(22, 163, 74, 0.12);
+            border-radius: 50%;
+        }
+        
+        .requirement-note {
+            background-color: #fef3c7;
+            border-left: 3px solid var(--secondary-color);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            margin-top: var(--spacing-sm);
+            font-size: var(--font-xs);
+            color: #92400e;
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-xs);
+        }
+        
+        .requirement-note strong {
+            flex-shrink: 0;
+        }
+        
+        /* ==================== 流程區 ==================== */
+        .process {
+            padding: var(--spacing-lg) var(--spacing-md);
+            background: var(--bg-gradient);
+            color: white;
+            position: relative;
+        }
+        
+        .process::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.05" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: bottom;
+            opacity: 0.5;
+        }
+        
+        .process .section-tag {
+            color: var(--secondary-color);
+        }
+        
+        .process .section-title,
+        .process .section-description {
+            color: white;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .process-step {
+            text-align: center;
+            position: relative;
+            padding: var(--spacing-xs);
+        }
+        
+        .step-number {
+            width: 44px;
+            height: 44px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-lg);
+            font-weight: 900;
+            margin: 0 auto var(--spacing-xs);
+            box-shadow: var(--shadow-md);
+            color: var(--primary-dark);
+        }
+        
+        .process-step h3 {
+            font-size: var(--font-sm);
+            font-weight: 700;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .process-step p {
+            font-size: var(--font-xs);
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+        
+        /* ==================== 特色優勢區 ==================== */
+        .features {
+            padding: var(--spacing-lg) var(--spacing-md);
+            background-color: var(--bg-light);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+        }
+        
+        .feature-item {
+            text-align: center;
+            padding: var(--spacing-md);
+            background-color: white;
+            border-radius: var(--radius-sm);
+            transition: var(--transition-base);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-xs);
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+        
+        .feature-icon {
+            font-size: var(--font-lg);
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-xs);
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-light);
+            border-radius: var(--radius-sm);
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .feature-item h3 {
+            font-size: var(--font-base);
+            font-weight: 700;
+            margin-bottom: var(--spacing-xs);
+            color: var(--text-dark);
+        }
+        
+        .feature-item p {
+            font-size: var(--font-sm);
+            color: var(--text-gray);
+            line-height: 1.5;
+        }
+        
+        /* ==================== 聯絡區 ==================== */
+        .contact {
+            padding: var(--spacing-lg) var(--spacing-md);
+            background-color: white;
+        }
+        
+        .contact-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
+            gap: var(--spacing-sm);
+            margin: var(--spacing-md) 0;
+        }
+        
+        .contact-item {
+            padding: var(--spacing-md);
+            background: var(--bg-gradient);
+            color: white;
+            border-radius: var(--radius-sm);
+            transition: var(--transition-base);
+            box-shadow: var(--shadow-md);
+            border: 1px solid transparent;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--secondary-color);
+        }
+        
+        .contact-item i {
+            font-size: var(--font-lg);
+            margin-bottom: var(--spacing-xs);
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .contact-item h3 {
+            font-size: var(--font-sm);
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .contact-item p {
+            font-size: var(--font-base);
+            font-weight: 600;
+        }
+        
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        /* ==================== 頁尾 ==================== */
+        .footer {
+            background-color: var(--text-dark);
+            color: white;
+            padding: var(--spacing-md) var(--spacing-md) var(--spacing-sm);
+        }
+        
+        .footer-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-size: var(--font-md);
+            font-weight: 800;
+            margin-bottom: var(--spacing-xs);
+            color: var(--secondary-color);
+        }
+        
+        .footer-description {
+            font-size: var(--font-xs);
+            opacity: 0.8;
+            margin-bottom: var(--spacing-sm);
+            max-width: 540px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.4;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: var(--font-xs);
+            opacity: 0.8;
+            transition: var(--transition-fast);
+            padding: var(--spacing-xs);
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--secondary-color);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding-top: var(--spacing-xs);
+            margin-top: var(--spacing-xs);
+            font-size: var(--font-xs);
+            opacity: 0.7;
+        }
+        
+        /* ==================== 動畫 ==================== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* ==================== 響應式設計 ==================== */
+        
+        /* 平板 */
+        @media (max-width: 1024px) {
+            .nav-menu {
+                gap: clamp(0.75rem, 2vw, 1.5rem);
+            }
+        }
+        
+        /* 手機 */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 60px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 60px);
+                background-color: white;
+                flex-direction: column;
+                padding: var(--spacing-lg);
+                box-shadow: var(--shadow-xl);
+                transition: left 0.3s ease;
+                align-items: stretch;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                width: 100%;
+            }
+            
+            .nav-menu a {
+                display: block;
+                padding: var(--spacing-md);
+                font-size: var(--font-base);
+                border-radius: var(--radius-sm);
+            }
+            
+            .hero {
+                min-height: 60vh;
+                padding-top: 50px;
+            }
+            
+            .hero-container {
+                padding: var(--spacing-md) var(--spacing-sm);
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .services,
+            .requirements,
+            .process,
+            .features,
+            .contact {
+                padding: var(--spacing-md) var(--spacing-xs);
+            }
+            
+            .section-header {
+                margin-bottom: var(--spacing-sm);
+            }
+            
+            /* 手機保持3欄布局 */
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: var(--spacing-xs);
+            }
+            
+            .contact-info {
+                grid-template-columns: repeat(3, 1fr);
+                gap: var(--spacing-xs);
+            }
+            
+            /* 服務保持2欄 */
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--spacing-sm);
+            }
+            
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--spacing-xs);
+            }
+        }
+        
+        /* 小手機優化 - 仍保持多欄 */
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: var(--font-2xl);
+            }
+            
+            .section-title {
+                font-size: var(--font-xl);
+            }
+            
+            /* 小手機保持2欄 */
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--spacing-xs);
+            }
+            
+            .requirements-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.25rem;
+            }
+            
+            /* 小手機保持3欄緊湊布局 */
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.25rem;
+            }
+            
+            .contact-info {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.25rem;
+            }
+            
+            /* 緊湊卡片 */
+            .feature-item,
+            .contact-item {
+                padding: var(--spacing-xs);
+            }
+            
+            .feature-item h3,
+            .contact-item h3 {
+                font-size: var(--font-xs);
+            }
+            
+            .feature-item p,
+            .contact-item p {
+                font-size: 0.7rem;
+            }
+            
+            .feature-item,
+            .service-card {
+                padding: var(--spacing-sm);
+            }
+        }
+        
+        /* 極大螢幕優化 - 最多欄位 */
+        @media (min-width: 1600px) {
+            .container {
+                max-width: 1800px;
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+            
+            .contact-info {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+        
+        /* 大螢幕優化 - 多欄位 */
+        @media (min-width: 1200px) and (max-width: 1599px) {
+            .features-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+            
+            .contact-info {
+                grid-template-columns: repeat(5, 1fr);
+            }
+            
+            .requirements-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* 中螢幕優化 */
+        @media (min-width: 1024px) and (max-width: 1199px) {
+            .features-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .contact-info {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        /* 平板橫向優化 */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .contact-info {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        /* 橫向模式優化 */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .hero {
+                min-height: auto;
+                padding: clamp(6rem, 10vh, 8rem) 0 clamp(2rem, 5vh, 3rem);
+            }
+        }
+        
+        /* ==================== 流程卡片樣式 ==================== */
+        .process-card {
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .process-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            transform: scaleX(0);
+            transition: var(--transition-base);
+        }
+        
+        .process-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .process-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .process-card-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
+        }
+        
+        .process-card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-xl);
+            flex-shrink: 0;
+        }
+        
+        .process-card-title {
+            font-size: var(--font-md);
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .process-card-subtitle {
+            font-size: var(--font-xs);
+            color: var(--text-gray);
+        }
+        
+        .process-card-list {
+            list-style: none;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .process-card-list li {
+            padding: var(--spacing-xs) 0;
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+            font-size: var(--font-sm);
+            color: var(--text-gray);
+        }
+        
+        .process-card-list li span:first-child {
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .process-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: var(--font-sm);
+            text-decoration: none;
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: var(--bg-light);
+            border-radius: var(--radius-sm);
+            transition: var(--transition-fast);
+        }
+        
+        .process-card-link:hover {
+            background: var(--bg-gradient);
+            color: white;
+            transform: translateX(3px);
+        }
+        
+        /* ==================== 聯絡人卡片樣式 ==================== */
+        .contact-person-card {
+            padding: var(--spacing-md);
+            background: white;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 2px solid var(--border-color);
+            transition: var(--transition-base);
+        }
+        
+        .contact-person-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .contact-person-card.featured {
+            border-color: var(--secondary-color);
+        }
+        
+        .contact-person-card.leader {
+            border-color: var(--primary-light);
+        }
+        
+        .contact-person-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
+            padding-bottom: var(--spacing-xs);
+            border-bottom: 2px solid var(--bg-gray);
+        }
+        
+        .contact-person-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .contact-person-role {
+            font-size: var(--font-xs);
+            color: var(--text-light);
+            font-weight: 600;
+        }
+        
+        .contact-person-name {
+            font-size: var(--font-base);
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        
+        .contact-person-phone {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: var(--font-sm);
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+        
+        .contact-person-phone:hover {
+            color: var(--secondary-color);
+            transform: translateX(2px);
+        }
+        
+        /* ==================== 快速連結和聯絡卡片樣式 ==================== */
+        section a[href^="http"]:hover,
+        section a[href^="https://"]:hover {
+            transform: translateY(-4px) !important;
+            box-shadow: var(--shadow-2xl) !important;
+        }
+        
+        .contact a[href^="tel"]:hover {
+            color: var(--secondary-color) !important;
+            transform: translateX(3px);
+        }
+        
+        /* ==================== 返回頂部按鈕 ==================== */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 48px;
+            height: 48px;
+            background: var(--bg-gradient);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-lg);
+            box-shadow: var(--shadow-xl);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-base);
+            z-index: 999;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-2xl);
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+        }
+        
+        /* ==================== 浮動諮詢按鈕 ==================== */
+        .floating-cta {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: linear-gradient(135deg, #06c755, #00b900);
+            color: white;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            font-weight: 600;
+            font-size: var(--font-sm);
+            text-decoration: none;
+            transition: var(--transition-base);
+            z-index: 999;
+            border: 2px solid #52d869;
+        }
+        
+        .floating-cta:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-2xl);
+        }
+        
+        .floating-cta i {
+            font-size: var(--font-lg);
+        }
+        
+        /* 手機端全局緊湊優化 */
+        @media (max-width: 768px) {
+            /* 所有按鈕全寬 */
+            a[style*="inline-flex"] {
+                width: 100% !important;
+                justify-content: center !important;
+            }
+            
+            /* 最新消息區塊2欄 */
+            section#news > .container > div[style*="grid"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: var(--spacing-sm) !important;
+            }
+            
+            /* 組織架構3欄緊湊 */
+            section#about div[style*="grid"] {
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 0.35rem !important;
+            }
+            
+            /* 更多服務2欄 */
+            section div[style*="grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px)"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: var(--spacing-sm) !important;
+            }
+            
+            /* 統計數據3欄 */
+            section div[style*="grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px)"] {
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 0.35rem !important;
+            }
+            
+            /* 減少padding */
+            section {
+                padding-left: var(--spacing-sm) !important;
+                padding-right: var(--spacing-sm) !important;
+            }
+            
+            /* 緊湊卡片 */
+            [style*="padding: var(--spacing-lg)"],
+            [style*="padding: var(--spacing-xl)"] {
+                padding: var(--spacing-sm) !important;
+            }
+        }
+        
+        /* 手機端固定底部 LINE 按鈕 */
+        .mobile-line-btn {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #06c755, #00b900);
+            color: white;
+            padding: var(--spacing-md);
+            text-align: center;
+            font-weight: 700;
+            font-size: var(--font-base);
+            box-shadow: 0 -4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-line-btn {
+                display: flex;
+            }
+            
+            .floating-cta {
+                display: none;
+            }
+            
+            .back-to-top {
+                bottom: 70px;
+                right: 15px;
+            }
+            
+            /* 為底部按鈕預留空間 */
+            body {
+                padding-bottom: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 導航欄 -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="https://www.gtv168.com/" target="_blank" class="logo">
+                <img src="https://scontent.ftpe8-3.fna.fbcdn.net/v/t39.30808-6/327182691_765691754979994_581615707160418374_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=YmwpN9nab5gQ7kNvwEXMFnm&_nc_oc=AdnippgN86g_C-ievO8eTPHP9q8TdF0FGJoZqB1rhPJNWI6YFX6fviuZEigqXBEwK7U&_nc_zt=23&_nc_ht=scontent.ftpe8-3.fna&_nc_gid=mzhBw0rZKz26zwxKogGGrg&oh=00_AffjHibj5tttpdAocq5Fe2_ZuSIOtHgeGjniowr34Q_6uA&oe=68F6552D" 
+                     alt="全球商聯會 Logo" 
+                     style="height: clamp(28px, 4vw, 36px); width: auto; object-fit: contain;">
+                <span style="margin-left: var(--spacing-xs); font-size: var(--font-sm);">全球商聯會</span>
+            </a>
+            
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="切換選單">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">首頁</a></li>
+                <li><a href="https://www.gtv168.com/" target="_blank">官方網站</a></li>
+                <li><a href="#news">最新消息</a></li>
+                <li><a href="#services">紓困服務</a></li>
+                <li><a href="#process">操作說明</a></li>
+                <li><a href="#about">關於總會</a></li>
+                <li><a href="#links">線上服務</a></li>
+                <li><a href="#contact">聯絡我們</a></li>
+                <li><a href="https://lin.ee/vnKndFa" target="_blank" class="cta-button">LINE 諮詢</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 英雄區 -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div style="margin-bottom: var(--spacing-sm); animation: fadeInUp 0.8s ease;">
+                    <img src="https://scontent.ftpe8-3.fna.fbcdn.net/v/t39.30808-6/327182691_765691754979994_581615707160418374_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=YmwpN9nab5gQ7kNvwEXMFnm&_nc_oc=AdnippgN86g_C-ievO8eTPHP9q8TdF0FGJoZqB1rhPJNWI6YFX6fviuZEigqXBEwK7U&_nc_zt=23&_nc_ht=scontent.ftpe8-3.fna&_nc_gid=mzhBw0rZKz26zwxKogGGrg&oh=00_AffjHibj5tttpdAocq5Fe2_ZuSIOtHgeGjniowr34Q_6uA&oe=68F6552D" 
+                         alt="全球商聯會" 
+                         style="max-width: clamp(100px, 20vw, 140px); height: auto; margin: 0 auto; filter: drop-shadow(0 6px 15px rgba(0,0,0,0.25));">
+                </div>
+                <h1 class="hero-title">全球商聯會總會 公益慈善聯合平台</h1>
+                <p class="hero-subtitle">善行天下 · 凝聚愛心 · 傳遞溫暖</p>
+                <p class="hero-description">
+                    全球商聯會致力於推動公益慈善事業，承載著凝聚愛心、傳遞溫暖、促進社會和諧的使命。在全球化的時代背景下，我們不僅是台灣各界愛心人士共襄善舉的重要平台，更是推動社會進步、翻轉經濟的關鍵力量。
+                </p>
+                <div class="hero-buttons">
+                    <a href="https://lin.ee/vnKndFa" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-line"></i>
+                        加入 LINE 官方帳號
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-phone"></i>
+                        電話諮詢
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 統計數據 -->
+    <section style="padding: var(--spacing-lg) var(--spacing-md); background: linear-gradient(135deg, rgba(15,76,129,0.03), rgba(30,107,184,0.03));">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr)); gap: var(--spacing-sm); text-align: center;">
+                <div style="padding: var(--spacing-md); background: white; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); transition: var(--transition-base);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.transform=''; this.style.boxShadow='var(--shadow-sm)'">
+                    <div style="font-size: var(--font-3xl); font-weight: 800; color: var(--primary-color); margin-bottom: var(--spacing-xs);" data-stat>10+</div>
+                    <div style="font-size: var(--font-xs); color: var(--text-gray); font-weight: 600;">服務年資</div>
+                </div>
+                <div style="padding: var(--spacing-md); background: white; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); transition: var(--transition-base);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.transform=''; this.style.boxShadow='var(--shadow-sm)'">
+                    <div style="font-size: var(--font-3xl); font-weight: 800; color: var(--secondary-color); margin-bottom: var(--spacing-xs);" data-stat>5000+</div>
+                    <div style="font-size: var(--font-xs); color: var(--text-gray); font-weight: 600;">服務客戶</div>
+                </div>
+                <div style="padding: var(--spacing-md); background: white; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); transition: var(--transition-base);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.transform=''; this.style.boxShadow='var(--shadow-sm)'">
+                    <div style="font-size: var(--font-3xl); font-weight: 800; color: var(--accent-color); margin-bottom: var(--spacing-xs);" data-stat>98%</div>
+                    <div style="font-size: var(--font-xs); color: var(--text-gray); font-weight: 600;">客戶滿意度</div>
+                </div>
+                <div style="padding: var(--spacing-md); background: white; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); transition: var(--transition-base);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.transform=''; this.style.boxShadow='var(--shadow-sm)'">
+                    <div style="font-size: var(--font-3xl); font-weight: 800; color: var(--primary-light); margin-bottom: var(--spacing-xs);" data-stat>24h</div>
+                    <div style="font-size: var(--font-xs); color: var(--text-gray); font-weight: 600;">快速回應</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最新動態 -->
+    <section id="news" style="padding: var(--spacing-lg) var(--spacing-md); background: white;">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">最新消息</p>
+                <h2 class="section-title">活動報導與最新動態</h2>
+                <p class="section-description">
+                    全球商聯會最新活動報導與重要公告
+                </p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: var(--spacing-md); margin-top: var(--spacing-md);">
+                <!-- 千人公益慈善春酒宴 -->
+                <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); border: 2px solid var(--secondary-color); border-radius: var(--radius-lg); padding: var(--spacing-lg); box-shadow: var(--shadow-md); transition: var(--transition-base);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='var(--shadow-xl)'" onmouseout="this.style.transform=''; this.style.boxShadow='var(--shadow-md)'">
+                    <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-md);">
+                        <div style="font-size: var(--font-2xl); width: 56px; height: 56px; background: linear-gradient(135deg, var(--secondary-color), #f59e0b); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: var(--shadow-md);">
+                            🎊
+                    </div>
+                        <div>
+                            <h3 style="font-size: var(--font-lg); font-weight: 700; color: var(--primary-dark); margin-bottom: var(--spacing-xs);">千人公益慈善春酒宴</h3>
+                            <p style="font-size: var(--font-xs); color: var(--text-gray); font-weight: 600;">2025年3月30日 圓滿成功</p>
+                        </div>
+                    </div>
+                    <p style="font-size: var(--font-sm); color: var(--text-gray); line-height: 1.6; margin-bottom: var(--spacing-md);">
+                        因為有您的擁戴因此才能圓滿成功💖 推動公益慈善活動是百年大計，未來還需要您持續的支持，大家一起來累積福報功德圓滿。
+                    </p>
+                    <div style="background: white; border-radius: var(--radius-md); padding: var(--spacing-md); margin-bottom: var(--spacing-sm);">
+                        <h4 style="font-size: var(--font-sm); font-weight: 700; color: var(--primary-color); margin-bottom: var(--spacing-sm); display: flex; align-items: center; gap: var(--spacing-xs);">
+                            <i class="fas fa-newspaper"></i> 媒體報導
+                        </h4>
+                        <div style="display: grid; gap: var(--spacing-xs);">
+                            <a href="https://youtu.be/dkS1pp-J0ig" target="_blank" style="display: flex; align-items: center; gap: var(--spacing-xs); padding: var(--spacing-xs) var(--spacing-sm); background: var(--bg-light); border-radius: var(--radius-sm); text-decoration: none; color: var(--text-dark); font-size: var(--font-xs); transition: var(--transition-fast); border-left: 3px solid #dc2626;" onmouseover="this.style.backgroundColor='#fee2e2'; this.style.transform='translateX(3px)'" onmouseout="this.style.backgroundColor='var(--bg-light)'; this.style.transform=''">
+                                <i class="fab fa-youtube" style="color: #dc2626;"></i>
+                                <span style="font-weight: 600;">全球電視台</span>
+                            </a>
+                            <a href="https://metanews.topo.com.tw/01-1178/" target="_blank" style="display: flex; align-items: center; gap: var(--spacing-xs); padding: var(--spacing-xs) var(--spacing-sm); background: var(--bg-light); border-radius: var(--radius-sm); text-decoration: none; color: var(--text-dark); font-size: var(--font-xs); transition: var(--transition-fast); border-left: 3px solid var(--primary-color);" onmouseover="this.style.backgroundColor='#dbeafe'; this.style.transform='translateX(3px)'" onmouseout="this.style.backgroundColor='var(--bg-light)'; this.style.transform=''">
+                                <i class="fas fa-globe"></i>
+                                <span style="font-weight: 600;">產經新聞</span>
+                            </a>
+                            <a href="https://sinanews9.wordpress.com/2025/03/31/01-34/" target="_blank" style="display: flex; align-items: center; gap: var(--spacing-xs); padding: var(--spacing-xs) var(--spacing-sm); background: var(--bg-light); border-radius: var(--radius-sm); text-decoration: none; color: var(--text-dark); font-size: var(--font-xs); transition: var(--transition-fast); border-left: 3px solid #8b5cf6;" onmouseover="this.style.backgroundColor='#ede9fe'; this.style.transform='translateX(3px)'" onmouseout="this.style.backgroundColor='var(--bg-light)'; this.style.transform=''">
+                                <i class="fas fa-rss"></i>
+                                <span style="font-weight: 600;">網紅新聞</span>
+                            </a>
+                            <a href="https://1twnews.blogspot.com/2025/03/blog-post_31.html" target="_blank" style="display: flex; align-items: center; gap: var(--spacing-xs); padding: var(--spacing-xs) var(--spacing-sm); background: var(--bg-light); border-radius: var(--radius-sm); text-decoration: none; color: var(--text-dark); font-size: var(--font-xs); transition: var(--transition-fast); border-left: 3px solid #f59e0b;" onmouseover="this.style.backgroundColor='#fef3c7'; this.style.transform='translateX(3px)'" onmouseout="this.style.backgroundColor='var(--bg-light)'; this.style.transform=''">
+                                <i class="fas fa-newspaper"></i>
+                                <span style="font-weight: 600;">文化新聞報</span>
+                            </a>
+                            <a href="https://worldrnnews.blogspot.com/2025/03/blog-post_31.html" target="_blank" style="display: flex; align-items: center; gap: var(--spacing-xs); padding: var(--spacing-xs) var(--spacing-sm); background: var(--bg-light); border-radius: var(--radius-sm); text-decoration: none; color: var(--text-dark); font-size: var(--font-xs); transition: var(--transition-fast); border-left: 3px solid #16a34a;" onmouseover="this.style.backgroundColor='#dcfce7'; this.style.transform='translateX(3px)'" onmouseout="this.style.backgroundColor='var(--bg-light)'; this.style.transform=''">
+                                <i class="fas fa-globe-asia"></i>
+                                <span style="font-weight: 600;">環球網</span>
+                            </a>
+                            <a href="https://site16888.wordpress.com/2025/03/31/01-152/" target="_blank" style="display: flex; align-items: center; gap: var(--spacing-xs); padding: var(--spacing-xs) var(--spacing-sm); background: var(--bg-light); border-radius: var(--radius-sm); text-decoration: none; color: var(--text-dark); font-size: var(--font-xs); transition: var(--transition-fast); border-left: 3px solid #0891b2;" onmouseover="this.style.backgroundColor='#cffafe'; this.style.transform='translateX(3px)'" onmouseout="this.style.backgroundColor='var(--bg-light)'; this.style.transform=''">
+                                <i class="fas fa-balance-scale"></i>
+                                <span style="font-weight: 600;">公正新聞</span>
+                            </a>
+                            <a href="https://168sinanews.blogspot.com/2025/03/blog-post_31.html" target="_blank" style="display: flex; align-items: center; gap: var(--spacing-xs); padding: var(--spacing-xs) var(--spacing-sm); background: var(--bg-light); border-radius: var(--radius-sm); text-decoration: none; color: var(--text-dark); font-size: var(--font-xs); transition: var(--transition-fast); border-left: 3px solid #ec4899;" onmouseover="this.style.backgroundColor='#fce7f3'; this.style.transform='translateX(3px)'" onmouseout="this.style.backgroundColor='var(--bg-light)'; this.style.transform=''">
+                                <i class="fas fa-handshake"></i>
+                                <span style="font-weight: 600;">兩岸新聞報</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 徵召公益慈善分會 -->
+                <div style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(99, 102, 241, 0.1)); border: 2px solid #8b5cf6; border-radius: var(--radius-lg); padding: var(--spacing-lg); box-shadow: var(--shadow-md); transition: var(--transition-base);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='var(--shadow-xl)'" onmouseout="this.style.transform=''; this.style.boxShadow='var(--shadow-md)'">
+                    <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-md);">
+                        <div style="font-size: var(--font-2xl); width: 56px; height: 56px; background: linear-gradient(135deg, #8b5cf6, #6366f1); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: var(--shadow-md); color: white;">
+                            <i class="fas fa-users"></i>
+                    </div>
+                        <div>
+                            <h3 style="font-size: var(--font-lg); font-weight: 700; color: #5b21b6; margin-bottom: var(--spacing-xs);">徵召志同道合夥伴</h3>
+                            <p style="font-size: var(--font-xs); color: var(--text-gray); font-weight: 600;">成立公益慈善分會</p>
+                        </div>
+                    </div>
+                    <p style="font-size: var(--font-sm); color: var(--text-gray); line-height: 1.6; margin-bottom: var(--spacing-md);">
+                        誠摯邀請志同道合的朋友們一起來完成推動「全民公益翻轉經濟」的目標，攜手共創美好未來。
+                    </p>
+                    <a href="https://www.pinews.asia/News/Info/11595" target="_blank" style="display: inline-flex; align-items: center; gap: var(--spacing-sm); padding: var(--spacing-sm) var(--spacing-lg); background: linear-gradient(135deg, #8b5cf6, #6366f1); color: white; border-radius: var(--radius-md); text-decoration: none; font-weight: 600; font-size: var(--font-sm); box-shadow: var(--shadow-sm); transition: var(--transition-base);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.transform=''; this.style.boxShadow='var(--shadow-sm)'">
+                        <i class="fas fa-arrow-right"></i>
+                        <span>了解詳情</span>
+                    </a>
+                    <div style="margin-top: var(--spacing-md); padding: var(--spacing-sm); background: white; border-radius: var(--radius-sm); border-left: 4px solid #8b5cf6;">
+                        <p style="font-size: var(--font-xs); color: var(--text-gray); line-height: 1.5;">
+                            <strong style="color: #5b21b6;">💡 目標：</strong>推動全民公益翻轉經濟
+                        </p>
+                </div>
+            </div>
+
+                <!-- 招募公益慈善特約商 -->
+                <div style="background: linear-gradient(135deg, rgba(22, 163, 74, 0.1), rgba(34, 197, 94, 0.1)); border: 2px solid var(--accent-color); border-radius: var(--radius-lg); padding: var(--spacing-lg); box-shadow: var(--shadow-md); transition: var(--transition-base);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='var(--shadow-xl)'" onmouseout="this.style.transform=''; this.style.boxShadow='var(--shadow-md)'">
+                    <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-md);">
+                        <div style="font-size: var(--font-2xl); width: 56px; height: 56px; background: linear-gradient(135deg, #16a34a, #22c55e); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: var(--shadow-md); color: white;">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <div>
+                            <h3 style="font-size: var(--font-lg); font-weight: 700; color: #15803d; margin-bottom: var(--spacing-xs);">誠邀加入公益行列</h3>
+                            <p style="font-size: var(--font-xs); color: var(--text-gray); font-weight: 600;">成為公益慈善特約店家</p>
+                        </div>
+                    </div>
+                    <p style="font-size: var(--font-sm); color: var(--text-gray); line-height: 1.8; margin-bottom: var(--spacing-md);">
+                        啟動全球共襄盛舉，納百川、興百業、互為貴人、善行天下！<br>
+                        誠摯邀請各界優質商家加入我們的公益慈善網絡，攜手打造愛心消費生態圈，讓每一次交易都成為傳遞溫暖的力量。
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: var(--spacing-xs); margin-bottom: var(--spacing-md);">
+                        <div style="display: flex; align-items: center; gap: var(--spacing-xs); font-size: var(--font-xs); color: var(--text-gray);">
+                            <i class="fas fa-check-circle" style="color: var(--accent-color);"></i>
+                            <span>提升品牌形象</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: var(--spacing-xs); font-size: var(--font-xs); color: var(--text-gray);">
+                            <i class="fas fa-check-circle" style="color: var(--accent-color);"></i>
+                            <span>拓展客戶資源</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: var(--spacing-xs); font-size: var(--font-xs); color: var(--text-gray);">
+                            <i class="fas fa-check-circle" style="color: var(--accent-color);"></i>
+                            <span>參與公益善舉</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: var(--spacing-xs); font-size: var(--font-xs); color: var(--text-gray);">
+                            <i class="fas fa-check-circle" style="color: var(--accent-color);"></i>
+                            <span>共享會員網絡</span>
+                        </div>
+                    </div>
+                    <a href="https://www.pinews.asia/News/Info/8169" target="_blank" style="display: inline-flex; align-items: center; gap: var(--spacing-sm); padding: var(--spacing-md) var(--spacing-xl); background: linear-gradient(135deg, #16a34a, #22c55e); color: white; border-radius: var(--radius-md); text-decoration: none; font-weight: 700; font-size: var(--font-md); box-shadow: var(--shadow-md); transition: var(--transition-base);" onmouseover="this.style.transform='translateY(-3px) scale(1.02)'; this.style.boxShadow='var(--shadow-xl)'" onmouseout="this.style.transform=''; this.style.boxShadow='var(--shadow-md)'">
+                        <i class="fas fa-handshake"></i>
+                        <span>立即申請加入</span>
+                    </a>
+                    <div style="margin-top: var(--spacing-md); padding: var(--spacing-md); background: white; border-radius: var(--radius-md); border-left: 4px solid var(--accent-color);">
+                        <p style="font-size: var(--font-sm); color: var(--text-gray); line-height: 1.8; margin-bottom: var(--spacing-xs);">
+                            <strong style="color: #15803d; font-size: var(--font-md);">🌟 我們的願景</strong>
+                        </p>
+                        <p style="font-size: var(--font-xs); color: var(--text-gray); line-height: 1.6;">
+                            納百川匯聚愛心力量，興百業促進經濟發展，<br>
+                            互為貴人共創雙贏局面，善行天下傳遞社會溫暖
+                        </p>
+                    </div>
+                </div>
+                    </div>
+                </div>
+    </section>
+
+    <!-- 紓困服務 CTA -->
+    <section id="services" style="padding: var(--spacing-xl) var(--spacing-md); background: linear-gradient(135deg, rgba(15,76,129,0.05), rgba(30,107,184,0.05));">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto; text-align: center; padding: var(--spacing-2xl) var(--spacing-lg); background: white; border-radius: var(--radius-lg); box-shadow: var(--shadow-xl); border: 2px solid var(--primary-color);">
+                <div style="width: 80px; height: 80px; background: var(--bg-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-lg); box-shadow: var(--shadow-lg);">
+                    <i class="fas fa-hand-holding-usd" style="font-size: var(--font-3xl); color: white;"></i>
+                    </div>
+                <h2 style="font-size: var(--font-3xl); font-weight: 700; color: var(--text-dark); margin-bottom: var(--spacing-md);">專業紓困服務</h2>
+                <p style="font-size: var(--font-base); color: var(--text-gray); margin-bottom: var(--spacing-sm); line-height: 1.8;">
+                    個人與企業專業紓困方案<br>
+                    快速審核 · 條件寬鬆 · 安全保密 · 全程協助
+                </p>
+                <div style="display: flex; gap: var(--spacing-xs); justify-content: center; flex-wrap: wrap; margin: var(--spacing-lg) 0;">
+                    <span style="padding: var(--spacing-xs) var(--spacing-md); background: var(--bg-light); border-radius: var(--radius-full); font-size: var(--font-xs); color: var(--text-gray); border: 1px solid var(--border-color);">
+                        <i class="fas fa-check" style="color: var(--accent-color);"></i> 快速審核
+                    </span>
+                    <span style="padding: var(--spacing-xs) var(--spacing-md); background: var(--bg-light); border-radius: var(--radius-full); font-size: var(--font-xs); color: var(--text-gray); border: 1px solid var(--border-color);">
+                        <i class="fas fa-check" style="color: var(--accent-color);"></i> 條件寬鬆
+                    </span>
+                    <span style="padding: var(--spacing-xs) var(--spacing-md); background: var(--bg-light); border-radius: var(--radius-full); font-size: var(--font-xs); color: var(--text-gray); border: 1px solid var(--border-color);">
+                        <i class="fas fa-check" style="color: var(--accent-color);"></i> 安全保密
+                    </span>
+                    <span style="padding: var(--spacing-xs) var(--spacing-md); background: var(--bg-light); border-radius: var(--radius-full); font-size: var(--font-xs); color: var(--text-gray); border: 1px solid var(--border-color);">
+                        <i class="fas fa-check" style="color: var(--accent-color);"></i> 專業團隊
+                    </span>
+                    </div>
+                <div style="margin-top: var(--spacing-xl);">
+                    <a href="relief-services.html" style="display: inline-flex; align-items: center; gap: var(--spacing-sm); padding: var(--spacing-lg) var(--spacing-2xl); background: var(--bg-gradient); color: white; text-decoration: none; border-radius: var(--radius-md); font-size: var(--font-base); font-weight: 600; box-shadow: var(--shadow-lg); transition: var(--transition-base);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='var(--shadow-xl)'" onmouseout="this.style.transform=''; this.style.boxShadow='var(--shadow-lg)'">
+                        <i class="fas fa-arrow-right"></i>
+                        查看詳細紓困方案
+                    </a>
+                </div>
+                <p style="font-size: var(--font-xs); color: var(--text-light); margin-top: var(--spacing-md);">
+                    個人紓困 · 企業紓困 · 準備資料 · 申請流程
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 操作流程 -->
+    <section class="process" id="process" style="padding: var(--spacing-lg) var(--spacing-md); background: white; position: relative; z-index: 1;">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">操作說明</p>
+                <h2 class="section-title">服務流程</h2>
+                <p class="section-description">
+                    支付店家、企業兌換、紓困申請，清楚明瞭的操作流程
+                </p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-md); margin-top: var(--spacing-md); position: relative; z-index: 2;">
+                <!-- 支付店家流程 -->
+                <div style="background: white; border: 2px solid var(--secondary-color); border-radius: var(--radius-lg); padding: var(--spacing-md); transition: var(--transition-base); box-shadow: var(--shadow-sm);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.transform=''; this.style.boxShadow='var(--shadow-sm)'">
+                    <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm); padding-bottom: var(--spacing-sm); border-bottom: 2px solid var(--secondary-color);">
+                        <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #d4af37, #f1c40f); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;">🧧</div>
+                        <div>
+                            <h3 style="font-size: var(--font-md); font-weight: 700; color: #1a202c; margin: 0;">支付店家</h3>
+                            <p style="font-size: var(--font-xs); color: #4a5568; margin: 0;">福利點數購物</p>
+                        </div>
+                    </div>
+                    <ul style="list-style: none; padding: 0; margin: 0 0 var(--spacing-sm) 0;">
+                        <li style="display: flex; align-items: start; gap: var(--spacing-xs); padding: 0.2rem 0; font-size: var(--font-sm); color: #1a202c;"><span style="color: #d4af37; font-weight: 700; flex-shrink: 0;">1.</span><span>點選支付店家</span></li>
+                        <li style="display: flex; align-items: start; gap: var(--spacing-xs); padding: 0.2rem 0; font-size: var(--font-sm); color: #1a202c;"><span style="color: #d4af37; font-weight: 700; flex-shrink: 0;">2.</span><span>輸入店家電話</span></li>
+                        <li style="display: flex; align-items: start; gap: var(--spacing-xs); padding: 0.2rem 0; font-size: var(--font-sm); color: #1a202c;"><span style="color: #d4af37; font-weight: 700; flex-shrink: 0;">3.</span><span>點選福利pay</span></li>
+                        <li style="display: flex; align-items: start; gap: var(--spacing-xs); padding: 0.2rem 0; font-size: var(--font-sm); color: #1a202c;"><span style="color: #d4af37; font-weight: 700; flex-shrink: 0;">4.</span><span>輸入點數後送出</span></li>
+                    </ul>
+                    <a href="https://linevoom.line.me/post/1174351556111234580" target="_blank" style="display: inline-flex; align-items: center; justify-content: center; gap: var(--spacing-xs); padding: var(--spacing-md) var(--spacing-lg); background: var(--secondary-color); color: white; border-radius: var(--radius-md); text-decoration: none; font-size: var(--font-sm); font-weight: 700; transition: var(--transition-base); cursor: pointer; box-shadow: var(--shadow-sm); width: 100%;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform=''; this.style.boxShadow='var(--shadow-sm)'">
+                        <i class="fas fa-images"></i>查看圖片教學
+                    </a>
+                </div>
+
+                <!-- 企業兌換流程 -->
+                <div style="background: white; border: 2px solid var(--accent-color); border-radius: var(--radius-lg); padding: var(--spacing-md); transition: var(--transition-base); box-shadow: var(--shadow-sm);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.transform=''; this.style.boxShadow='var(--shadow-sm)'">
+                    <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm); padding-bottom: var(--spacing-sm); border-bottom: 2px solid var(--accent-color);">
+                        <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #16a34a, #22c55e); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;">💎</div>
+                        <div>
+                            <h3 style="font-size: var(--font-md); font-weight: 700; color: #1a202c; margin: 0;">企業兌換</h3>
+                            <p style="font-size: var(--font-xs); color: #4a5568; margin: 0;">點數提現流程</p>
+                        </div>
+                    </div>
+                    <ul style="list-style: none; padding: 0; margin: 0 0 var(--spacing-sm) 0;">
+                        <li style="display: flex; align-items: start; gap: var(--spacing-xs); padding: 0.2rem 0; font-size: var(--font-sm); color: #1a202c;"><span style="color: #16a34a; font-weight: 700; flex-shrink: 0;">1.</span><span>點選企業兌換</span></li>
+                        <li style="display: flex; align-items: start; gap: var(--spacing-xs); padding: 0.2rem 0; font-size: var(--font-sm); color: #1a202c;"><span style="color: #16a34a; font-weight: 700; flex-shrink: 0;">2.</span><span>點選兌換的放大鏡</span></li>
+                        <li style="display: flex; align-items: start; gap: var(--spacing-xs); padding: 0.2rem 0; font-size: var(--font-sm); color: #1a202c;"><span style="color: #16a34a; font-weight: 700; flex-shrink: 0;">3.</span><span>每1000為單位輸入資料</span></li>
+                        <li style="display: flex; align-items: start; gap: var(--spacing-xs); padding: 0.2rem 0; font-size: var(--font-sm); color: #1a202c;"><span style="color: #16a34a; font-weight: 700; flex-shrink: 0;">4.</span><span>週一下午6點前會收到上週提領</span></li>
+                    </ul>
+                    <a href="https://linevoom.line.me/post/1174351587511250364" target="_blank" style="display: inline-flex; align-items: center; justify-content: center; gap: var(--spacing-xs); padding: var(--spacing-md) var(--spacing-lg); background: var(--accent-color); color: white; border-radius: var(--radius-md); text-decoration: none; font-size: var(--font-sm); font-weight: 700; transition: var(--transition-base); cursor: pointer; box-shadow: var(--shadow-sm); width: 100%;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform=''; this.style.boxShadow='var(--shadow-sm)'">
+                        <i class="fas fa-images"></i>查看圖片教學
+                    </a>
+                </div>
+
+                <!-- 紓困申請流程 -->
+                <div style="background: white; border: 2px solid var(--primary-color); border-radius: var(--radius-lg); padding: var(--spacing-md); transition: var(--transition-base); box-shadow: var(--shadow-sm);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.transform=''; this.style.boxShadow='var(--shadow-sm)'">
+                    <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm); padding-bottom: var(--spacing-sm); border-bottom: 2px solid var(--primary-color);">
+                        <div style="width: 36px; height: 36px; background: var(--bg-gradient); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;">📋</div>
+                        <div>
+                            <h3 style="font-size: var(--font-md); font-weight: 700; color: #1a202c; margin: 0;">紓困申請</h3>
+                            <p style="font-size: var(--font-xs); color: #4a5568; margin: 0;">資金申請流程</p>
+                        </div>
+                    </div>
+                    <ul style="list-style: none; padding: 0; margin: 0 0 var(--spacing-sm) 0;">
+                        <li style="display: flex; align-items: start; gap: var(--spacing-xs); padding: 0.2rem 0; font-size: var(--font-sm); color: #1a202c;"><span style="color: #0f4c81; font-weight: 700; flex-shrink: 0;">1.</span><span>聯絡諮詢</span></li>
+                        <li style="display: flex; align-items: start; gap: var(--spacing-xs); padding: 0.2rem 0; font-size: var(--font-sm); color: #1a202c;"><span style="color: #0f4c81; font-weight: 700; flex-shrink: 0;">2.</span><span>準備資料</span></li>
+                        <li style="display: flex; align-items: start; gap: var(--spacing-xs); padding: 0.2rem 0; font-size: var(--font-sm); color: #1a202c;"><span style="color: #0f4c81; font-weight: 700; flex-shrink: 0;">3.</span><span>送件審核</span></li>
+                        <li style="display: flex; align-items: start; gap: var(--spacing-xs); padding: 0.2rem 0; font-size: var(--font-sm); color: #1a202c;"><span style="color: #0f4c81; font-weight: 700; flex-shrink: 0;">4.</span><span>核准撥款</span></li>
+                    </ul>
+                    <a href="#contact" style="display: inline-flex; align-items: center; justify-content: center; gap: var(--spacing-xs); padding: var(--spacing-md) var(--spacing-lg); background: var(--primary-color); color: white; border-radius: var(--radius-md); text-decoration: none; font-size: var(--font-sm); font-weight: 700; transition: var(--transition-base); cursor: pointer; box-shadow: var(--shadow-sm); width: 100%;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform=''; this.style.boxShadow='var(--shadow-sm)'">
+                        <i class="fas fa-phone"></i>立即諮詢
+                    </a>
+                </div>
+            </div>
+            
+            <style>
+                /* 服務流程響應式布局 - 手機保持多欄 */
+                @media (max-width: 1024px) and (min-width: 481px) {
+                    #process .container > div:last-of-type {
+                        grid-template-columns: repeat(2, 1fr) !important;
+                    }
+                }
+                @media (max-width: 480px) {
+                    #process .container > div:last-of-type {
+                        grid-template-columns: 1fr !important;
+                    }
+                    #process .process-card {
+                        padding: var(--spacing-sm) !important;
+                    }
+                }
+            </style>
+        </div>
+    </section>
+
+    <!-- 快速連結 -->
+    <section id="links" style="padding: var(--spacing-lg) var(--spacing-md); background-color: white;">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">快速連結</p>
+                <h2 class="section-title">線上服務平台</h2>
+                <p class="section-description">
+                    便捷的線上服務，隨時隨地管理您的帳戶與查看資訊
+                </p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--spacing-md); margin-top: var(--spacing-md);">
+                <!-- 全球商聯會電子書 - 特別突出 -->
+                <a href="https://pse.is/4ll9us" target="_blank" style="display: block; padding: var(--spacing-md); background: linear-gradient(135deg, #8b5cf6, #6366f1); color: white; border-radius: var(--radius-md); box-shadow: var(--shadow-md); transition: var(--transition-base); text-decoration: none; border: 2px solid #a78bfa; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='var(--shadow-xl)'" onmouseout="this.style.transform=''; this.style.boxShadow='var(--shadow-md)'">
+                    <div style="position: absolute; top: -8px; right: -8px; background: #ef4444; color: white; padding: 0.2rem 0.6rem; font-size: var(--font-xs); font-weight: 700; border-radius: var(--radius-sm); transform: rotate(15deg); box-shadow: var(--shadow-sm);">
+                        推薦
+                    </div>
+                    <div style="font-size: var(--font-xl); margin-bottom: var(--spacing-sm); width: 44px; height: 44px; background: rgba(255,255,255,0.25); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-left: auto; margin-right: auto;">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3 style="font-size: var(--font-md); font-weight: 700; margin-bottom: var(--spacing-xs); text-align: center;">電子書</h3>
+                    <p style="font-size: var(--font-xs); opacity: 0.95; margin-bottom: var(--spacing-xs); line-height: 1.5; text-align: center;">含語音說明</p>
+                </a>
+
+                <!-- 官方首頁 -->
+                <a href="https://www.gtv168.com/" target="_blank" style="display: block; padding: var(--spacing-md); background: linear-gradient(135deg, #0f4c81, #1e6bb8); color: white; border-radius: var(--radius-md); box-shadow: var(--shadow-md); transition: var(--transition-base); text-decoration: none; border: 1px solid transparent;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='var(--shadow-xl)'" onmouseout="this.style.transform=''; this.style.boxShadow='var(--shadow-md)'">
+                    <div style="font-size: var(--font-xl); margin-bottom: var(--spacing-sm); width: 44px; height: 44px; background: rgba(255,255,255,0.2); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-left: auto; margin-right: auto;">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 style="font-size: var(--font-md); font-weight: 700; margin-bottom: var(--spacing-xs); text-align: center;">官方首頁</h3>
+                    <p style="font-size: var(--font-xs); opacity: 0.9; text-align: center;">官方網站</p>
+                </a>
+
+                <!-- 點數登入 -->
+                <a href="https://apex.oracle.com/pls/apex/f?p=2502100:20::::::" target="_blank" style="display: block; padding: var(--spacing-md); background: linear-gradient(135deg, #d4af37, #f1c40f); color: var(--primary-dark); border-radius: var(--radius-md); box-shadow: var(--shadow-md); transition: var(--transition-base); text-decoration: none; border: 1px solid transparent;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='var(--shadow-xl)'" onmouseout="this.style.transform=''; this.style.boxShadow='var(--shadow-md)'">
+                    <div style="font-size: var(--font-xl); margin-bottom: var(--spacing-sm); width: 44px; height: 44px; background: rgba(15,76,129,0.15); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-left: auto; margin-right: auto;">
+                        <i class="fas fa-sign-in-alt"></i>
+                    </div>
+                    <h3 style="font-size: var(--font-md); font-weight: 700; margin-bottom: var(--spacing-xs); text-align: center;">點數登入</h3>
+                    <p style="font-size: var(--font-xs); opacity: 0.9; text-align: center;">福利點數管理</p>
+                </a>
+
+                <!-- 公益慈善店家 -->
+                <a href="http://www.gtv168.cc/myshop/" target="_blank" style="display: block; padding: var(--spacing-md); background: linear-gradient(135deg, #16a34a, #22c55e); color: white; border-radius: var(--radius-md); box-shadow: var(--shadow-md); transition: var(--transition-base); text-decoration: none; border: 1px solid transparent;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='var(--shadow-xl)'" onmouseout="this.style.transform=''; this.style.boxShadow='var(--shadow-md)'">
+                    <div style="font-size: var(--font-xl); margin-bottom: var(--spacing-sm); width: 44px; height: 44px; background: rgba(255,255,255,0.2); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-left: auto; margin-right: auto;">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3 style="font-size: var(--font-md); font-weight: 700; margin-bottom: var(--spacing-xs); text-align: center;">公益店家</h3>
+                    <p style="font-size: var(--font-xs); opacity: 0.9; text-align: center;">愛心消費</p>
+                </a>
+            </div>
+            
+            <style>
+                /* 響應式4欄布局 - 手機保持2欄 */
+                @media (max-width: 1024px) and (min-width: 481px) {
+                    #links .container > div {
+                        grid-template-columns: repeat(2, 1fr) !important;
+                    }
+                }
+                @media (max-width: 480px) {
+                    #links .container > div {
+                        grid-template-columns: repeat(2, 1fr) !important;
+                        gap: var(--spacing-sm) !important;
+                    }
+                    #links a {
+                        padding: var(--spacing-sm) !important;
+                    }
+                    #links h3 {
+                        font-size: var(--font-sm) !important;
+                    }
+                }
+            </style>
+        </div>
+    </section>
+
+    <!-- 關於全球商聯會 -->
+    <section id="about" style="padding: var(--spacing-lg) var(--spacing-md); background: var(--bg-light);">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">認識我們</p>
+                <h2 class="section-title">全球商聯會組織架構</h2>
+                <p class="section-description">
+                    專業完整的組織體系，為您提供全方位的服務
+                </p>
+            </div>
+            
+            <!-- 歷年榮譽總會長 -->
+            <div style="margin-bottom: var(--spacing-lg);">
+                <h3 style="font-size: var(--font-lg); font-weight: 700; color: var(--primary-color); text-align: center; margin-bottom: var(--spacing-md); display: flex; align-items: center; justify-content: center; gap: var(--spacing-xs);">
+                    <i class="fas fa-trophy" style="color: var(--secondary-color);"></i>
+                    歷年榮譽總會長
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: var(--spacing-md);">
+                    <a href="https://www.gtv168.com/%E5%89%AF%E6%9C%AC-%E5%85%A8%E7%90%83%E7%B8%BD%E6%9C%83%E9%95%B7" target="_blank" style="display: block; padding: var(--spacing-lg); background: linear-gradient(135deg, #fef3c7, #fde68a); border: 2px solid var(--secondary-color); border-radius: var(--radius-md); text-align: center; transition: var(--transition-base); text-decoration: none; box-shadow: var(--shadow-sm);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.transform=''; this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="font-size: var(--font-3xl); margin-bottom: var(--spacing-xs);">🏆</div>
+                        <div style="font-size: var(--font-md); font-weight: 700; color: var(--primary-dark); margin-bottom: var(--spacing-xs);">2022 年度</div>
+                        <div style="font-size: var(--font-base); color: var(--text-dark); font-weight: 600;">榮譽總會長</div>
+                    </a>
+                    <a href="https://www.gtv168.com/%E5%89%AF%E6%9C%AC-%E5%85%A8%E7%90%83%E7%B8%BD%E6%9C%83%E9%95%B7" target="_blank" style="display: block; padding: var(--spacing-lg); background: linear-gradient(135deg, #fef3c7, #fde68a); border: 2px solid var(--secondary-color); border-radius: var(--radius-md); text-align: center; transition: var(--transition-base); text-decoration: none; box-shadow: var(--shadow-sm);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.transform=''; this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="font-size: var(--font-3xl); margin-bottom: var(--spacing-xs);">🏆</div>
+                        <div style="font-size: var(--font-md); font-weight: 700; color: var(--primary-dark); margin-bottom: var(--spacing-xs);">2021 年度</div>
+                        <div style="font-size: var(--font-base); color: var(--text-dark); font-weight: 600;">榮譽總會長</div>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 組織架構網格 -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr)); gap: var(--spacing-sm); margin-top: var(--spacing-md);">
+                <a href="https://www.gtv168.com/about-8" target="_blank" style="display: block; padding: var(--spacing-md); background: white; border-radius: var(--radius-sm); border: 1px solid var(--border-color); text-align: center; transition: var(--transition-base); text-decoration: none;" onmouseover="this.style.borderColor='var(--primary-color)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform=''">
+                    <div style="font-size: var(--font-xl); color: var(--primary-color); margin-bottom: var(--spacing-xs);">👑</div>
+                    <div style="font-size: var(--font-sm); font-weight: 700; color: var(--text-dark);">創會總會長</div>
+                    <div style="font-size: var(--font-xs); color: var(--text-light); margin-top: var(--spacing-xs);">廖巳樺</div>
+                </a>
+                <a href="https://www.gtv168.com/about-5" target="_blank" style="display: block; padding: var(--spacing-md); background: white; border-radius: var(--radius-sm); border: 1px solid var(--border-color); text-align: center; transition: var(--transition-base); text-decoration: none;" onmouseover="this.style.borderColor='var(--primary-color)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform=''">
+                    <div style="font-size: var(--font-xl); color: var(--secondary-color); margin-bottom: var(--spacing-xs);">📢</div>
+                    <div style="font-size: var(--font-sm); font-weight: 700; color: var(--text-dark);">公關部</div>
+                </a>
+                <a href="https://www.gtv168.com/about-5-1" target="_blank" style="display: block; padding: var(--spacing-md); background: white; border-radius: var(--radius-sm); border: 1px solid var(--border-color); text-align: center; transition: var(--transition-base); text-decoration: none;" onmouseover="this.style.borderColor='var(--primary-color)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform=''">
+                    <div style="font-size: var(--font-xl); color: var(--primary-light); margin-bottom: var(--spacing-xs);">🌍</div>
+                    <div style="font-size: var(--font-sm); font-weight: 700; color: var(--text-dark);">國際部</div>
+                </a>
+                <a href="https://www.gtv168.com/about-5-2" target="_blank" style="display: block; padding: var(--spacing-md); background: white; border-radius: var(--radius-sm); border: 1px solid var(--border-color); text-align: center; transition: var(--transition-base); text-decoration: none;" onmouseover="this.style.borderColor='var(--primary-color)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform=''">
+                    <div style="font-size: var(--font-xl); color: var(--accent-color); margin-bottom: var(--spacing-xs);">💰</div>
+                    <div style="font-size: var(--font-sm); font-weight: 700; color: var(--text-dark);">財務部</div>
+                </a>
+                <a href="https://www.gtv168.com/about-5-3" target="_blank" style="display: block; padding: var(--spacing-md); background: white; border-radius: var(--radius-sm); border: 1px solid var(--border-color); text-align: center; transition: var(--transition-base); text-decoration: none;" onmouseover="this.style.borderColor='var(--primary-color)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform=''">
+                    <div style="font-size: var(--font-xl); color: var(--primary-color); margin-bottom: var(--spacing-xs);">💻</div>
+                    <div style="font-size: var(--font-sm); font-weight: 700; color: var(--text-dark);">資訊部</div>
+                </a>
+                <a href="https://www.gtv168.com/about-5-4" target="_blank" style="display: block; padding: var(--spacing-md); background: white; border-radius: var(--radius-sm); border: 1px solid var(--border-color); text-align: center; transition: var(--transition-base); text-decoration: none;" onmouseover="this.style.borderColor='var(--primary-color)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform=''">
+                    <div style="font-size: var(--font-xl); color: var(--secondary-color); margin-bottom: var(--spacing-xs);">📺</div>
+                    <div style="font-size: var(--font-sm); font-weight: 700; color: var(--text-dark);">媒體部</div>
+                </a>
+                <a href="https://www.gtv168.com/about-5-5" target="_blank" style="display: block; padding: var(--spacing-md); background: white; border-radius: var(--radius-sm); border: 1px solid var(--border-color); text-align: center; transition: var(--transition-base); text-decoration: none;" onmouseover="this.style.borderColor='var(--primary-color)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform=''">
+                    <div style="font-size: var(--font-xl); color: var(--primary-dark); margin-bottom: var(--spacing-xs);">⚖️</div>
+                    <div style="font-size: var(--font-sm); font-weight: 700; color: var(--text-dark);">法務部</div>
+                </a>
+                <a href="https://www.gtv168.com/%E7%90%86%E7%9B%A3%E4%BA%8B%E6%9C%83" target="_blank" style="display: block; padding: var(--spacing-md); background: white; border-radius: var(--radius-sm); border: 1px solid var(--border-color); text-align: center; transition: var(--transition-base); text-decoration: none;" onmouseover="this.style.borderColor='var(--primary-color)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform=''">
+                    <div style="font-size: var(--font-xl); color: var(--accent-color); margin-bottom: var(--spacing-xs);">🏛️</div>
+                    <div style="font-size: var(--font-sm); font-weight: 700; color: var(--text-dark);">理監事會</div>
+                </a>
+                <a href="https://www.gtv168.com/about-1" target="_blank" style="display: block; padding: var(--spacing-md); background: white; border-radius: var(--radius-sm); border: 1px solid var(--border-color); text-align: center; transition: var(--transition-base); text-decoration: none;" onmouseover="this.style.borderColor='var(--primary-color)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform=''">
+                    <div style="font-size: var(--font-xl); color: var(--primary-light); margin-bottom: var(--spacing-xs);">🌏</div>
+                    <div style="font-size: var(--font-sm); font-weight: 700; color: var(--text-dark);">全球各國總會</div>
+                </a>
+                <a href="https://www.gtv168.com/team-4" target="_blank" style="display: block; padding: var(--spacing-md); background: white; border-radius: var(--radius-sm); border: 1px solid var(--border-color); text-align: center; transition: var(--transition-base); text-decoration: none;" onmouseover="this.style.borderColor='var(--primary-color)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform=''">
+                    <div style="font-size: var(--font-xl); color: var(--secondary-color); margin-bottom: var(--spacing-xs);">📋</div>
+                    <div style="font-size: var(--font-sm); font-weight: 700; color: var(--text-dark);">各大委員會</div>
+                </a>
+                <a href="https://www.gtv168.com/about-5-6" target="_blank" style="display: block; padding: var(--spacing-md); background: white; border-radius: var(--radius-sm); border: 1px solid var(--border-color); text-align: center; transition: var(--transition-base); text-decoration: none;" onmouseover="this.style.borderColor='var(--primary-color)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform=''">
+                    <div style="font-size: var(--font-xl); color: var(--primary-color); margin-bottom: var(--spacing-xs);">🏢</div>
+                    <div style="font-size: var(--font-sm); font-weight: 700; color: var(--text-dark);">各區秘書處</div>
+                </a>
+                <a href="https://www.gtv168.com/about-1-1" target="_blank" style="display: block; padding: var(--spacing-md); background: white; border-radius: var(--radius-sm); border: 1px solid var(--border-color); text-align: center; transition: var(--transition-base); text-decoration: none;" onmouseover="this.style.borderColor='var(--primary-color)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform=''">
+                    <div style="font-size: var(--font-xl); color: var(--accent-color); margin-bottom: var(--spacing-xs);">📍</div>
+                    <div style="font-size: var(--font-sm); font-weight: 700; color: var(--text-dark);">各縣市總監</div>
+                </a>
+                <a href="https://www.gtv168.com/team-4-1" target="_blank" style="display: block; padding: var(--spacing-md); background: white; border-radius: var(--radius-sm); border: 1px solid var(--border-color); text-align: center; transition: var(--transition-base); text-decoration: none;" onmouseover="this.style.borderColor='var(--primary-color)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform=''">
+                    <div style="font-size: var(--font-xl); color: var(--primary-light); margin-bottom: var(--spacing-xs);">👥</div>
+                    <div style="font-size: var(--font-sm); font-weight: 700; color: var(--text-dark);">分會長</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 更多服務 -->
+    <section style="padding: var(--spacing-lg) var(--spacing-md); background: white;">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">更多服務</p>
+                <h2 class="section-title">全球商聯會服務項目</h2>
+                <p class="section-description">
+                    涵蓋教育、公益、媒體等多元化服務平台
+                </p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: var(--spacing-md); margin-top: var(--spacing-md);">
+                <!-- 全球百業達人學院 -->
+                <a href="https://www.gtv168.com/%E5%85%A8%E7%90%83%E7%99%BE%E6%A5%AD%E9%81%94%E4%BA%BA%E5%AD%B8%E9%99%A2" target="_blank" style="display: block; padding: var(--spacing-md); background: linear-gradient(135deg, #f59e0b, #f97316); color: white; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); transition: var(--transition-base); text-decoration: none;">
+                    <div style="font-size: var(--font-xl); margin-bottom: var(--spacing-sm); width: 44px; height: 44px; background: rgba(255,255,255,0.25); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-sm);">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 style="font-size: var(--font-base); font-weight: 700; text-align: center; margin-bottom: var(--spacing-xs);">百業達人學院</h3>
+                    <p style="font-size: var(--font-xs); opacity: 0.9; text-align: center;">專業培訓課程</p>
+                </a>
+
+                <!-- 全球公益慈善協會 -->
+                <a href="https://0108.7-my.com/wap/about.aspx?id=7765" target="_blank" style="display: block; padding: var(--spacing-md); background: linear-gradient(135deg, #ec4899, #f43f5e); color: white; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); transition: var(--transition-base); text-decoration: none;">
+                    <div style="font-size: var(--font-xl); margin-bottom: var(--spacing-sm); width: 44px; height: 44px; background: rgba(255,255,255,0.25); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-sm);">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 style="font-size: var(--font-base); font-weight: 700; text-align: center; margin-bottom: var(--spacing-xs);">公益慈善協會</h3>
+                    <p style="font-size: var(--font-xs); opacity: 0.9; text-align: center;">愛心公益活動</p>
+                </a>
+
+                <!-- 直播頻道 -->
+                <a href="http://118.163.216.108:8080/ords/f?p=101:1" target="_blank" style="display: block; padding: var(--spacing-md); background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); transition: var(--transition-base); text-decoration: none;">
+                    <div style="font-size: var(--font-xl); margin-bottom: var(--spacing-sm); width: 44px; height: 44px; background: rgba(255,255,255,0.25); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-sm);">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 style="font-size: var(--font-base); font-weight: 700; text-align: center; margin-bottom: var(--spacing-xs);">直播頻道</h3>
+                    <p style="font-size: var(--font-xs); opacity: 0.9; text-align: center;">線上即時直播</p>
+                </a>
+
+                <!-- 慈善庇護工場 -->
+                <a href="https://www.gtv168.com/about-2-1" target="_blank" style="display: block; padding: var(--spacing-md); background: linear-gradient(135deg, #14b8a6, #0d9488); color: white; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); transition: var(--transition-base); text-decoration: none;">
+                    <div style="font-size: var(--font-xl); margin-bottom: var(--spacing-sm); width: 44px; height: 44px; background: rgba(255,255,255,0.25); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-sm);">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 style="font-size: var(--font-base); font-weight: 700; text-align: center; margin-bottom: var(--spacing-xs);">慈善庇護工場</h3>
+                    <p style="font-size: var(--font-xs); opacity: 0.9; text-align: center;">29個庇護工場</p>
+                </a>
+
+                <!-- 玄光通功德基金會 -->
+                <a href="https://www.gtv168.com/blank-1" target="_blank" style="display: block; padding: var(--spacing-md); background: linear-gradient(135deg, #6366f1, #4f46e5); color: white; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); transition: var(--transition-base); text-decoration: none;">
+                    <div style="font-size: var(--font-xl); margin-bottom: var(--spacing-sm); width: 44px; height: 44px; background: rgba(255,255,255,0.25); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-sm);">
+                        <i class="fas fa-yin-yang"></i>
+                    </div>
+                    <h3 style="font-size: var(--font-base); font-weight: 700; text-align: center; margin-bottom: var(--spacing-xs);">玄光通</h3>
+                    <p style="font-size: var(--font-xs); opacity: 0.9; text-align: center;">功德基金會</p>
+                </a>
+
+                <!-- 歷年活動紀錄 -->
+                <a href="https://www.gtv168.com/2019%E6%B4%BB%E5%8B%95%E7%B4%80%E9%8C%84" target="_blank" style="display: block; padding: var(--spacing-md); background: linear-gradient(135deg, #f59e0b, #d97706); color: white; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); transition: var(--transition-base); text-decoration: none;">
+                    <div style="font-size: var(--font-xl); margin-bottom: var(--spacing-sm); width: 44px; height: 44px; background: rgba(255,255,255,0.25); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-sm);">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <h3 style="font-size: var(--font-base); font-weight: 700; text-align: center; margin-bottom: var(--spacing-xs);">活動紀錄</h3>
+                    <p style="font-size: var(--font-xs); opacity: 0.9; text-align: center;">歷年精彩活動</p>
+                </a>
+
+                <!-- 百業報導 -->
+                <a href="https://www.gtv168.com/blank-1" target="_blank" style="display: block; padding: var(--spacing-md); background: linear-gradient(135deg, #06b6d4, #0891b2); color: white; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); transition: var(--transition-base); text-decoration: none;">
+                    <div style="font-size: var(--font-xl); margin-bottom: var(--spacing-sm); width: 44px; height: 44px; background: rgba(255,255,255,0.25); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-sm);">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <h3 style="font-size: var(--font-base); font-weight: 700; text-align: center; margin-bottom: var(--spacing-xs);">百業報導</h3>
+                    <p style="font-size: var(--font-xs); opacity: 0.9; text-align: center;">產業新聞報導</p>
+                </a>
+
+                <!-- 會員登入 -->
+                <a href="https://oracleapex.com/ords/f?p=2502100:1" target="_blank" style="display: block; padding: var(--spacing-md); background: linear-gradient(135deg, #64748b, #475569); color: white; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); transition: var(--transition-base); text-decoration: none;">
+                    <div style="font-size: var(--font-xl); margin-bottom: var(--spacing-sm); width: 44px; height: 44px; background: rgba(255,255,255,0.25); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-sm);">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3 style="font-size: var(--font-base); font-weight: 700; text-align: center; margin-bottom: var(--spacing-xs);">會員登入</h3>
+                    <p style="font-size: var(--font-xs); opacity: 0.9; text-align: center;">會員系統入口</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 合作夥伴服務 - 勞基顧問 -->
+    <section style="padding: var(--spacing-xl) var(--spacing-md); background: linear-gradient(135deg, #0f4c81 0%, #1e6bb8 100%); position: relative; overflow: hidden;">
+        <!-- 背景裝飾 -->
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.1; pointer-events: none;">
+            <div style="position: absolute; top: -50%; right: -10%; width: 500px; height: 500px; background: white; border-radius: 50%;"></div>
+            <div style="position: absolute; bottom: -30%; left: -5%; width: 400px; height: 400px; background: white; border-radius: 50%;"></div>
+        </div>
+        
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="section-header" style="text-align: center; margin-bottom: var(--spacing-xl);">
+                <p class="section-tag" style="background: rgba(255,255,255,0.2); color: white; display: inline-block; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-xl); font-size: var(--font-sm); font-weight: 600; margin-bottom: var(--spacing-sm);">
+                    <i class="fas fa-handshake"></i> 合作夥伴服務
+                </p>
+                <h2 class="section-title" style="font-size: var(--font-3xl); font-weight: 900; color: white; margin-bottom: var(--spacing-sm);">
+                    公司勞資問題一拖再拖⋯<br>
+                    <span style="font-size: var(--font-xl); opacity: 0.95;">等到問題浮上檯面時才處理，常常已經為時已晚😫</span>
+                </h2>
+                <p class="section-description" style="color: white; opacity: 0.9; font-size: var(--font-md); max-width: 600px; margin: 0 auto;">
+                    如果您面臨勞資方面的難題，不妨尋求專業幫助<br>
+                    讓 <strong style="color: var(--secondary-color);">🌐勞基顧問股份有限公司-廖茂霖🌐</strong> 來助您一臂之力💪🏻
+                </p>
+            </div>
+            
+            <!-- 統計數據 -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr)); gap: var(--spacing-md); margin-bottom: var(--spacing-xl);">
+                <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: var(--spacing-lg); border-radius: var(--radius-lg); text-align: center; border: 1px solid rgba(255,255,255,0.2);">
+                    <div style="font-size: var(--font-4xl); font-weight: 900; color: white; margin-bottom: var(--spacing-xs);">
+                        30<span style="font-size: var(--font-xl);">年</span>
+                    </div>
+                    <div style="font-size: var(--font-sm); color: white; opacity: 0.9; font-weight: 600;">專業經營服務</div>
+                    </div>
+                <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: var(--spacing-lg); border-radius: var(--radius-lg); text-align: center; border: 1px solid rgba(255,255,255,0.2);">
+                    <div style="font-size: var(--font-4xl); font-weight: 900; color: white; margin-bottom: var(--spacing-xs);">
+                        5000<span style="font-size: var(--font-xl);">+</span>
+                    </div>
+                    <div style="font-size: var(--font-sm); color: white; opacity: 0.9; font-weight: 600;">成功輔導企業</div>
+                    </div>
+                <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: var(--spacing-lg); border-radius: var(--radius-lg); text-align: center; border: 1px solid rgba(255,255,255,0.2);">
+                    <div style="font-size: var(--font-4xl); font-weight: 900; color: white; margin-bottom: var(--spacing-xs);">
+                        NO.1
+                    </div>
+                    <div style="font-size: var(--font-sm); color: white; opacity: 0.9; font-weight: 600;">全國最大最專業</div>
+                </div>
+            </div>
+
+            <!-- 服務項目 -->
+            <div style="background: white; padding: var(--spacing-xl); border-radius: var(--radius-xl); box-shadow: var(--shadow-2xl); margin-bottom: var(--spacing-xl);">
+                <h3 style="font-size: var(--font-xl); font-weight: 700; text-align: center; margin-bottom: var(--spacing-lg); color: var(--primary-color);">
+                    <i class="fas fa-check-circle" style="color: var(--accent-color);"></i> 我們提供的專業服務
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: var(--spacing-md);">
+                    <div style="display: flex; align-items: start; gap: var(--spacing-sm); padding: var(--spacing-sm); background: var(--bg-light); border-radius: var(--radius-md); transition: var(--transition-base);" onmouseover="this.style.background='#e6f0ff'" onmouseout="this.style.background='var(--bg-light)'">
+                        <i class="fas fa-check-circle" style="color: var(--accent-color); font-size: var(--font-lg); margin-top: 2px;"></i>
+                        <div style="flex: 1;">
+                            <strong style="display: block; font-size: var(--font-sm); color: var(--primary-color); margin-bottom: 2px;">一對一勞資諮詢</strong>
+                            <span style="font-size: var(--font-xs); color: var(--text-gray);">專業顧問深入了解</span>
+                    </div>
+                    </div>
+                    <div style="display: flex; align-items: start; gap: var(--spacing-sm); padding: var(--spacing-sm); background: var(--bg-light); border-radius: var(--radius-md); transition: var(--transition-base);" onmouseover="this.style.background='#e6f0ff'" onmouseout="this.style.background='var(--bg-light)'">
+                        <i class="fas fa-check-circle" style="color: var(--accent-color); font-size: var(--font-lg); margin-top: 2px;"></i>
+                        <div style="flex: 1;">
+                            <strong style="display: block; font-size: var(--font-sm); color: var(--primary-color); margin-bottom: 2px;">客製化輔導</strong>
+                            <span style="font-size: var(--font-xs); color: var(--text-gray);">量身打造解決方案</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: start; gap: var(--spacing-sm); padding: var(--spacing-sm); background: var(--bg-light); border-radius: var(--radius-md); transition: var(--transition-base);" onmouseover="this.style.background='#e6f0ff'" onmouseout="this.style.background='var(--bg-light)'">
+                        <i class="fas fa-check-circle" style="color: var(--accent-color); font-size: var(--font-lg); margin-top: 2px;"></i>
+                        <div style="flex: 1;">
+                            <strong style="display: block; font-size: var(--font-sm); color: var(--primary-color); margin-bottom: 2px;">制定工作規則</strong>
+                            <span style="font-size: var(--font-xs); color: var(--text-gray);">建立完善公司制度</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: start; gap: var(--spacing-sm); padding: var(--spacing-sm); background: var(--bg-light); border-radius: var(--radius-md); transition: var(--transition-base);" onmouseover="this.style.background='#e6f0ff'" onmouseout="this.style.background='var(--bg-light)'">
+                        <i class="fas fa-check-circle" style="color: var(--accent-color); font-size: var(--font-lg); margin-top: 2px;"></i>
+                        <div style="flex: 1;">
+                            <strong style="display: block; font-size: var(--font-sm); color: var(--primary-color); margin-bottom: 2px;">依法規劃薪資</strong>
+                            <span style="font-size: var(--font-xs); color: var(--text-gray);">合理合法薪資結構</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: start; gap: var(--spacing-sm); padding: var(--spacing-sm); background: var(--bg-light); border-radius: var(--radius-md); transition: var(--transition-base);" onmouseover="this.style.background='#e6f0ff'" onmouseout="this.style.background='var(--bg-light)'">
+                        <i class="fas fa-check-circle" style="color: var(--accent-color); font-size: var(--font-lg); margin-top: 2px;"></i>
+                        <div style="flex: 1;">
+                            <strong style="display: block; font-size: var(--font-sm); color: var(--primary-color); margin-bottom: 2px;">轉嫁職災責任</strong>
+                            <span style="font-size: var(--font-xs); color: var(--text-gray);">降低企業風險負擔</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: start; gap: var(--spacing-sm); padding: var(--spacing-sm); background: var(--bg-light); border-radius: var(--radius-md); transition: var(--transition-base);" onmouseover="this.style.background='#e6f0ff'" onmouseout="this.style.background='var(--bg-light)'">
+                        <i class="fas fa-check-circle" style="color: var(--accent-color); font-size: var(--font-lg); margin-top: 2px;"></i>
+                        <div style="flex: 1;">
+                            <strong style="display: block; font-size: var(--font-sm); color: var(--primary-color); margin-bottom: 2px;">退休福利辦法</strong>
+                            <span style="font-size: var(--font-xs); color: var(--text-gray);">完善退休金規劃</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: start; gap: var(--spacing-sm); padding: var(--spacing-sm); background: var(--bg-light); border-radius: var(--radius-md); transition: var(--transition-base);" onmouseover="this.style.background='#e6f0ff'" onmouseout="this.style.background='var(--bg-light)'">
+                        <i class="fas fa-check-circle" style="color: var(--accent-color); font-size: var(--font-lg); margin-top: 2px;"></i>
+                        <div style="flex: 1;">
+                            <strong style="display: block; font-size: var(--font-sm); color: var(--primary-color); margin-bottom: 2px;">最新勞資法令</strong>
+                            <span style="font-size: var(--font-xs); color: var(--text-gray);">即時掌握法規變動</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: start; gap: var(--spacing-sm); padding: var(--spacing-sm); background: var(--bg-light); border-radius: var(--radius-md); transition: var(--transition-base);" onmouseover="this.style.background='#e6f0ff'" onmouseout="this.style.background='var(--bg-light)'">
+                        <i class="fas fa-check-circle" style="color: var(--accent-color); font-size: var(--font-lg); margin-top: 2px;"></i>
+                        <div style="flex: 1;">
+                            <strong style="display: block; font-size: var(--font-sm); color: var(--primary-color); margin-bottom: 2px;">預防/解決糾紛</strong>
+                            <span style="font-size: var(--font-xs); color: var(--text-gray);">專業處理勞資爭議</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 重要提示 -->
+            <div style="background: rgba(245, 158, 11, 0.15); border-left: 4px solid #f59e0b; padding: var(--spacing-lg); border-radius: var(--radius-lg); margin-bottom: var(--spacing-xl); backdrop-filter: blur(10px);">
+                <h4 style="color: white; font-size: var(--font-lg); font-weight: 700; margin-bottom: var(--spacing-sm);">
+                    <i class="fas fa-exclamation-triangle"></i> 立即行動，避免高額罰款！
+                </h4>
+                <p style="color: white; opacity: 0.95; font-size: var(--font-sm); line-height: 1.8;">
+                    無論您是剛創業還是中小企業的老闆，或是在勞資上遇到什麼樣的疑問，我們都能提供服務。<br>
+                    確保您的公司符合勞基法規定，並且輕鬆通過勞檢🥳
+                </p>
+                    </div>
+
+            <!-- 聯繫按鈕 -->
+            <div style="text-align: center;">
+                <div style="background: linear-gradient(135deg, #16a34a 0%, #15803d 100%); padding: var(--spacing-xl); border-radius: var(--radius-xl); box-shadow: var(--shadow-2xl);">
+                    <h3 style="color: white; font-size: var(--font-2xl); font-weight: 900; margin-bottom: var(--spacing-sm);">
+                        🔥 立即聯繫我們
+                    </h3>
+                    <p style="color: white; opacity: 0.95; font-size: var(--font-md); margin-bottom: var(--spacing-lg);">
+                        告知您公司目前的勞資問題，讓我們協助您避免未來的高額罰款‼️<br>
+                        <strong>台灣勞基顧問公司，讓您的企業安全無憂‼️</strong>
+                    </p>
+                    <div style="display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap; margin-bottom: var(--spacing-lg);">
+                        <a href="tel:0989422478" style="display: inline-flex; align-items: center; gap: var(--spacing-sm); padding: var(--spacing-md) var(--spacing-xl); background: white; color: var(--accent-color); font-weight: 700; font-size: var(--font-md); text-decoration: none; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); transition: var(--transition-base);" onmouseover="this.style.transform='translateY(-3px) scale(1.05)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.3)'" onmouseout="this.style.transform=''; this.style.boxShadow='var(--shadow-lg)'">
+                            <i class="fas fa-phone" style="font-size: var(--font-lg);"></i>
+                            <span>撥打電話：0989-422-478</span>
+                        </a>
+                        <a href="https://lin.ee/xPQFzEq" target="_blank" style="display: inline-flex; align-items: center; gap: var(--spacing-sm); padding: var(--spacing-md) var(--spacing-xl); background: #06c755; color: white; font-weight: 700; font-size: var(--font-md); text-decoration: none; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); transition: var(--transition-base);" onmouseover="this.style.transform='translateY(-3px) scale(1.05)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.3)'" onmouseout="this.style.transform=''; this.style.boxShadow='var(--shadow-lg)'">
+                            <i class="fab fa-line" style="font-size: var(--font-lg);"></i>
+                            <span>官方LINE客服</span>
+                        </a>
+                    </div>
+                    <div style="display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap;">
+                        <a href="https://www.tiktok.com/@twlawki620?_t=8f7fp6REcuW&_r=1" target="_blank" style="display: inline-flex; align-items: center; gap: var(--spacing-sm); padding: var(--spacing-sm) var(--spacing-lg); background: rgba(0,0,0,0.9); color: white; font-weight: 600; font-size: var(--font-sm); text-decoration: none; border-radius: var(--radius-lg); transition: var(--transition-base);" onmouseover="this.style.transform='translateY(-2px)'; this.style.background='black'" onmouseout="this.style.transform=''; this.style.background='rgba(0,0,0,0.9)'">
+                            <i class="fab fa-tiktok" style="font-size: var(--font-md);"></i>
+                            <span>廖總裁TikTok</span>
+                        </a>
+                        <a href="labor-consultant.html" style="display: inline-flex; align-items: center; gap: var(--spacing-sm); padding: var(--spacing-sm) var(--spacing-lg); background: rgba(255,255,255,0.2); color: white; font-weight: 600; font-size: var(--font-sm); text-decoration: none; border-radius: var(--radius-lg); border: 2px solid white; transition: var(--transition-base);" onmouseover="this.style.transform='translateY(-2px)'; this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.transform=''; this.style.background='rgba(255,255,255,0.2)'">
+                            <i class="fas fa-info-circle" style="font-size: var(--font-md);"></i>
+                            <span>了解更多詳情</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服務優勢 -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">為什麼選擇我們</p>
+                <h2 class="section-title">服務優勢</h2>
+                <p class="section-description">
+                    專業、快速、可靠的紓困服務，是您最佳的選擇
+                </p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>快速審核</h3>
+                    <p>24小時內初步回覆<br>最快3天完成審核</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>安全保密</h3>
+                    <p>嚴格保護客戶資料<br>符合個資法規範</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <h3>利率優惠</h3>
+                    <p>市場最具競爭力利率<br>彈性還款方案</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>專業團隊</h3>
+                    <p>10年以上業界經驗<br>一對一專人服務</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>條件寬鬆</h3>
+                    <p>多元審核標準<br>提高核准機率</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>全程服務</h3>
+                    <p>從諮詢到撥款<br>專人全程協助</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 聯絡我們 -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="section-header">
+                    <p class="section-tag">聯絡我們</p>
+                    <h2 class="section-title">專業服務團隊</h2>
+                    <p class="section-description">
+                        我們的專業團隊隨時為您服務，歡迎透過以下方式與我們聯繫
+                    </p>
+                </div>
+                
+                <!-- LINE 官方帳號 - 特別突出 -->
+                <div style="margin-bottom: var(--spacing-xl); text-align: center;">
+                    <a href="https://lin.ee/vnKndFa" target="_blank" style="display: inline-block; padding: var(--spacing-xl) var(--spacing-2xl); background: linear-gradient(135deg, #06c755, #00b900); color: white; border-radius: var(--radius-lg); box-shadow: var(--shadow-xl); transition: var(--transition-base); text-decoration: none; border: 2px solid #52d869; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: -8px; right: -8px; background: #ef4444; color: white; padding: 0.25rem 0.75rem; font-size: var(--font-xs); font-weight: 700; border-radius: var(--radius-sm); transform: rotate(15deg); box-shadow: var(--shadow-md);">
+                            官方
+                        </div>
+                        <div style="display: flex; align-items: center; gap: var(--spacing-md); flex-wrap: wrap; justify-content: center;">
+                            <div style="width: 64px; height: 64px; background: rgba(255,255,255,0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: var(--font-3xl); flex-shrink: 0;">
+                                <i class="fab fa-line"></i>
+                            </div>
+                            <div style="text-align: left;">
+                                <h3 style="font-size: var(--font-2xl); font-weight: 700; margin-bottom: var(--spacing-xs);">LINE 官方帳號</h3>
+                                <p style="font-size: var(--font-base); opacity: 0.95; margin-bottom: var(--spacing-xs);">加入好友，隨時諮詢</p>
+                                <div style="display: inline-flex; align-items: center; gap: var(--spacing-xs); padding: var(--spacing-xs) var(--spacing-md); background: rgba(255,255,255,0.2); border-radius: var(--radius-sm); font-size: var(--font-sm); border: 1px solid rgba(255,255,255,0.3);">
+                                    <i class="fas fa-qrcode"></i>
+                                    <span>掃描 QR Code 或點擊加入</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- 主要聯絡人 -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: var(--spacing-sm); margin: var(--spacing-md) 0;">
+                    <!-- 財務長 -->
+                    <div class="contact-person-card featured">
+                        <div class="contact-person-header">
+                            <div class="contact-person-avatar" style="background: linear-gradient(135deg, #d4af37, #f1c40f); color: var(--primary-dark);">劉</div>
+                            <div>
+                                <div class="contact-person-role">財務長</div>
+                                <h3 class="contact-person-name">劉卉珍</h3>
+                            </div>
+                        </div>
+                        <a href="tel:0986909370" class="contact-person-phone">
+                            <i class="fas fa-phone"></i>0986-909-370
+                        </a>
+                    </div>
+
+                    <!-- 總會秘書長 -->
+                    <div class="contact-person-card leader">
+                        <div class="contact-person-header">
+                            <div class="contact-person-avatar" style="background: var(--bg-gradient); color: white;">周</div>
+                            <div>
+                                <div class="contact-person-role">總會秘書長</div>
+                                <h3 class="contact-person-name">周冠辰</h3>
+                            </div>
+                        </div>
+                        <a href="tel:0935151304" class="contact-person-phone">
+                            <i class="fas fa-phone"></i>0935-151-304
+                        </a>
+                    </div>
+
+                    <!-- 北區秘書長 -->
+                    <div class="contact-person-card">
+                        <div class="contact-person-header">
+                            <div class="contact-person-avatar" style="background: var(--bg-light); border: 2px solid var(--primary-color); color: var(--primary-color);">北</div>
+                            <div>
+                                <div class="contact-person-role">北區秘書長</div>
+                                <h3 class="contact-person-name">孫偉騰</h3>
+                            </div>
+                        </div>
+                        <a href="tel:0989422478" class="contact-person-phone">
+                            <i class="fas fa-phone"></i>0989-422-478
+                        </a>
+                    </div>
+
+                    <!-- 中區秘書長 -->
+                    <div class="contact-person-card">
+                        <div class="contact-person-header">
+                            <div class="contact-person-avatar" style="background: var(--bg-light); border: 2px solid var(--primary-color); color: var(--primary-color);">中</div>
+                            <div>
+                                <div class="contact-person-role">中區秘書長</div>
+                                <h3 class="contact-person-name">林楷樂</h3>
+                            </div>
+                        </div>
+                        <a href="tel:0972712775" class="contact-person-phone">
+                            <i class="fas fa-phone"></i>0972-712-775
+                        </a>
+                    </div>
+
+                    <!-- 南區秘書長 -->
+                    <div class="contact-person-card">
+                        <div class="contact-person-header">
+                            <div class="contact-person-avatar" style="background: var(--bg-light); border: 2px solid var(--primary-color); color: var(--primary-color);">南</div>
+                            <div>
+                                <div class="contact-person-role">南區秘書長</div>
+                                <h3 class="contact-person-name">譚中泰</h3>
+                            </div>
+                        </div>
+                        <a href="tel:0983823696" class="contact-person-phone">
+                            <i class="fas fa-phone"></i>0983-823-696
+                        </a>
+                    </div>
+                </div>
+                
+                <div style="margin-top: var(--spacing-md); padding: var(--spacing-md); background: var(--bg-light); border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+                    <div style="text-align: center; margin-bottom: var(--spacing-xs);">
+                        <i class="fas fa-clock" style="font-size: var(--font-lg); color: var(--primary-color);"></i>
+                    </div>
+                    <div style="font-size: var(--font-sm); color: var(--text-gray); text-align: center; line-height: 1.6;">
+                        <div>週一至週五 09:00-18:00</div>
+                        <div>週六 09:00-12:00</div>
+                        <div style="color: var(--danger-color); font-weight: 600; margin-top: var(--spacing-xs); font-size: var(--font-xs);">週日及國定假日公休</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: var(--spacing-lg); text-align: left; margin-bottom: var(--spacing-lg);">
+                <!-- 關於我們 -->
+                <div>
+                    <div style="margin-bottom: var(--spacing-sm);">
+                        <img src="https://scontent.ftpe8-3.fna.fbcdn.net/v/t39.30808-6/327182691_765691754979994_581615707160418374_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=YmwpN9nab5gQ7kNvwEXMFnm&_nc_oc=AdnippgN86g_C-ievO8eTPHP9q8TdF0FGJoZqB1rhPJNWI6YFX6fviuZEigqXBEwK7U&_nc_zt=23&_nc_ht=scontent.ftpe8-3.fna&_nc_gid=mzhBw0rZKz26zwxKogGGrg&oh=00_AffjHibj5tttpdAocq5Fe2_ZuSIOtHgeGjniowr34Q_6uA&oe=68F6552D" 
+                             alt="全球商聯會" 
+                             style="max-width: 100px; height: auto; opacity: 0.85;">
+                    </div>
+                    <h3 style="font-size: var(--font-base); font-weight: 700; margin-bottom: var(--spacing-sm); color: var(--secondary-color);">全球商聯會</h3>
+                    <p style="font-size: var(--font-xs); opacity: 0.8; line-height: 1.5; margin-bottom: var(--spacing-sm);">
+                        凝聚愛心、傳遞溫暖、促進社會和諧，致力於推動全民公益翻轉經濟，打造台灣最大的公益慈善平台
+                    </p>
+                </div>
+
+                <!-- 快速連結 -->
+                <div>
+                    <h3 style="font-size: var(--font-base); font-weight: 700; margin-bottom: var(--spacing-sm); color: var(--secondary-color);">快速連結</h3>
+                    <div style="display: flex; flex-direction: column; gap: var(--spacing-xs);">
+                        <a href="#home" style="font-size: var(--font-xs); opacity: 0.8; transition: var(--transition-fast);" onmouseover="this.style.opacity='1'; this.style.color='var(--secondary-color)'" onmouseout="this.style.opacity='0.8'; this.style.color=''">首頁</a>
+                        <a href="https://www.gtv168.com/" target="_blank" style="font-size: var(--font-xs); opacity: 0.8; transition: var(--transition-fast);" onmouseover="this.style.opacity='1'; this.style.color='var(--secondary-color)'" onmouseout="this.style.opacity='0.8'; this.style.color=''">官方網站</a>
+                        <a href="#news" style="font-size: var(--font-xs); opacity: 0.8; transition: var(--transition-fast);" onmouseover="this.style.opacity='1'; this.style.color='var(--secondary-color)'" onmouseout="this.style.opacity='0.8'; this.style.color=''">最新消息</a>
+                        <a href="#services" style="font-size: var(--font-xs); opacity: 0.8; transition: var(--transition-fast);" onmouseover="this.style.opacity='1'; this.style.color='var(--secondary-color)'" onmouseout="this.style.opacity='0.8'; this.style.color=''">紓困服務</a>
+                        <a href="https://pse.is/4ll9us" target="_blank" style="font-size: var(--font-xs); opacity: 0.8; transition: var(--transition-fast);" onmouseover="this.style.opacity='1'; this.style.color='var(--secondary-color)'" onmouseout="this.style.opacity='0.8'; this.style.color=''">電子書</a>
+                        <a href="http://www.gtv168.cc/myshop/" target="_blank" style="font-size: var(--font-xs); opacity: 0.8; transition: var(--transition-fast);" onmouseover="this.style.opacity='1'; this.style.color='var(--secondary-color)'" onmouseout="this.style.opacity='0.8'; this.style.color=''">公益店家</a>
+                    </div>
+                </div>
+
+                <!-- 組織架構 -->
+                <div>
+                    <h3 style="font-size: var(--font-base); font-weight: 700; margin-bottom: var(--spacing-sm); color: var(--secondary-color);">組織架構</h3>
+                    <div style="display: flex; flex-direction: column; gap: var(--spacing-xs);">
+                        <a href="https://www.gtv168.com/%E5%89%AF%E6%9C%AC-%E5%85%A8%E7%90%83%E7%B8%BD%E6%9C%83%E9%95%B7" target="_blank" style="font-size: var(--font-xs); opacity: 0.8; transition: var(--transition-fast); text-decoration: none; color: inherit;" onmouseover="this.style.opacity='1'; this.style.color='var(--secondary-color)'" onmouseout="this.style.opacity='0.8'; this.style.color=''">歷年榮譽總會長</a>
+                        <a href="https://www.gtv168.com/about-8" target="_blank" style="font-size: var(--font-xs); opacity: 0.8; transition: var(--transition-fast); text-decoration: none; color: inherit;" onmouseover="this.style.opacity='1'; this.style.color='var(--secondary-color)'" onmouseout="this.style.opacity='0.8'; this.style.color=''">創會總會長</a>
+                        <a href="https://www.gtv168.com/%E7%90%86%E7%9B%A3%E4%BA%8B%E6%9C%83" target="_blank" style="font-size: var(--font-xs); opacity: 0.8; transition: var(--transition-fast); text-decoration: none; color: inherit;" onmouseover="this.style.opacity='1'; this.style.color='var(--secondary-color)'" onmouseout="this.style.opacity='0.8'; this.style.color=''">理監事會</a>
+                        <a href="https://www.gtv168.com/about-1" target="_blank" style="font-size: var(--font-xs); opacity: 0.8; transition: var(--transition-fast); text-decoration: none; color: inherit;" onmouseover="this.style.opacity='1'; this.style.color='var(--secondary-color)'" onmouseout="this.style.opacity='0.8'; this.style.color=''">全球各國總會</a>
+                        <a href="https://www.gtv168.com/about-5-6" target="_blank" style="font-size: var(--font-xs); opacity: 0.8; transition: var(--transition-fast); text-decoration: none; color: inherit;" onmouseover="this.style.opacity='1'; this.style.color='var(--secondary-color)'" onmouseout="this.style.opacity='0.8'; this.style.color=''">各區秘書處</a>
+                        <a href="https://www.gtv168.com/about-1-1" target="_blank" style="font-size: var(--font-xs); opacity: 0.8; transition: var(--transition-fast); text-decoration: none; color: inherit;" onmouseover="this.style.opacity='1'; this.style.color='var(--secondary-color)'" onmouseout="this.style.opacity='0.8'; this.style.color=''">各縣市總監</a>
+                    </div>
+                </div>
+
+                <!-- 聯絡資訊 -->
+                <div>
+                    <h3 style="font-size: var(--font-base); font-weight: 700; margin-bottom: var(--spacing-sm); color: var(--secondary-color);">聯絡資訊</h3>
+                    <div style="display: flex; flex-direction: column; gap: var(--spacing-xs); font-size: var(--font-xs); opacity: 0.8; line-height: 1.6;">
+                        <div><i class="fas fa-building" style="width: 16px;"></i> 玄光通功德基金會</div>
+                        <div><i class="fas fa-map-marker-alt" style="width: 16px;"></i> 台中市西屯區四川路81號</div>
+                        <div><i class="fas fa-phone" style="width: 16px;"></i> 04-23127372</div>
+                        <div><i class="fas fa-envelope" style="width: 16px;"></i> life3h@yahoo.com.tw</div>
+                        <div style="margin-top: var(--spacing-xs);"><a href="https://lin.ee/vnKndFa" target="_blank" style="display: inline-flex; align-items: center; gap: var(--spacing-xs); color: #06c755; font-weight: 600; text-decoration: none;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'"><i class="fab fa-line"></i> LINE 官方帳號</a></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 全球商聯會 Global Television Station. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 浮動按鈕 -->
+    <!-- 返回頂部按鈕 -->
+    <button class="back-to-top" id="backToTop" aria-label="返回頂部">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- 浮動 LINE 諮詢按鈕（桌面版） -->
+    <a href="https://lin.ee/vnKndFa" target="_blank" class="floating-cta">
+        <i class="fab fa-line"></i>
+        <span>LINE 諮詢</span>
+    </a>
+
+    <!-- 手機端固定底部 LINE 按鈕 -->
+    <a href="https://lin.ee/vnKndFa" target="_blank" class="mobile-line-btn">
+        <i class="fab fa-line"></i>
+        <span>加入 LINE 官方帳號</span>
+    </a>
+
+    <!-- JavaScript -->
+    <script>
+        // 導航欄滾動效果 & 返回頂部按鈕
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            
+            // 導航欄效果
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            // 返回頂部按鈕顯示/隱藏
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        
+        // 返回頂部按鈕點擊事件
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 手機選單切換
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            const icon = this.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // 點擊選單項目後關閉手機選單
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    navMenu.classList.remove('active');
+                    const icon = mobileMenuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+
+        // 平滑滾動
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 70;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // 滾動動畫（進階效果）
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // 為需要動畫的元素添加觀察
+        const animateElements = document.querySelectorAll('.service-card, .requirement-card, .process-step, .feature-item');
+        animateElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+        
+        // 頁面載入動畫
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '1';
+        });
+        
+        // 設定初始透明度
+        document.body.style.opacity = '0';
+        document.body.style.transition = 'opacity 0.5s ease';
+        
+        // 數字滾動動畫
+        function animateNumber(element, target, suffix = '') {
+            let current = 0;
+            const increment = target / 60;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + suffix;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + suffix;
+                }
+            }, 30);
+        }
+        
+        // 統計數據觀察器
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.dataset.animated) {
+                    const numberElement = entry.target;
+                    const text = numberElement.textContent;
+                    
+                    if (text.includes('+')) {
+                        const num = parseInt(text.replace('+', ''));
+                        animateNumber(numberElement, num, '+');
+                    } else if (text.includes('%')) {
+                        const num = parseInt(text.replace('%', ''));
+                        animateNumber(numberElement, num, '%');
+                    } else if (text.includes('h')) {
+                        const num = parseInt(text.replace('h', ''));
+                        animateNumber(numberElement, num, 'h');
+                    }
+                    
+                    numberElement.dataset.animated = 'true';
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        // 觀察所有統計數字
+        document.addEventListener('DOMContentLoaded', () => {
+            const statNumbers = document.querySelectorAll('[data-stat]');
+            statNumbers.forEach(el => statsObserver.observe(el));
+        });
+    </script>
+</body>
+</html>
+
