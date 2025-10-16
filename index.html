@@ -1140,6 +1140,7 @@
         
         .contact-person-card.featured {
             border-color: var(--secondary-color);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
         }
         
         .contact-person-card.leader {
@@ -1170,12 +1171,14 @@
             font-size: var(--font-xs);
             color: var(--text-light);
             font-weight: 600;
+            line-height: 1.1;
         }
         
         .contact-person-name {
             font-size: var(--font-base);
             font-weight: 700;
             color: var(--text-dark);
+            line-height: 1.2;
         }
         
         .contact-person-phone {
@@ -1192,6 +1195,53 @@
         .contact-person-phone:hover {
             color: var(--secondary-color);
             transform: translateX(2px);
+        }
+        
+        /* 手機版聯絡卡片優化 */
+        @media (max-width: 768px) {
+            .contact-person-card {
+                padding: 0.4rem 0.3rem;
+            }
+            
+            .contact-person-header {
+                flex-direction: column;
+                gap: 0.2rem;
+                text-align: center;
+                border-bottom: 1px solid var(--bg-gray);
+                padding-bottom: 0.3rem;
+                margin-bottom: 0.3rem;
+            }
+            
+            .contact-person-avatar {
+                width: 32px;
+                height: 32px;
+                font-size: 0.85rem;
+            }
+            
+            .contact-person-role {
+                font-size: 0.6rem;
+                line-height: 1;
+            }
+            
+            .contact-person-name {
+                font-size: 0.75rem;
+                line-height: 1.1;
+            }
+            
+            .contact-person-phone {
+                font-size: 0.65rem;
+                gap: 0.2rem;
+                flex-direction: column;
+                justify-content: center;
+            }
+            
+            .contact-person-phone i {
+                font-size: 0.9rem;
+            }
+            
+            .contact-person-phone span {
+                word-break: break-all;
+            }
         }
         
         /* ==================== 快速連結和聯絡卡片樣式 ==================== */
@@ -2233,7 +2283,7 @@
                 <!-- 主要聯絡人 -->
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); gap: var(--spacing-sm); margin: var(--spacing-md) 0;">
                     <!-- 財務長 -->
-                    <div class="contact-person-card featured">
+                    <div class="contact-person-card">
                         <div class="contact-person-header">
                             <div class="contact-person-avatar" style="background: linear-gradient(135deg, #d4af37, #f1c40f); color: var(--primary-dark);">劉</div>
                             <div>
@@ -2242,7 +2292,8 @@
                             </div>
                         </div>
                         <a href="tel:0986909370" class="contact-person-phone">
-                            <i class="fas fa-phone"></i>0986-909-370
+                            <i class="fas fa-phone"></i>
+                            <span>0986-909-370</span>
                         </a>
                     </div>
 
@@ -2256,12 +2307,13 @@
                             </div>
                         </div>
                         <a href="tel:0935151304" class="contact-person-phone">
-                            <i class="fas fa-phone"></i>0935-151-304
+                            <i class="fas fa-phone"></i>
+                            <span>0935-151-304</span>
                         </a>
                     </div>
 
                     <!-- 北區秘書長 -->
-                    <div class="contact-person-card">
+                    <div class="contact-person-card featured">
                         <div class="contact-person-header">
                             <div class="contact-person-avatar" style="background: var(--bg-light); border: 2px solid var(--primary-color); color: var(--primary-color);">北</div>
                             <div>
@@ -2270,7 +2322,8 @@
                             </div>
                         </div>
                         <a href="tel:0989422478" class="contact-person-phone">
-                            <i class="fas fa-phone"></i>0989-422-478
+                            <i class="fas fa-phone"></i>
+                            <span>0989-422-478</span>
                         </a>
                     </div>
 
@@ -2284,7 +2337,8 @@
                             </div>
                         </div>
                         <a href="tel:0972712775" class="contact-person-phone">
-                            <i class="fas fa-phone"></i>0972-712-775
+                            <i class="fas fa-phone"></i>
+                            <span>0972-712-775</span>
                         </a>
                     </div>
 
@@ -2298,7 +2352,8 @@
                             </div>
                         </div>
                         <a href="tel:0983823696" class="contact-person-phone">
-                            <i class="fas fa-phone"></i>0983-823-696
+                            <i class="fas fa-phone"></i>
+                            <span>0983-823-696</span>
                         </a>
                     </div>
                 </div>
