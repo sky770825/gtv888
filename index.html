@@ -2242,6 +2242,22 @@
                     <h3>全程服務</h3>
                     <p>從諮詢到撥款<br>專人全程協助</p>
                 </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>點數計算機</h3>
+                    <p>推薦人獎勵計算<br>公益點數兌換</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>收益分析</h3>
+                    <p>詳細收益報表<br>投資回報分析</p>
+                </div>
             </div>
         </div>
     </section>
@@ -2602,6 +2618,17 @@
         document.addEventListener('DOMContentLoaded', () => {
             const statNumbers = document.querySelectorAll('[data-stat]');
             statNumbers.forEach(el => statsObserver.observe(el));
+            
+            // 點數計算機功能項目點擊事件
+            const featureItems = document.querySelectorAll('.feature-item');
+            if (featureItems.length >= 7) {
+                // 第7個功能項目 - 點數計算機
+                const calculatorFeature = featureItems[6];
+                calculatorFeature.style.cursor = 'pointer';
+                calculatorFeature.addEventListener('click', function() {
+                    window.open('points-calculator.html', '_blank');
+                });
+            }
         });
     </script>
 </body>

@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="全球商聯會公益點數兌換計算機 - 計算推薦人獎勵和點數兌換">
+    <meta name="keywords" content="公益點數,兌換計算機,推薦獎勵,全球商聯會">
+    <title>全球商聯會 - 公益點數兌換計算機</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4a90e2 0%, #2c5aa0 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .calculator-section {
+            padding: 2rem;
+        }
+
+        .input-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .input-group {
+            margin-bottom: 0;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c5aa0;
+            margin-bottom: 0.5rem;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 1rem;
+            color: #4a90e2;
+            font-size: 1.2rem;
+            z-index: 2;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        .input-wrapper input:focus {
+            outline: none;
+            border-color: #4a90e2;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .input-wrapper input:active {
+            transform: translateY(0);
+        }
+
+        .currency-symbol {
+            position: absolute;
+            right: 1rem;
+            color: #4a90e2;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #4a90e2 0%, #2c5aa0 100%);
+            color: white;
+            border: none;
+            padding: 1.2rem;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            user-select: none;
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(74, 144, 226, 0.3);
+        }
+
+        .calculate-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.2);
+        }
+
+        .calculate-btn:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.3);
+        }
+
+        .results-section {
+            background: #f8fafc;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .results-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c5aa0;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            border-left: 5px solid #4a90e2;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.1), rgba(74, 144, 226, 0.05));
+            border-radius: 0 15px 0 50px;
+        }
+
+        .result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .result-card.referrer {
+            border-left-color: #f39c12;
+        }
+
+        .result-card.referrer::before {
+            background: linear-gradient(135deg, rgba(243, 156, 18, 0.1), rgba(243, 156, 18, 0.05));
+        }
+
+        .result-card.withdrawal {
+            border-left-color: #e74c3c;
+        }
+
+        .result-card.withdrawal::before {
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), rgba(231, 76, 60, 0.05));
+        }
+
+        .result-card.total {
+            border-left-color: #27ae60;
+            background: linear-gradient(135deg, #d5f4e6 0%, #ffffff 100%);
+            grid-column: 1 / -1;
+            text-align: center;
+        }
+
+        .result-card.total::before {
+            background: linear-gradient(135deg, rgba(39, 174, 96, 0.1), rgba(39, 174, 96, 0.05));
+        }
+
+        .result-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c5aa0;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .result-title i {
+            margin-right: 0.8rem;
+            font-size: 1.4rem;
+        }
+
+        .result-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #1a202c;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .result-card.total .result-value {
+            font-size: 2.8rem;
+            color: #27ae60;
+        }
+
+        .result-description {
+            font-size: 1rem;
+            color: #718096;
+            line-height: 1.5;
+            position: relative;
+            z-index: 2;
+        }
+
+        .calculation-steps {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .steps-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #2c5aa0;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            border-radius: 12px;
+            border-left: 4px solid #4a90e2;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #4a90e2 0%, #2c5aa0 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-right: 1.2rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(74, 144, 226, 0.3);
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: #2c5aa0;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .step-description {
+            font-size: 1rem;
+            color: #718096;
+            line-height: 1.5;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .highlight:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 滾動條樣式 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #4a90e2 0%, #2c5aa0 100%);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #2c5aa0 0%, #1e3a8a 100%);
+        }
+
+        /* 選擇文字樣式 */
+        ::selection {
+            background: rgba(74, 144, 226, 0.2);
+            color: #2c5aa0;
+        }
+
+        ::-moz-selection {
+            background: rgba(74, 144, 226, 0.2);
+            color: #2c5aa0;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 1024px) {
+            .container {
+                max-width: 95%;
+            }
+            
+            .results-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            
+            .steps-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            .container {
+                max-width: 100%;
+                border-radius: 15px;
+            }
+
+            .header {
+                padding: 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .calculator-section {
+                padding: 1.5rem;
+            }
+
+            .input-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .input-group label {
+                font-size: 1.1rem;
+                margin-bottom: 0.8rem;
+                font-weight: 700;
+            }
+
+            .input-wrapper input {
+                padding: 1.3rem 1rem 1.3rem 3rem;
+                font-size: 1.1rem;
+                font-weight: 500;
+            }
+
+            .calculate-btn {
+                padding: 1.4rem;
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .results-section {
+                padding: 1.5rem;
+                margin-top: 1.5rem;
+            }
+
+            .results-title {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .results-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .result-card {
+                padding: 1.5rem;
+                border-radius: 12px;
+            }
+
+            .result-title {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+                font-weight: 700;
+            }
+
+            .result-title i {
+                font-size: 1.3rem;
+                margin-right: 0.8rem;
+            }
+
+            .result-value {
+                font-size: 2.1rem;
+                margin-bottom: 0.6rem;
+                font-weight: 800;
+            }
+
+            .result-card.total .result-value {
+                font-size: 2.5rem;
+            }
+
+            .result-description {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+
+            .calculation-steps {
+                padding: 1.5rem;
+                margin-top: 1.5rem;
+            }
+
+            .steps-title {
+                font-size: 1.3rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+
+            .step {
+                padding: 1.2rem;
+                border-radius: 10px;
+            }
+
+            .step-number {
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+                margin-right: 1rem;
+            }
+
+            .step-title {
+                font-size: 1.1rem;
+                margin-bottom: 0.6rem;
+                font-weight: 600;
+            }
+
+            .step-description {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 0.25rem;
+            }
+
+            .container {
+                border-radius: 10px;
+            }
+
+            .header {
+                padding: 1.2rem;
+            }
+
+            .header h1 {
+                font-size: 1.6rem;
+            }
+
+            .header p {
+                font-size: 0.9rem;
+            }
+
+            .calculator-section {
+                padding: 1.2rem;
+            }
+
+            .input-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+
+            .input-group label {
+                font-size: 1rem;
+                font-weight: 700;
+            }
+
+            .input-wrapper input {
+                padding: 1.1rem 0.8rem 1.1rem 2.5rem;
+                font-size: 1rem;
+                font-weight: 500;
+            }
+
+            .input-wrapper i {
+                left: 0.8rem;
+                font-size: 1rem;
+            }
+
+            .calculate-btn {
+                padding: 1.2rem;
+                font-size: 1rem;
+                border-radius: 8px;
+            }
+
+            .results-section {
+                padding: 1.2rem;
+            }
+
+            .results-title {
+                font-size: 1.3rem;
+            }
+
+            .results-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+
+            .result-card {
+                padding: 1.2rem;
+                border-radius: 10px;
+            }
+
+            .result-title {
+                font-size: 1.1rem;
+                font-weight: 700;
+            }
+
+            .result-title i {
+                font-size: 1.2rem;
+                margin-right: 0.6rem;
+            }
+
+            .result-value {
+                font-size: 1.8rem;
+                font-weight: 800;
+            }
+
+            .result-card.total .result-value {
+                font-size: 2.2rem;
+            }
+
+            .result-description {
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+
+            .calculation-steps {
+                padding: 1.2rem;
+            }
+
+            .steps-title {
+                font-size: 1.2rem;
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+
+            .step {
+                padding: 1rem;
+                border-radius: 8px;
+            }
+
+            .step-number {
+                width: 32px;
+                height: 32px;
+                font-size: 0.9rem;
+                margin-right: 0.8rem;
+            }
+
+            .step-title {
+                font-size: 1rem;
+                font-weight: 600;
+            }
+
+            .step-description {
+                font-size: 0.9rem;
+                line-height: 1.4;
+            }
+        }
+
+        @media (max-width: 360px) {
+            body {
+                padding: 0.1rem;
+            }
+
+            .container {
+                border-radius: 8px;
+            }
+
+            .header {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 1.4rem;
+                line-height: 1.2;
+            }
+
+            .header p {
+                font-size: 0.85rem;
+            }
+
+            .calculator-section {
+                padding: 1rem;
+            }
+
+            .input-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.6rem;
+            }
+
+            .input-wrapper input {
+                padding: 1rem 0.7rem 1rem 2.2rem;
+                font-size: 1rem;
+                border-radius: 8px;
+                font-weight: 500;
+            }
+
+            .input-wrapper i {
+                left: 0.7rem;
+                font-size: 0.9rem;
+            }
+
+            .calculate-btn {
+                padding: 1rem;
+                font-size: 0.95rem;
+                border-radius: 8px;
+            }
+
+            .results-section {
+                padding: 1rem;
+            }
+
+            .results-title {
+                font-size: 1.2rem;
+            }
+
+            .result-card {
+                padding: 1rem;
+                border-radius: 8px;
+            }
+
+            .result-title {
+                font-size: 0.95rem;
+            }
+
+            .result-value {
+                font-size: 1.5rem;
+            }
+
+            .result-card.total .result-value {
+                font-size: 1.8rem;
+            }
+
+            .calculation-steps {
+                padding: 1rem;
+            }
+
+            .steps-title {
+                font-size: 1.1rem;
+            }
+
+            .step {
+                padding: 0.8rem;
+                border-radius: 6px;
+            }
+
+            .step-number {
+                width: 28px;
+                height: 28px;
+                font-size: 0.8rem;
+                margin-right: 0.6rem;
+            }
+
+            .step-title {
+                font-size: 0.9rem;
+            }
+
+            .step-description {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* 橫向模式優化 */
+        @media (max-height: 500px) and (orientation: landscape) {
+            body {
+                padding: 0.5rem;
+            }
+
+            .header {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .calculator-section {
+                padding: 1rem;
+            }
+
+            .results-section {
+                padding: 1rem;
+            }
+
+            .calculation-steps {
+                padding: 1rem;
+            }
+        }
+
+        /* 動畫效果 */
+        .result-card {
+            animation: slideInUp 0.6s ease forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .result-card:nth-child(1) { animation-delay: 0.1s; }
+        .result-card:nth-child(2) { animation-delay: 0.2s; }
+        .result-card:nth-child(3) { animation-delay: 0.3s; }
+        .result-card:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .calculation-steps {
+            animation: fadeIn 0.8s ease 0.5s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-calculator"></i> 公益點數兌換計算機</h1>
+            <p>計算推薦人獎勵和點數兌換收益</p>
+        </div>
+
+        <div class="calculator-section">
+            <div class="input-grid">
+                <div class="input-group">
+                    <label for="referrer-name">
+                        <i class="fas fa-user-friends"></i> 推薦人姓名
+                    </label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="referrer-name" placeholder="請輸入推薦人姓名">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="donor-name">
+                        <i class="fas fa-heart"></i> 推薦之捐贈人
+                    </label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-user-heart"></i>
+                        <input type="text" id="donor-name" placeholder="請輸入被推薦的捐贈人姓名">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="donation-amount">
+                        <i class="fas fa-dollar-sign"></i> 捐贈金額
+                    </label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <input type="number" id="donation-amount" placeholder="請輸入捐贈金額" min="0" step="100">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="withdrawal-amount">
+                        <i class="fas fa-exchange-alt"></i> 提領點數
+                    </label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-coins"></i>
+                        <input type="number" id="withdrawal-amount" placeholder="請輸入要提領的點數" min="0" step="100">
+                        <span class="currency-symbol">點</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="calculate-btn" onclick="calculatePoints()">
+                <i class="fas fa-calculator"></i> 計算收益
+            </button>
+
+            <div class="results-section" id="results" style="display: none;">
+                <h3 class="results-title">
+                    <i class="fas fa-chart-line"></i> 計算結果
+                </h3>
+
+                <div class="results-grid">
+                    <div class="result-card">
+                        <div class="result-title">
+                            <i class="fas fa-gift"></i> <span id="donor-name-result">推薦之捐贈人</span> 獲得點數
+                        </div>
+                        <div class="result-value" id="donor-points">0</div>
+                        <div class="result-description">捐贈金額 1:1 獲得公益點數</div>
+                    </div>
+
+                    <div class="result-card referrer">
+                        <div class="result-title">
+                            <i class="fas fa-user-friends"></i> <span id="referrer-name-result">推薦人</span> 首次獎勵
+                        </div>
+                        <div class="result-value" id="referrer-first">0</div>
+                        <div class="result-description">捐贈點數的 20% 獎勵</div>
+                    </div>
+
+                    <div class="result-card withdrawal">
+                        <div class="result-title">
+                            <i class="fas fa-hand-holding-usd"></i> <span id="donor-name-withdrawal">推薦之捐贈人</span> 提領兌換
+                        </div>
+                        <div class="result-value" id="withdrawal-amount-result">0</div>
+                        <div class="result-description">點數兌換比例 1:0.7</div>
+                    </div>
+
+                    <div class="result-card referrer">
+                        <div class="result-title">
+                            <i class="fas fa-star"></i> <span id="referrer-name-second">推薦人</span> 提領獎勵
+                        </div>
+                        <div class="result-value" id="referrer-second">0</div>
+                        <div class="result-description">提領點數的 20% 額外獎勵</div>
+                    </div>
+
+                    <div class="result-card total">
+                        <div class="result-title">
+                            <i class="fas fa-trophy"></i> <span id="referrer-name-total">推薦人</span> 總獎勵
+                        </div>
+                        <div class="result-value" id="referrer-total">0</div>
+                        <div class="result-description">首次獎勵 + 提領獎勵</div>
+                    </div>
+                </div>
+
+                <div class="calculation-steps">
+                    <h4 class="steps-title">
+                        <i class="fas fa-list-ol"></i> 計算步驟
+                    </h4>
+                    <div class="steps-grid">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <div class="step-title"><span id="step1-donor-name">推薦之捐贈人</span> 捐贈獲得點數</div>
+                                <div class="step-description">捐贈 <span class="highlight" id="step1-donation">0</span> → 獲得 <span class="highlight" id="step1-points">0</span> 點</div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <div class="step-title"><span id="step2-referrer-name">推薦人</span> 首次獎勵</div>
+                                <div class="step-description">獲得 <span class="highlight" id="step2-referrer">0</span> 點 (20% 獎勵)</div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <div class="step-title"><span id="step3-donor-name">推薦之捐贈人</span> 點數提領兌換</div>
+                                <div class="step-description">提領 <span class="highlight" id="step3-withdrawal">0</span> 點 → 兌換 <span class="highlight" id="step3-amount">0</span></div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <div class="step-title"><span id="step4-referrer-name">推薦人</span> 提領獎勵</div>
+                                <div class="step-description">再獲得 <span class="highlight" id="step4-referrer">0</span> 點 (提領點數 20%)</div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <div class="step-title"><span id="step5-referrer-name">推薦人</span> 總收益</div>
+                                <div class="step-description">總共獲得 <span class="highlight" id="step5-total">0</span> 點獎勵</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculatePoints() {
+            const donationAmount = parseFloat(document.getElementById('donation-amount').value) || 0;
+            const withdrawalPoints = parseFloat(document.getElementById('withdrawal-amount').value) || 0;
+            const referrerName = document.getElementById('referrer-name').value || '推薦人';
+            const donorName = document.getElementById('donor-name').value || '捐贈人';
+
+            // 計算結果
+            const donorPoints = donationAmount; // 1:1 獲得點數
+            const referrerFirstReward = donorPoints * 0.2; // 推薦人首次獎勵 20%
+            const withdrawalAmount = withdrawalPoints * 0.7; // 提領兌換 1:0.7
+            const referrerSecondReward = withdrawalPoints * 0.2; // 推薦人提領獎勵 20%
+            const referrerTotalReward = referrerFirstReward + referrerSecondReward; // 推薦人總獎勵
+
+            // 更新結果顯示中的姓名
+            document.getElementById('donor-name-result').textContent = donorName;
+            document.getElementById('referrer-name-result').textContent = referrerName;
+            document.getElementById('donor-name-withdrawal').textContent = donorName;
+            document.getElementById('referrer-name-second').textContent = referrerName;
+            document.getElementById('referrer-name-total').textContent = referrerName;
+
+            // 更新結果顯示
+            document.getElementById('donor-points').textContent = Math.round(donorPoints).toLocaleString() + ' 點';
+            document.getElementById('referrer-first').textContent = Math.round(referrerFirstReward).toLocaleString() + ' 點';
+            document.getElementById('withdrawal-amount-result').textContent = Math.round(withdrawalAmount).toLocaleString();
+            document.getElementById('referrer-second').textContent = Math.round(referrerSecondReward).toLocaleString() + ' 點';
+            document.getElementById('referrer-total').textContent = Math.round(referrerTotalReward).toLocaleString() + ' 點';
+
+            // 更新計算步驟中的姓名
+            document.getElementById('step1-donor-name').textContent = donorName;
+            document.getElementById('step2-referrer-name').textContent = referrerName;
+            document.getElementById('step3-donor-name').textContent = donorName;
+            document.getElementById('step4-referrer-name').textContent = referrerName;
+            document.getElementById('step5-referrer-name').textContent = referrerName;
+
+            // 更新計算步驟
+            document.getElementById('step1-donation').textContent = donationAmount.toLocaleString();
+            document.getElementById('step1-points').textContent = Math.round(donorPoints).toLocaleString();
+            document.getElementById('step2-referrer').textContent = Math.round(referrerFirstReward).toLocaleString();
+            document.getElementById('step3-withdrawal').textContent = withdrawalPoints.toLocaleString();
+            document.getElementById('step3-amount').textContent = Math.round(withdrawalAmount).toLocaleString();
+            document.getElementById('step4-referrer').textContent = Math.round(referrerSecondReward).toLocaleString();
+            document.getElementById('step5-total').textContent = Math.round(referrerTotalReward).toLocaleString();
+
+            // 顯示結果區域
+            document.getElementById('results').style.display = 'block';
+            
+            // 滾動到結果區域
+            document.getElementById('results').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // 輸入框事件監聽
+        document.getElementById('donation-amount').addEventListener('input', function() {
+            // 自動計算提領點數（假設提領所有點數）
+            const donationAmount = parseFloat(this.value) || 0;
+            document.getElementById('withdrawal-amount').value = donationAmount;
+        });
+
+        // 回車鍵計算
+        document.getElementById('donation-amount').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                calculatePoints();
+            }
+        });
+
+        document.getElementById('withdrawal-amount').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                calculatePoints();
+            }
+        });
+    </script>
+</body>
+</html>

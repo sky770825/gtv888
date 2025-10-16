@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="全球商聯會慈善店家計畫 - 一手做生意一手做公益，結合商業與慈善的創新平台">
+    <meta name="keywords" content="全球商聯會,慈善店家,公益平台,商業慈善,社會責任">
+    <title>全球商聯會 - 慈善店家計畫 | 一手做生意一手做公益</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(180deg, #4a90e2 0%, #2c5aa0 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* 背景幾何圖案 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255,255,255,0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 標題區域 */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+
+        .logo::before {
+            content: '🌍';
+            font-size: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 3px solid #ff6b6b;
+            border-radius: 50%;
+            border-top-color: transparent;
+            border-right-color: transparent;
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            to { transform: rotate(360deg); }
+        }
+
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title-part1 {
+            color: #ffffff;
+            display: block;
+        }
+
+        .title-part2 {
+            color: #ffd700;
+            display: block;
+            margin-top: 0.5rem;
+        }
+
+        .slogan {
+            background: linear-gradient(90deg, #ffd700 0%, #ffed4e 100%);
+            color: #2c5aa0;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 1rem;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            position: relative;
+        }
+
+        .slogan::before {
+            content: '→';
+            margin-right: 0.5rem;
+        }
+
+        .slogan::after {
+            content: '←';
+            margin-left: 0.5rem;
+        }
+
+        /* 參與詳情區域 */
+        .participation-details {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .participation-details p {
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+            font-weight: 500;
+        }
+
+        /* 功能特色區域 */
+        .features-section {
+            margin-top: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .feature-item:hover::before {
+            left: 100%;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-color: rgba(255, 215, 0, 0.5);
+        }
+
+        .feature-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #4a90e2 0%, #2c5aa0 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-right: 1rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .feature-text {
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .main-title {
+                font-size: 2.5rem;
+            }
+
+            .slogan {
+                font-size: 1.2rem;
+                padding: 0.8rem 1.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .feature-item {
+                padding: 1rem;
+            }
+
+            .feature-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .feature-text {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 2rem;
+            }
+
+            .slogan {
+                font-size: 1rem;
+                padding: 0.6rem 1rem;
+            }
+
+            .participation-details p {
+                font-size: 1rem;
+            }
+        }
+
+        /* 動畫效果 */
+        .feature-item {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .feature-item:nth-child(1) { animation-delay: 0.1s; }
+        .feature-item:nth-child(2) { animation-delay: 0.2s; }
+        .feature-item:nth-child(3) { animation-delay: 0.3s; }
+        .feature-item:nth-child(4) { animation-delay: 0.4s; }
+        .feature-item:nth-child(5) { animation-delay: 0.5s; }
+        .feature-item:nth-child(6) { animation-delay: 0.6s; }
+        .feature-item:nth-child(7) { animation-delay: 0.7s; }
+        .feature-item:nth-child(8) { animation-delay: 0.8s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 滾動動畫 */
+        .header {
+            animation: slideInDown 0.8s ease;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .participation-details {
+            animation: slideInUp 0.8s ease 0.3s both;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 標題區域 -->
+        <header class="header">
+            <div class="logo"></div>
+            <h1 class="main-title">
+                <span class="title-part1">全球商聯會</span>
+                <span class="title-part2">慈善店家計畫</span>
+            </h1>
+            <div class="slogan">一手做生意一手做公益</div>
+        </header>
+
+        <!-- 參與詳情 -->
+        <section class="participation-details">
+            <p>參加全球商聯會全球總會：會員 2000/年費</p>
+            <p>捐贈社團法人全球公益慈善聯合總會：一般1200/次 企業 3600/次</p>
+        </section>
+
+        <!-- 功能特色 -->
+        <section class="features-section">
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-number">1</div>
+                    <div class="feature-text">捐贈公益單位 收據可抵稅</div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-number">2</div>
+                    <div class="feature-text">獲得公益點數 可換商品或服務</div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-number">3</div>
+                    <div class="feature-text">全球公益慈善平臺系統 可收點數 (1:0.7)</div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-number">4</div>
+                    <div class="feature-text">企業品牌上架 公益慈善店家網站</div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-number">5</div>
+                    <div class="feature-text">全台線下活動 免費曝光交流</div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-number">6</div>
+                    <div class="feature-text">當活動主辦場地方 (引流 短講 設攤)</div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-number">7</div>
+                    <div class="feature-text">分享推廣 得公益點數20%+20%</div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-number">8</div>
+                    <div class="feature-text">協會資源 自助助人 (金流、人脈、司法、勞資)</div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

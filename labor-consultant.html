@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="勞基顧問股份有限公司提供專業勞資諮詢服務，30年經驗，輔導5千家以上企業">
+    <meta name="keywords" content="勞資問題,勞基法,勞資諮詢,勞檢,勞資糾紛,企業輔導">
+    <title>勞基顧問服務 - 全球商聯會合作夥伴</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #0f4c81;
+            --primary-light: #1e6bb8;
+            --secondary-color: #d4af37;
+            --accent-color: #16a34a;
+            --danger-color: #dc2626;
+            --text-dark: #1a202c;
+            --text-gray: #4a5568;
+            --bg-white: #ffffff;
+            --bg-light: #f7fafc;
+            --bg-gradient: linear-gradient(135deg, #0f4c81 0%, #1e6bb8 100%);
+            --border-color: #e2e8f0;
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--bg-light);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        /* 頭部導航 */
+        .navbar {
+            background: var(--bg-gradient);
+            padding: 1rem 0;
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+        }
+        
+        .navbar-brand {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        
+        .navbar-link {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-lg);
+            transition: background 0.3s;
+        }
+        
+        .navbar-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Hero 區塊 */
+        .hero {
+            background: var(--bg-gradient);
+            color: white;
+            padding: 4rem 1rem;
+            text-align: center;
+            border-radius: var(--radius-xl);
+            margin: 2rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+        }
+        
+        .hero-text {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* 服務特色 */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--bg-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .feature-description {
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+        
+        /* 服務項目 */
+        .services {
+            background: white;
+            padding: 3rem;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            margin: 3rem 0;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .service-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .service-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--bg-light);
+            border-radius: var(--radius-lg);
+            transition: background 0.3s;
+        }
+        
+        .service-item:hover {
+            background: #e6f0ff;
+        }
+        
+        .service-item i {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin-top: 0.25rem;
+        }
+        
+        .service-text {
+            flex: 1;
+        }
+        
+        .service-text strong {
+            display: block;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 0.25rem;
+        }
+        
+        /* 聯繫按鈕 */
+        .cta-section {
+            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: var(--radius-xl);
+            text-align: center;
+            margin: 3rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .cta-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-text {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: var(--radius-lg);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-primary {
+            background: white;
+            color: var(--accent-color);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-line {
+            background: #06c755;
+            color: white;
+        }
+        
+        .btn-tiktok {
+            background: black;
+            color: white;
+        }
+        
+        /* 統計數據 */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+        
+        /* 警告框 */
+        .warning-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            margin: 2rem 0;
+        }
+        
+        .warning-box h3 {
+            color: #d97706;
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+        
+        .warning-box p {
+            color: #92400e;
+            line-height: 1.8;
+        }
+        
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 1.75rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .services {
+                padding: 2rem 1.5rem;
+            }
+            
+            .cta-section {
+                padding: 2rem 1.5rem;
+            }
+            
+            .contact-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        footer p {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- 導航欄 -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">全球商聯會</a>
+            <a href="index.html" class="navbar-link">
+                <i class="fas fa-home"></i> 返回首頁
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Hero 區塊 -->
+        <div class="hero">
+            <h1 class="hero-title">公司勞資問題一拖再拖⋯<br>等到問題浮上檯面時才處理<br>常常已經為時已晚😫</h1>
+            <p class="hero-subtitle">如果您面臨勞資方面的難題，不妨尋求專業幫助</p>
+            <p class="hero-text">讓 <strong>🌐勞基顧問股份有限公司-廖茂霖🌐</strong> 來助您一臂之力💪🏻</p>
+        </div>
+
+        <!-- 統計數據 -->
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">30<small style="font-size: 1.5rem;">年</small></div>
+                <div class="stat-label">專業經營服務</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">5000<small style="font-size: 1.5rem;">+</small></div>
+                <div class="stat-label">成功輔導企業</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">NO.1</div>
+                <div class="stat-label">全國最大最專業</div>
+            </div>
+        </div>
+
+        <!-- 服務特色 -->
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-building"></i>
+                </div>
+                <h3 class="feature-title">專業團隊</h3>
+                <p class="feature-description">全國最大最專業勞務法律顧問集團，30年深耕經驗</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3 class="feature-title">豐富經驗</h3>
+                <p class="feature-description">成功輔導5千家以上企業，實戰經驗豐富</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="feature-title">合法保障</h3>
+                <p class="feature-description">確保公司符合勞基法規定，輕鬆通過勞檢</p>
+            </div>
+        </div>
+
+        <!-- 警告提示 -->
+        <div class="warning-box">
+            <h3><i class="fas fa-exclamation-triangle"></i> 為什麼需要專業協助？</h3>
+            <p>無論您是剛創業還是中小企業的老闆，或是在勞資上遇到什麼樣的疑問，我們都能提供服務。立即行動，避免未來的高額罰款和法律糾紛！</p>
+        </div>
+
+        <!-- 服務項目 -->
+        <div class="services">
+            <h2 class="section-title"><i class="fas fa-clipboard-list"></i> 我們提供的服務</h2>
+            <div class="service-list">
+                <div class="service-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div class="service-text">
+                        <strong>一對一勞資諮詢</strong>
+                        專業顧問深入了解您的需求
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div class="service-text">
+                        <strong>客製化輔導</strong>
+                        量身打造最適合的解決方案
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div class="service-text">
+                        <strong>制定工作規則</strong>
+                        建立完善的公司制度
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div class="service-text">
+                        <strong>依法規劃薪資</strong>
+                        合理合法的薪資結構設計
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div class="service-text">
+                        <strong>轉嫁職災責任</strong>
+                        降低企業風險與負擔
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div class="service-text">
+                        <strong>退休福利辦法</strong>
+                        完善員工退休金規劃
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div class="service-text">
+                        <strong>最新勞資法令資訊</strong>
+                        即時掌握法規變動
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div class="service-text">
+                        <strong>預防/解決勞資糾紛</strong>
+                        專業處理勞資爭議
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 聯繫我們 -->
+        <div class="cta-section">
+            <h2 class="cta-title">🔥 立即聯繫我們</h2>
+            <p class="cta-text">告知您公司目前的勞資問題，讓我們協助您避免未來的高額罰款‼️<br>台灣勞基顧問公司，讓您的企業安全無憂‼️</p>
+            
+            <div class="contact-buttons">
+                <a href="tel:0989422478" class="btn btn-primary">
+                    <i class="fas fa-phone"></i>
+                    撥打電話：0989-422-478
+                </a>
+                
+                <a href="https://lin.ee/xPQFzEq" target="_blank" class="btn btn-line">
+                    <i class="fab fa-line"></i>
+                    官方LINE客服
+                </a>
+                
+                <a href="https://www.tiktok.com/@twlawki620?_t=8f7fp6REcuW&_r=1" target="_blank" class="btn btn-tiktok">
+                    <i class="fab fa-tiktok"></i>
+                    廖總裁TikTok
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 全球商聯會 x 勞基顧問股份有限公司 | 專業值得信賴</p>
+        </div>
+    </footer>
+</body>
+</html>
+
