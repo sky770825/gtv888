@@ -1449,22 +1449,6 @@
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .floating-sidebar.collapsed {
-            right: -200px;
-        }
-
-        @media (max-width: 768px) {
-            .floating-sidebar.collapsed {
-                right: -140px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .floating-sidebar.collapsed {
-                right: -120px;
-            }
-        }
-
         .floating-tool-card {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.95));
             backdrop-filter: blur(20px);
@@ -1476,6 +1460,16 @@
             min-width: 180px;
             position: relative;
             overflow: hidden;
+        }
+
+        .floating-tool-card.collapsed {
+            min-width: 72px;
+            padding: var(--spacing-sm);
+        }
+
+        .floating-tool-card.collapsed .tool-card-title,
+        .floating-tool-card.collapsed .tool-card-button {
+            display: none;
         }
 
         .floating-tool-card::before {
@@ -1518,11 +1512,16 @@
             margin: 0 auto var(--spacing-sm);
             box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
         }
 
         .floating-tool-card:hover .tool-card-icon {
             transform: rotate(360deg) scale(1.1);
             box-shadow: 0 12px 30px rgba(102, 126, 234, 0.6);
+        }
+
+        .floating-tool-card.collapsed .tool-card-icon {
+            margin-bottom: 0;
         }
 
         .tool-card-title {
@@ -1583,57 +1582,6 @@
             box-shadow: 0 20px 60px rgba(245, 158, 11, 0.3);
         }
 
-        /* 收合按鈕 */
-        .sidebar-toggle {
-            position: fixed;
-            right: 220px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 997;
-            width: 48px;
-            height: 120px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border: none;
-            border-radius: var(--radius-lg);
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: var(--spacing-xs);
-            box-shadow: -4px 0 15px rgba(102, 126, 234, 0.3);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            color: white;
-            font-size: var(--font-sm);
-            padding: var(--spacing-sm);
-        }
-
-        .sidebar-toggle.collapsed {
-            right: 0;
-            border-radius: var(--radius-lg) 0 0 var(--radius-lg);
-        }
-
-        .sidebar-toggle:hover {
-            width: 56px;
-            box-shadow: -8px 0 25px rgba(102, 126, 234, 0.5);
-            background: linear-gradient(135deg, #5568d3, #6539a0);
-        }
-
-        .sidebar-toggle i {
-            font-size: var(--font-xl);
-            transition: transform 0.4s ease;
-        }
-
-        .sidebar-toggle.collapsed i {
-            transform: rotate(180deg);
-        }
-
-        .sidebar-toggle-text {
-            writing-mode: vertical-rl;
-            font-weight: 700;
-            font-size: var(--font-xs);
-            letter-spacing: 0.1em;
-        }
 
         /* 響應式 - 平板優化 */
         @media (max-width: 1280px) {
@@ -1645,19 +1593,15 @@
                 min-width: 140px;
                 padding: var(--spacing-md);
             }
+
+            .floating-tool-card.collapsed {
+                min-width: 64px;
+            }
             
             .tool-card-icon {
                 width: 48px;
                 height: 48px;
                 font-size: var(--font-xl);
-            }
-
-            .sidebar-toggle {
-                right: 190px;
-            }
-
-            .sidebar-toggle.collapsed {
-                right: 0;
             }
         }
 
@@ -1672,6 +1616,11 @@
                 min-width: 120px;
                 padding: var(--spacing-sm) var(--spacing-xs);
                 border-radius: var(--radius-md);
+            }
+
+            .floating-tool-card.collapsed {
+                min-width: 56px;
+                padding: var(--spacing-xs);
             }
             
             .tool-card-icon {
@@ -1698,25 +1647,6 @@
             .tool-card-button span {
                 display: none;
             }
-            
-            /* 收合按鈕手機版優化 */
-            .sidebar-toggle {
-                width: 40px;
-                height: 100px;
-                right: 168px;
-            }
-
-            .sidebar-toggle.collapsed {
-                right: 0;
-            }
-            
-            .sidebar-toggle i {
-                font-size: var(--font-lg);
-            }
-            
-            .sidebar-toggle-text {
-                font-size: 0.65rem;
-            }
         }
 
         /* 小手機進一步優化 */
@@ -1728,6 +1658,10 @@
             .floating-tool-card {
                 min-width: 100px;
                 padding: var(--spacing-xs);
+            }
+
+            .floating-tool-card.collapsed {
+                min-width: 48px;
             }
             
             .tool-card-icon {
@@ -1742,11 +1676,6 @@
             
             .tool-card-button {
                 padding: var(--spacing-xs);
-            }
-            
-            .sidebar-toggle {
-                width: 36px;
-                height: 90px;
             }
         }
     </style>
@@ -2798,8 +2727,8 @@
     <!-- 右側浮動工具欄 -->
     <div class="floating-sidebar" id="floatingSidebar">
         <!-- 慈善店家計畫卡片 -->
-        <div class="floating-tool-card">
-            <div class="tool-card-icon">🌍</div>
+        <div class="floating-tool-card" id="charityCard">
+            <div class="tool-card-icon" onclick="toggleCard('charityCard')">🌍</div>
             <h3 class="tool-card-title">慈善店家計畫</h3>
             <a href="charity-merchant-program.html" class="tool-card-button">
                 <i class="fas fa-hand-holding-heart"></i>
@@ -2808,8 +2737,8 @@
         </div>
 
         <!-- 點數計算機卡片 -->
-        <div class="floating-tool-card calculator">
-            <div class="tool-card-icon">🧮</div>
+        <div class="floating-tool-card calculator" id="calculatorCard">
+            <div class="tool-card-icon" onclick="toggleCard('calculatorCard')">🧮</div>
             <h3 class="tool-card-title">點數計算機</h3>
             <button onclick="window.open('points-calculator.html', '_blank')" class="tool-card-button">
                 <i class="fas fa-calculator"></i>
@@ -2818,37 +2747,30 @@
         </div>
     </div>
 
-    <!-- 收合按鈕 -->
-    <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()" aria-label="切換服務欄">
-        <i class="fas fa-chevron-right"></i>
-        <span class="sidebar-toggle-text">服務</span>
-    </button>
-
     <!-- JavaScript -->
     <script>
-        // 右側工具欄收合功能
-        function toggleSidebar() {
-            const sidebar = document.getElementById('floatingSidebar');
-            const toggleBtn = document.getElementById('sidebarToggle');
-            
-            sidebar.classList.toggle('collapsed');
-            toggleBtn.classList.toggle('collapsed');
+        // 單個卡片收合功能
+        function toggleCard(cardId) {
+            const card = document.getElementById(cardId);
+            card.classList.toggle('collapsed');
             
             // 保存狀態到 localStorage
-            const isCollapsed = sidebar.classList.contains('collapsed');
-            localStorage.setItem('sidebarCollapsed', isCollapsed);
+            const isCollapsed = card.classList.contains('collapsed');
+            localStorage.setItem(cardId + 'Collapsed', isCollapsed);
         }
 
-        // 頁面載入時恢復上次的狀態
+        // 頁面載入時恢復每個卡片的狀態
         document.addEventListener('DOMContentLoaded', function() {
-            const sidebar = document.getElementById('floatingSidebar');
-            const toggleBtn = document.getElementById('sidebarToggle');
-            const savedState = localStorage.getItem('sidebarCollapsed');
+            const cards = ['charityCard', 'calculatorCard'];
             
-            if (savedState === 'true') {
-                sidebar.classList.add('collapsed');
-                toggleBtn.classList.add('collapsed');
-            }
+            cards.forEach(cardId => {
+                const card = document.getElementById(cardId);
+                const savedState = localStorage.getItem(cardId + 'Collapsed');
+                
+                if (savedState === 'true') {
+                    card.classList.add('collapsed');
+                }
+            });
         });
 
         // 導航欄滾動效果 & 返回頂部按鈕
